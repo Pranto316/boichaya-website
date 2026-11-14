@@ -84,3 +84,8 @@ This project is actively evolving. You are encouraged to build and integrate new
 ## 6. Safe Editing Workflow
 - **Surgical Edits on Existing Files:** When updating `index.html` or `members.html`, modify only the targeted sections or arrays—never rewrite an entire existing HTML file from scratch unless explicitly asked.
 - **Confirm Before Batch File Renames:** Before renaming files inside `images/` on disk, show the list of old and new filenames and wait for user approval.
+## 7. Automatic Image Compression & Performance Rules
+- **Auto-Compress Before Push:** Always run `python compress.py` before committing or pushing changes whenever new images are added or modified inside `images/`.
+- **Keep Filenames & Extensions Intact:** Compress `.jpg`/`.jpeg`/`.png` files in place without changing their filenames or extensions so existing HTML paths never break.
+- **Size Limits:** Resize member portraits (`images/members/`) to max `600px` width and event/session photos to max `1600px` width at `80%` JPEG quality.
+- **Lazy Loading:** Ensure below-the-fold `<img>` tags in `index.html` and `members.html` include `loading="lazy"`.

@@ -1228,6 +1228,7 @@
           <img
             src="images/logo.jpg"
             alt="বইছায়া লোগো"
+            loading="lazy"
             class="w-12 h-12 object-contain logo-adaptive"
             onerror="this.style.display='none'"
           />
@@ -2451,7 +2452,7 @@
             }"
             aria-label="ছবি ${toBanglaDigits(i + 1)}"
           >
-            <img src="${item.src}" alt="" class="w-full h-full object-cover" />
+            <img src="${item.src}" alt="" loading="lazy" class="w-full h-full object-cover" />
           </button>
         `)
         .join('');
