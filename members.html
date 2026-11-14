@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth text-[17px] sm:text-[18px]">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>সদস্যবৃন্দ — বইছায়া (Boichaya) | চাঁদপুর পাঠচক্র</title>
+  <meta name="description" content="বইছায়া (Boichaya) পাঠচক্রের প্রতিষ্ঠাতা, সভাপতি ও নিবেদিতপ্রাণ সকল সদস্যের পরিচিতি।" />
+
+  <!-- Instant Theme Sync with index.html -->
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('boichaya-theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            meghna: 'var(--accent-teal)',
+            petrol: 'var(--accent-petrol)',
+            paper: 'var(--bg-paper)',
+            parchment: 'var(--bg-parchment)',
+            cardpaper: 'var(--bg-card)',
+            ink: 'var(--text-ink)',
+            brass: 'var(--accent-brass)',
+          },
+          fontFamily: {
+            sans: ['"Hind Siliguri"', 'sans-serif'],
+            serif: ['"Noto Serif Bengali"', '"Tiro Bangla"', 'serif'],
+            literary: ['"Tiro Bangla"', '"Noto Serif Bengali"', 'serif'],
+          },
+          boxShadow: {
+            polaroid: '0 10px 26px -6px rgba(8, 84, 93, 0.16), 0 4px 10px -4px rgba(0, 0, 0, 0.12)',
+            parchment: '0 14px 34px -10px rgba(8, 84, 93, 0.14), 0 2px 8px rgba(0, 0, 0, 0.08)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --accent-teal: #0E828E;
+      --accent-petrol: #08545D;
+      --bg-paper: #FAF6EE;
+      --bg-parchment: #F1E9DC;
+      --bg-card: #FCF9F2;
+      --text-ink: #1E2426;
+      --accent-brass: #C68B3F;
+      --grain-opacity: 0.34;
+    }
+
+    html.dark {
+      --accent-teal: #27B2C2;
+      --accent-petrol: #82DCE6;
+      --bg-paper: #0B1517;
+      --bg-parchment: #112024;
+      --bg-card: #16282D;
+      --text-ink: #F2ECE1;
+      --accent-brass: #E0A354;
+      --grain-opacity: 0.16;
+    }
+
+    [lang="bn"], body, h1, h2, h3, h4, p, span, a, button {
+      letter-spacing: 0 !important;
+      font-feature-settings: "kern" 1, "liga" 1;
+    }
+
+    html, body {
+      background-color: var(--bg-paper);
+      color: var(--text-ink);
+      font-family: 'Hind Siliguri', sans-serif;
+      overflow-x: clip;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .paper-grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 45;
+      opacity: var(--grain-opacity);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0.94  0 1 0 0 0.90  0 0 1 0 0.82  0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
+    }
+
+    .logo-adaptive {
+      mix-blend-mode: multiply;
+    }
+    html.dark .logo-adaptive {
+      mix-blend-mode: normal;
+      background-color: #FAF6EE;
+      border-radius: 1.15rem;
+      padding: 0.45rem;
+    }
+
+    .brass-tape {
+      position: absolute;
+      width: 68px;
+      height: 18px;
+      background: linear-gradient(135deg, rgba(198, 139, 63, 0.9) 0%, rgba(220, 168, 96, 0.82) 50%, rgba(182, 122, 46, 0.92) 100%);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+      z-index: 20;
+      pointer-events: none;
+      clip-path: polygon(3% 0%, 97% 2%, 100% 96%, 0% 100%, 2% 50%);
+    }
+
+    .polaroid-frame {
+      background: var(--bg-card);
+      padding: 10px 10px 18px 10px;
+      border: 1px solid rgba(14, 130, 142, 0.25);
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .polaroid-frame:hover {
+      transform: translateY(-4px) rotate(0deg);
+      box-shadow: 0 20px 38px -10px rgba(14, 130, 142, 0.25);
+    }
+
+    @keyframes wheelPulse {
+      0%, 100% { box-shadow: 0 10px 28px rgba(8, 84, 93, 0.24), 0 0 0 0 rgba(198, 139, 63, 0.3); }
+      50% { box-shadow: 0 12px 32px rgba(8, 84, 93, 0.34), 0 0 0 8px rgba(198, 139, 63, 0); }
+    }
+    .scroll-wheel-aura { animation: wheelPulse 4s ease-in-out infinite; }
+  </style>
+</head>
+<body class="paper-grain antialiased selection:bg-meghna/25 selection:text-petrol">
+
+  <!-- =====================================================================
+       1. NAVBAR
+  ====================================================================== -->
+  <header class="sticky top-0 z-30 bg-paper/90 backdrop-blur-md border-b border-meghna/20">
+    <div class="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-2.5 gap-2">
+        <a href="index.html#home" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none min-h-[44px]">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl overflow-hidden flex items-center justify-center shrink-0">
+            <img
+              src="images/logo.jpg"
+              alt="বইছায়া লোগো"
+              class="w-full h-full object-contain logo-adaptive"
+              onerror="this.style.display='none'"
+            />
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif text-xl sm:text-2xl font-bold text-petrol leading-none group-hover:text-meghna transition-colors">বইছায়া</span>
+            <span class="text-xs text-meghna font-medium mt-0.5">বই হোক প্রজ্ঞার বাহন</span>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-6 text-[16.5px] font-medium text-ink/90" aria-label="প্রধান নেভিগেশন">
+          <a href="index.html#home" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">হোম</a>
+          <a href="index.html#about" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">আমাদের গল্প</a>
+          <a href="members.html" class="text-petrol font-semibold py-1.5 border-b-2 border-brass">সদস্যবৃন্দ</a>
+          <a href="index.html#storyboard" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">পাঠচক্র</a>
+          <a href="index.html#contact" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">যোগাযোগ</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <button
+            id="themeToggleBtn"
+            type="button"
+            class="inline-flex items-center gap-1.5 px-3 py-2 min-h-[42px] rounded-full border border-meghna/30 bg-parchment/85 hover:border-brass text-petrol hover:text-brass text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+            aria-label="হালকা ও ডার্ক থিম পরিবর্তন করুন"
+          >
+            <svg id="themeIconDark" class="w-4 h-4 text-petrol shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M8 3h8l2 6H6l2-6z" fill="var(--accent-brass)" fill-opacity="0.25"/>
+              <path d="M12 9v8"/><path d="M8 21h8"/><path d="M10 17h4"/>
+            </svg>
+            <svg id="themeIconLight" class="hidden w-4 h-4 text-brass shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M2 8s3-1.5 6-1.5S12 8 12 8v12s-1-1.5-4-1.5S2 20 2 20V8z"/>
+              <path d="M22 8s-3-1.5-6-1.5S12 8 12 8v12s1-1.5 4-1.5 6 1.5 6 1.5V8z"/>
+              <circle cx="12" cy="4" r="2" fill="currentColor"/>
+            </svg>
+            <span id="themeToggleLabel" class="hidden sm:inline">ডার্ক থিম</span>
+          </button>
+
+          <a
+            href="index.html"
+            class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 min-h-[42px] rounded-full border border-brass/75 bg-parchment/85 text-petrol hover:bg-brass hover:text-white text-xs sm:text-sm font-semibold transition-all"
+          >
+            <span>← মূল পাতা</span>
+          </a>
+
+          <button
+            id="mobileMenuBtn"
+            type="button"
+            class="lg:hidden p-2.5 min-w-[42px] min-h-[42px] rounded-xl text-petrol hover:bg-parchment flex items-center justify-center cursor-pointer"
+            aria-label="মেনু খুলুন"
+            aria-expanded="false"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="hidden lg:hidden pb-4 pt-2 border-t border-meghna/15">
+        <nav class="flex flex-col space-y-1.5 text-base font-medium text-ink">
+          <a href="index.html#home" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">হোম</a>
+          <a href="index.html#about" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">আমাদের গল্প</a>
+          <a href="members.html" class="px-3.5 py-2.5 rounded-xl bg-parchment text-petrol font-bold">সদস্যবৃন্দ</a>
+          <a href="index.html#storyboard" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">পাঠচক্র</a>
+          <a href="index.html#contact" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">যোগাযোগ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       2. MEMBERS PAGE HEADER
+  ====================================================================== -->
+  <section class="pt-10 pb-12 sm:pt-14 sm:pb-16 bg-parchment/70 border-b border-meghna/20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-brass bg-brass/15 px-4 py-1.5 rounded-full mb-3 border border-brass/30">
+        <span>বইছায়া পাঠক পরিবার • প্রতিষ্ঠাকাল: ২০২২ ইং</span>
+      </div>
+      <h1 class="font-serif text-3xl sm:text-5xl font-bold text-petrol leading-snug">
+        বইছায়ার নিবেদিতপ্রাণ সদস্যবৃন্দ
+      </h1>
+      <p class="max-w-2xl mx-auto text-base sm:text-lg text-ink/85 mt-3 leading-relaxed">
+        বই, যুক্তি ও মুক্তচিন্তার আলোয় যাঁরা নিয়মিত পাঠচক্র, বুক রিভিউ ও সাহিত্য আড্ডাকে প্রাণবন্ত করে রেখেছেন—তাঁদের পরিচিতি।
+      </p>
+      <div class="mt-4 inline-flex items-center gap-2 text-base sm:text-lg font-bold text-petrol">
+        <svg class="w-5 h-5 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" fill="var(--accent-brass)" fill-opacity="0.25"/>
+          <circle cx="12" cy="11" r="2.5" fill="currentColor"/>
+        </svg>
+        <span>চাঁদপুর, বাংলাদেশ</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       3. LINE-BY-LINE ALL MEMBERS DIRECTORY
+  ====================================================================== -->
+  <main class="py-12 sm:py-18">
+    <div id="allMembersLineList" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
+      <!-- Populated line-by-line via JS -->
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href="index.html"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 min-h-[48px] rounded-full bg-petrol hover:bg-meghna text-white font-semibold text-base shadow-md transition-all"
+      >
+        <span>← মূল পাতায় ফিরে যান</span>
+      </a>
+      <a
+        href="index.html#contact"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 min-h-[48px] rounded-full bg-brass hover:brightness-95 text-white font-semibold text-base shadow-md transition-all"
+      >
+        <span>সদস্য হতে যোগাযোগ করুন →</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- =====================================================================
+       4. FOOTER
+  ====================================================================== -->
+  <footer class="bg-parchment border-t border-meghna/20 py-10 text-ink/85">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <p class="font-serif font-bold text-petrol text-base">বইছায়া (Boichaya) — বই হোক প্রজ্ঞার বাহন</p>
+      <p class="text-ink/75">© ২০২২–২০২৬ বইছায়া, চাঁদপুর। সর্বস্বত্ব সংরক্ষিত।</p>
+    </div>
+  </footer>
+
+  <!-- Enlarged Rotary Scroll Wheel -->
+  <button
+    id="rotaryScrollWheel"
+    type="button"
+    class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full bg-cardpaper/95 backdrop-blur-md border-2 border-meghna/45 flex items-center justify-center scroll-wheel-aura cursor-pointer group touch-none"
+    aria-label="উপরে ফিরে যান"
+    title="উপরে ফিরে যান"
+  >
+    <svg id="rotaryWheelSpokes" class="w-full h-full p-1 transition-transform duration-75 ease-out" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <circle cx="50" cy="50" r="44" stroke="var(--accent-teal)" stroke-opacity="0.3" stroke-width="2.5" stroke-dasharray="4 4"/>
+      <circle
+        id="rotaryProgressCircle"
+        cx="50"
+        cy="50"
+        r="44"
+        stroke="var(--accent-brass)"
+        stroke-width="3.8"
+        stroke-linecap="round"
+        stroke-dasharray="276.46"
+        stroke-dashoffset="276.46"
+        transform="rotate(-90 50 50)"
+      />
+      <g stroke="var(--accent-petrol)" stroke-opacity="0.55" stroke-width="1.8" stroke-linecap="round">
+        <line x1="50" y1="6" x2="50" y2="15"/>
+        <line x1="50" y1="85" x2="50" y2="94"/>
+        <line x1="6" y1="50" x2="15" y2="50"/>
+        <line x1="85" y1="50" x2="94" y2="50"/>
+      </g>
+    </svg>
+    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+      <span id="wheelPercentLabel" class="font-serif text-xs sm:text-sm font-bold text-petrol group-hover:hidden">০%</span>
+      <svg class="hidden group-hover:block w-5 h-5 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/>
+      </svg>
+    </div>
+  </button>
+
+  <script>
+    const boichayaMembers = [
+      {
+        name: 'আবু বকর সিদ্দিক',
+        roleBadge: 'প্রতিষ্ঠাতা ও সভাপতি',
+        joined: '২০২২ ইং',
+        photo: 'images/members/abu-bakar-siddik.jpg',
+        facebook: 'https://www.facebook.com/siddikkhan.siddik',
+        bio: 'বইছায়ার স্বপ্নদ্রষ্টা, প্রতিষ্ঠাতা ও সভাপতি। ২০২২ সালে চাঁদপুরের তরুণদের মাঝে গভীর পাঠাভ্যাস, মুক্তবুদ্ধির চর্চা এবং সাহিত্য সংলাপ গড়ে তোলার লক্ষ্যে বইছায়া প্রতিষ্ঠা করেন এবং নিয়মিত পাঠচক্র ও সেমিনার পরিচালনা করে আসছেন।'
+      },
+      {
+        name: 'চৈতিশীল তৃণা',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/chaity-shil-trina.jpg',
+        bio: 'বইছায়ার নিয়মিত পাঠচক্র ও সাহিত্য আড্ডার অন্যতম সক্রিয় সদস্য। সমকালীন কথাসাহিত্য পাঠ, গঠনমূলক আলোচনা এবং পাঠচক্রের সাংস্কৃতিক আয়োজনে নিয়মিত অংশগ্রহণ করেন।'
+      },
+      {
+        name: 'সুস্মিতা দাস',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/sushmita-das.jpg',
+        bio: 'আবৃত্তিশিল্পী ও অনুষ্ঠান উপস্থাপক। আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে আয়োজিত ‘বাঙালি সত্তা ও আহমদ ছফা’ সেমিনারে প্রাঞ্জল সঞ্চালনা ও কবিতা আবৃত্তির মাধ্যমে বিশেষ ভূমিকা রাখেন।'
+      },
+      {
+        name: 'বিশ্বজিৎ দেবনাথ',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/bishwajit-debnath.jpg',
+        bio: 'বইছায়ার নিয়মিত পাঠচক্র, বুক রিভিউ ও বই বিনিময় কর্মসূচির সক্রিয় অংশগ্রহণকারী। ইতিহাস, সমাজচিন্তা ও সমকালীন সাহিত্য আলোচনায় নিয়মিত মতামত তুলে ধরেন।'
+      },
+      {
+        name: 'রবিউল আলম',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/rabiul-alam.jpg',
+        bio: 'বইছায়ার পাঠচক্র ও মুক্তবুদ্ধি চর্চার নিয়মিত সদস্য। সাপ্তাহিক বই আড্ডা, বই বিনিময় কার্যক্রম এবং পাঠক সমাজ সম্প্রসারণে সক্রিয়ভাবে যুক্ত আছেন।'
+      },
+      {
+        name: 'খাদিজা আক্তার',
+        roleBadge: 'অনিয়মিত সদস্য • নিয়মিত বক্তা',
+        joined: '২০২৪ ইং',
+        photo: 'images/members/khadija-akter.jpg',
+        bio: 'বইছায়ার অনিয়মিত সদস্য ও নিয়মিত বক্তা। বর্তমানে নার্সিং নিয়ে পড়াশোনা করছেন। আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে আয়োজিত বিশেষ সেমিনার ও আলোচনা অনুষ্ঠানে অংশগ্রহণ করেছেন এবং পাঠচক্রের মুক্ত আলোচনায় নিয়মিত বক্তব্য রাখেন।'
+      },
+      {
+        name: 'মরিয়ম মাহি',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/mahi.jpg',
+        bio: 'বইছায়ার নিয়মিত পাঠক ও আলোচক। সাপ্তাহিক পাঠচক্র, বুক রিভিউ এবং তরুণদের মাঝে পাঠাভ্যাস ছড়িয়ে দেওয়ার কার্যক্রমে সক্রিয়ভাবে অংশগ্রহণ করেন।'
+      },
+      {
+        name: 'প্রান্ত সাহা',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/pranto-saha.jpg',
+        bio: 'পাঠচক্র আলোচক, লেখক ও বই পর্যালোচক। যোগাযোগ দক্ষতা, আত্মোন্নয়ন ও মননশীল সাহিত্য আলোচনায় নিয়মিত অংশগ্রহণ করেন এবং বইছায়ার সৃজনশীল আয়োজনে সক্রিয় ভূমিকা রাখেন।'
+      }
+    ];
+
+    function toBanglaDigits(num) {
+      const bnDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+      return String(num).replace(/\d/g, (d) => bnDigits[Number(d)]);
+    }
+
+    function handlePhotoError(imgEl, labelText) {
+      const parent = imgEl.parentElement;
+      if (!parent || parent.dataset.fallbackApplied) return;
+      parent.dataset.fallbackApplied = 'true';
+      imgEl.style.display = 'none';
+      const placeholder = document.createElement('div');
+      placeholder.className = 'w-full h-full min-h-[220px] bg-gradient-to-br from-parchment via-paper to-meghna/12 flex flex-col items-center justify-center p-4 text-center border border-dashed border-meghna/35';
+      placeholder.innerHTML = `
+        <svg class="w-10 h-10 text-meghna/70 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span class="font-serif font-bold text-petrol text-base">${labelText}</span>
+        <span class="text-xs text-ink/65 mt-1">ছবি সংরক্ষিত</span>
+      `;
+      parent.appendChild(placeholder);
+    }
+
+    function renderAllMembersLineByLine() {
+      const container = document.getElementById('allMembersLineList');
+      if (!container) return;
+
+      container.innerHTML = boichayaMembers
+        .map((member, idx) => {
+          const serial = toBanglaDigits(String(idx + 1).padStart(2, '0'));
+          const fbButton = member.facebook
+            ? `<a href="${member.facebook}" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-petrol hover:bg-meghna px-4 py-2 rounded-full transition-colors">
+                 <span>ফেসবুক প্রোফাইল</span><span>↗</span>
+               </a>`
+            : '';
+
+          return `
+            <article id="member-${idx + 1}" class="scroll-mt-24 bg-cardpaper border border-meghna/25 rounded-3xl p-5 sm:p-8 shadow-parchment relative">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
+                <div class="md:col-span-4">
+                  <div class="polaroid-frame ${idx % 2 === 0 ? '-rotate-1' : 'rotate-1'} shadow-polaroid max-w-[280px] mx-auto">
+                    <div class="brass-tape -top-2.5 left-1/2 -translate-x-1/2"></div>
+                    <div class="aspect-[4/4] w-full overflow-hidden bg-parchment/70">
+                      <img
+                        src="${member.photo}"
+                        alt="${member.name}"
+                        loading="lazy"
+                        class="w-full h-full object-cover"
+                        onerror="handlePhotoError(this, '${member.name}')"
+                      />
+                    </div>
+                    <div class="pt-2 px-1 flex items-center justify-between text-xs text-ink/80">
+                      <span class="font-serif font-bold text-petrol">সদস্য #${serial}</span>
+                      <span class="text-brass font-semibold">বইছায়া</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="md:col-span-8 space-y-3">
+                  <div class="flex flex-wrap items-center gap-2.5">
+                    <span class="inline-block text-xs sm:text-sm font-bold text-brass bg-brass/15 px-3.5 py-1 rounded-full border border-brass/30">
+                      ${member.roleBadge}
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium bg-parchment text-ink/90 px-3.5 py-1 rounded-full border border-meghna/20">
+                      <svg class="w-4 h-4 text-meghna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                      </svg>
+                      <span>যোগদান: ${member.joined}</span>
+                    </span>
+                    <span class="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-petrol bg-meghna/10 px-3 py-1 rounded-full">
+                      <svg class="w-4 h-4 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z"/>
+                        <circle cx="12" cy="11" r="2.5"/>
+                      </svg>
+                      <span>চাঁদপুর</span>
+                    </span>
+                  </div>
+
+                  <h2 class="font-serif text-2xl sm:text-3xl font-bold text-petrol">
+                    ${member.name}
+                  </h2>
+
+                  <p class="text-base sm:text-[18px] text-ink/90 leading-relaxed">
+                    ${member.bio}
+                  </p>
+
+                  ${fbButton}
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+    }
+
+    function syncThemeUI() {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.getElementById('themeIconDark').classList.toggle('hidden', isDark);
+      document.getElementById('themeIconLight').classList.toggle('hidden', !isDark);
+      const label = document.getElementById('themeToggleLabel');
+      if (label) label.textContent = isDark ? 'হালকা থিম' : 'ডার্ক থিম';
+    }
+
+    document.getElementById('themeToggleBtn').addEventListener('click', () => {
+      const willBeDark = !document.documentElement.classList.contains('dark');
+      document.documentElement.classList.toggle('dark', willBeDark);
+      try { localStorage.setItem('boichaya-theme', willBeDark ? 'dark' : 'light'); } catch (e) {}
+      syncThemeUI();
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      const expanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    const rotaryWheelBtn = document.getElementById('rotaryScrollWheel');
+    const spokesEl = document.getElementById('rotaryWheelSpokes');
+    const progressCircle = document.getElementById('rotaryProgressCircle');
+    const percentLabel = document.getElementById('wheelPercentLabel');
+    const circumference = 2 * Math.PI * 44;
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
+      const percent = Math.round(progress * 100);
+      spokesEl.style.transform = `rotate(${progress * 720}deg)`;
+      progressCircle.style.strokeDashoffset = String(circumference - progress * circumference);
+      percentLabel.textContent = `${toBanglaDigits(percent)}%`;
+    }, { passive: true });
+
+    rotaryWheelBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    document.addEventListener('DOMContentLoaded', () => {
+      syncThemeUI();
+      renderAllMembersLineByLine();
+    });
+  </script>
+</body>
+</html>

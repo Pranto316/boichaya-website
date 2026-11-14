@@ -1,0 +1,2659 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth text-[17px] sm:text-[18px]">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>বইছায়া (Boichaya) — বই হোক প্রজ্ঞার বাহন | চাঁদপুর পাঠচক্র</title>
+  <meta name="description" content="বইছায়া (Boichaya) — ২০২২ সাল থেকে চাঁদপুরে পাঠাভ্যাস, মুক্তচিন্তা ও সাহিত্য আড্ডার একটি প্রাণবন্ত পাঠচক্র। বই হোক প্রজ্ঞার বাহন।" />
+
+  <!-- Instant Theme Initialization -->
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('boichaya-theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Fonts: Hind Siliguri, Tiro Bangla, Noto Serif Bengali -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            meghna: 'var(--accent-teal)',
+            petrol: 'var(--accent-petrol)',
+            paper: 'var(--bg-paper)',
+            parchment: 'var(--bg-parchment)',
+            cardpaper: 'var(--bg-card)',
+            ink: 'var(--text-ink)',
+            brass: 'var(--accent-brass)',
+          },
+          fontFamily: {
+            sans: ['"Hind Siliguri"', 'sans-serif'],
+            serif: ['"Noto Serif Bengali"', '"Tiro Bangla"', 'serif'],
+            literary: ['"Tiro Bangla"', '"Noto Serif Bengali"', 'serif'],
+          },
+          boxShadow: {
+            polaroid: '0 10px 26px -6px rgba(8, 84, 93, 0.16), 0 4px 10px -4px rgba(0, 0, 0, 0.12)',
+            'polaroid-hover': '0 22px 42px -8px rgba(14, 130, 142, 0.28), 0 10px 20px -6px rgba(0, 0, 0, 0.2)',
+            parchment: '0 14px 34px -10px rgba(8, 84, 93, 0.14), 0 2px 8px rgba(0, 0, 0, 0.08)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --accent-teal: #0E828E;
+      --accent-petrol: #08545D;
+      --bg-paper: #FAF6EE;
+      --bg-parchment: #F1E9DC;
+      --bg-card: #FCF9F2;
+      --text-ink: #1E2426;
+      --accent-brass: #C68B3F;
+      --grain-opacity: 0.34;
+      --rule-line: rgba(14, 130, 142, 0.14);
+      --lamp-glow: rgba(198, 139, 63, 0.08);
+    }
+
+    html.dark {
+      --accent-teal: #27B2C2;
+      --accent-petrol: #82DCE6;
+      --bg-paper: #0B1517;
+      --bg-parchment: #112024;
+      --bg-card: #16282D;
+      --text-ink: #F2ECE1;
+      --accent-brass: #E0A354;
+      --grain-opacity: 0.16;
+      --rule-line: rgba(39, 178, 194, 0.14);
+      --lamp-glow: rgba(224, 163, 84, 0.14);
+    }
+
+    [lang="bn"], body, h1, h2, h3, h4, p, span, a, button {
+      letter-spacing: 0 !important;
+      font-feature-settings: "kern" 1, "liga" 1;
+    }
+
+    html, body {
+      background-color: var(--bg-paper);
+      color: var(--text-ink);
+      font-family: 'Hind Siliguri', sans-serif;
+      overflow-x: clip;
+      position: relative;
+      transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html.theme-switching,
+    html.theme-switching body,
+    html.theme-switching header,
+    html.theme-switching section,
+    html.theme-switching footer,
+    html.theme-switching article,
+    html.theme-switching blockquote,
+    html.theme-switching div,
+    html.theme-switching button,
+    html.theme-switching a {
+      transition: background-color 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                  color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    }
+
+    body.page-hidden *,
+    body.page-hidden *::before,
+    body.page-hidden *::after {
+      animation-play-state: paused !important;
+    }
+
+    .paper-grain::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 45;
+      opacity: var(--grain-opacity);
+      transition: opacity 0.6s ease;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0.94  0 1 0 0 0.90  0 0 1 0 0.82  0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
+    }
+
+    .library-lamp-ambient {
+      background: radial-gradient(ellipse 68% 45% at 50% 18%, var(--lamp-glow), transparent 72%);
+      transition: background 0.7s ease;
+    }
+
+    .notebook-lines {
+      background-image: linear-gradient(to bottom, transparent calc(100% - 1px), var(--rule-line) 1px);
+      background-size: 100% 2.3rem;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-parchment);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(14, 130, 142, 0.5);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-teal);
+    }
+
+    .logo-adaptive {
+      mix-blend-mode: multiply;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                  background-color 0.5s ease;
+    }
+    html.dark .logo-adaptive {
+      mix-blend-mode: normal;
+      background-color: #FAF6EE;
+      border-radius: 1.15rem;
+      padding: 0.45rem;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45), 0 0 0 1.5px rgba(224, 163, 84, 0.42);
+    }
+
+    .logo-interactive-stage {
+      perspective: 750px;
+      position: relative;
+    }
+
+    .logo-book-cover {
+      transform-origin: left center;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .logo-interactive-stage:hover .logo-book-cover,
+    .logo-interactive-stage:focus-visible .logo-book-cover,
+    .logo-interactive-stage.is-tapped .logo-book-cover {
+      transform: rotateY(-11deg) rotateZ(-1.2deg) scale(1.035);
+    }
+
+    .logo-ribbon-bookmark {
+      position: absolute;
+      bottom: -4px;
+      right: 16%;
+      width: 14px;
+      height: 22px;
+      transform: translateY(-8px) scaleY(0.4);
+      transform-origin: top center;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.35s ease;
+      z-index: 20;
+    }
+
+    .logo-interactive-stage:hover .logo-ribbon-bookmark,
+    .logo-interactive-stage:focus-visible .logo-ribbon-bookmark,
+    .logo-interactive-stage.is-tapped .logo-ribbon-bookmark {
+      transform: translateY(7px) scaleY(1);
+      opacity: 1;
+    }
+
+    @keyframes logoSparkleFloat {
+      0% { opacity: 0; transform: translate(0, 6px) scale(0.5) rotate(-8deg); }
+      25% { opacity: 0.95; }
+      100% { opacity: 0; transform: translate(var(--tx, 12px), var(--ty, -34px)) scale(1.08) rotate(12deg); }
+    }
+
+    .logo-burst-particle {
+      position: absolute;
+      pointer-events: none;
+      z-index: 30;
+      font-family: 'Tiro Bangla', 'Noto Serif Bengali', serif;
+      font-weight: 700;
+      animation: logoSparkleFloat 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .brass-tape {
+      position: absolute;
+      width: 72px;
+      height: 20px;
+      background: linear-gradient(135deg, rgba(198, 139, 63, 0.9) 0%, rgba(220, 168, 96, 0.82) 50%, rgba(182, 122, 46, 0.92) 100%);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+      z-index: 20;
+      pointer-events: none;
+      backdrop-filter: blur(1px);
+      clip-path: polygon(3% 0%, 97% 2%, 100% 96%, 0% 100%, 2% 50%);
+    }
+
+    .brass-tape::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 6px,
+        rgba(255, 255, 255, 0.11) 6px,
+        rgba(255, 255, 255, 0.11) 7px
+      );
+    }
+
+    .polaroid-frame {
+      background: var(--bg-card);
+      padding: 10px 10px 24px 10px;
+      border: 1px solid rgba(14, 130, 142, 0.22);
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                  background-color 0.45s ease,
+                  border-color 0.45s ease;
+      position: relative;
+    }
+
+    .polaroid-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.24), transparent 65%);
+    }
+
+    .polaroid-frame:hover::after {
+      opacity: 1;
+    }
+
+    .polaroid-frame:hover,
+    .polaroid-frame:focus-visible {
+      box-shadow: 0 26px 48px -10px rgba(14, 130, 142, 0.28), 0 12px 22px -6px rgba(0, 0, 0, 0.22);
+      border-color: var(--accent-brass);
+      z-index: 25;
+    }
+
+    .magazine-card-lift {
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 0.4s ease;
+    }
+    .magazine-card-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -12px rgba(8, 84, 93, 0.18), 0 6px 14px -4px rgba(0, 0, 0, 0.08);
+    }
+
+    @keyframes heroReveal {
+      0% { opacity: 0; transform: translateY(28px) scale(0.97); filter: blur(4px); }
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    .animate-hero-1 { animation: heroReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both; }
+    .animate-hero-2 { animation: heroReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both; }
+    .animate-hero-3 { animation: heroReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both; }
+    .animate-hero-4 { animation: heroReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both; }
+
+    .reveal-session {
+      opacity: 0;
+      transform: translateY(36px) scale(0.988);
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-session.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .editorial-rule {
+      transform: scaleX(0.25);
+      opacity: 0.4;
+      transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.18s,
+                  opacity 0.75s ease 0.18s;
+    }
+    .is-visible .editorial-rule {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    .reveal-stagger {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--stagger-delay, 0ms),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--stagger-delay, 0ms);
+    }
+    .is-visible .reveal-stagger,
+    .reveal-stagger.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+    @keyframes gentleFloatReverse {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(9px) rotate(-2deg); }
+    }
+    .float-slow { animation: gentleFloat 7s ease-in-out infinite; }
+    .float-delayed { animation: gentleFloatReverse 8.4s ease-in-out 1.2s infinite; }
+
+    @keyframes letterWhisper {
+      0%, 100% { opacity: 0.08; transform: translateY(0px) rotate(-3deg); }
+      50% { opacity: 0.24; transform: translateY(-12px) rotate(3deg); }
+    }
+    .bangla-whisper { animation: letterWhisper 9.5s ease-in-out infinite; user-select: none; }
+    .bangla-whisper-delayed { animation: letterWhisper 11s ease-in-out 3.2s infinite; user-select: none; }
+
+    @keyframes dashFlow { to { stroke-dashoffset: -36; } }
+    .animated-dash { animation: dashFlow 2.3s linear infinite; }
+
+    @keyframes shimmerSweep {
+      0% { transform: translateX(-130%) skewX(-20deg); }
+      100% { transform: translateX(240%) skewX(-20deg); }
+    }
+    .btn-shimmer { position: relative; overflow: hidden; }
+    .btn-shimmer::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.26), transparent);
+      transform: translateX(-130%) skewX(-20deg);
+    }
+    .btn-shimmer:hover::after { animation: shimmerSweep 0.85s ease forwards; }
+    .btn-shimmer:active { transform: scale(0.98); }
+
+    @keyframes modalSpringIn {
+      from { opacity: 0; transform: scale(0.93) translateY(16px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-animate { animation: modalSpringIn 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+    @keyframes wheelPulse {
+      0%, 100% { box-shadow: 0 10px 28px rgba(8, 84, 93, 0.24), 0 0 0 0 rgba(198, 139, 63, 0.3); }
+      50% { box-shadow: 0 12px 32px rgba(8, 84, 93, 0.34), 0 0 0 8px rgba(198, 139, 63, 0); }
+    }
+    .scroll-wheel-aura { animation: wheelPulse 4s ease-in-out infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="paper-grain antialiased selection:bg-meghna/25 selection:text-petrol">
+
+  <!-- Top Linear Reading Progress Hairline -->
+  <div class="fixed top-0 left-0 right-0 h-[3.5px] z-50 bg-transparent pointer-events-none">
+    <div id="topProgressBar" class="relative h-full w-0 bg-gradient-to-r from-petrol via-meghna to-brass transition-[width] duration-75 ease-out">
+      <div id="topBookmarkMarker" class="hidden sm:flex items-center justify-center absolute right-0 top-0 translate-x-1/2 pointer-events-none opacity-0 transition-opacity duration-300" aria-hidden="true">
+        <svg class="w-4 h-6 text-brass drop-shadow-sm" viewBox="0 0 18 26" fill="currentColor">
+          <path d="M2 0h14v24l-7-5.5L2 24V0z"/>
+          <circle cx="9" cy="9" r="2" fill="var(--bg-paper)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       1. LITERARY MASTHEAD NAVBAR
+  ====================================================================== -->
+  <header id="mainHeader" class="sticky top-0 z-30 bg-paper/90 backdrop-blur-md border-b border-meghna/20 transition-all duration-500">
+    <div class="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-2.5 gap-2">
+        <a
+          id="navBrandLogo"
+          href="#home"
+          class="logo-interactive-stage flex items-center gap-2.5 sm:gap-3 group focus:outline-none min-h-[44px]"
+          aria-label="বইছায়া হোমপেজে যান"
+        >
+          <div class="relative w-10 h-10 sm:w-11 sm:h-11 shrink-0">
+            <svg class="logo-ribbon-bookmark text-brass" viewBox="0 0 16 24" fill="currentColor" aria-hidden="true">
+              <path d="M1 0h14v22l-7-5-7 5V0z"/>
+            </svg>
+            <div class="logo-book-cover w-full h-full rounded-xl overflow-hidden flex items-center justify-center shadow-2xs">
+              <img
+                src="images/logo.jpg"
+                alt="বইছায়া লোগো"
+                class="w-full h-full object-contain logo-adaptive"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+              />
+              <svg class="hidden w-10 h-10 text-meghna" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="50" cy="18" r="7" fill="currentColor"/>
+                <path d="M26 30C36 27 45 31 50 38C55 31 64 27 74 30C63 32 55 37 50 45C45 37 37 32 26 30Z" fill="currentColor"/>
+                <path d="M22 38C34 36 44 42 48 52V80C41 73 31 70 22 72V38Z" fill="currentColor"/>
+                <path d="M78 38C66 36 56 42 52 52V80C59 73 69 70 78 72V38Z" fill="var(--accent-petrol)"/>
+                <path d="M16 45V76C28 74 39 78 48 85M84 45V76C72 74 61 78 52 85" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif text-xl sm:text-2xl font-bold text-petrol leading-none group-hover:text-meghna transition-colors">বইছায়া</span>
+            <span class="text-xs text-meghna font-medium mt-0.5">বই হোক প্রজ্ঞার বাহন</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-6 text-[16.5px] font-medium text-ink/90" aria-label="প্রধান নেভিগেশন">
+          <a href="#home" data-nav="home" class="nav-link hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">হোম</a>
+          <a href="#about" data-nav="about" class="nav-link hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">আমাদের গল্প</a>
+          <a href="members.html" data-nav="members" class="nav-link hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent inline-flex items-center gap-1">
+            <span>সদস্যবৃন্দ</span>
+          </a>
+          <a href="#storyboard" data-nav="storyboard" class="nav-link hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">পাঠচক্র</a>
+          <a href="#contact" data-nav="contact" class="nav-link hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">যোগাযোগ</a>
+        </nav>
+
+        <!-- Theme Switcher + Facebook CTA + Mobile Drawer Trigger -->
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <button
+            id="themeToggleBtn"
+            type="button"
+            class="inline-flex items-center gap-1.5 px-3 py-2 min-h-[42px] rounded-full border border-meghna/30 bg-parchment/85 hover:border-brass text-petrol hover:text-brass text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer shadow-2xs"
+            aria-label="হালকা ও ডার্ক থিম পরিবর্তন করুন"
+            title="হালকা ও ডার্ক থিম পরিবর্তন করুন"
+          >
+            <svg id="themeIconDark" class="w-4 h-4 sm:w-[18px] sm:h-[18px] text-petrol shrink-0 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 3h8l2 6H6l2-6z" fill="var(--accent-brass)" fill-opacity="0.25"/>
+              <path d="M12 9v8"/>
+              <path d="M8 21h8"/>
+              <path d="M10 17h4"/>
+              <path d="M15 9v2.5"/>
+            </svg>
+            <svg id="themeIconLight" class="hidden w-4 h-4 sm:w-[18px] sm:h-[18px] text-brass shrink-0 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 8s3-1.5 6-1.5S12 8 12 8v12s-1-1.5-4-1.5S2 20 2 20V8z"/>
+              <path d="M22 8s-3-1.5-6-1.5S12 8 12 8v12s1-1.5 4-1.5 6 1.5 6 1.5V8z"/>
+              <circle cx="12" cy="4" r="2" fill="currentColor"/>
+              <path d="M12 1v0.5M8.5 2.5l.5.5M15.5 2.5l-.5.5"/>
+            </svg>
+            <span id="themeToggleLabel" class="hidden sm:inline">ডার্ক থিম</span>
+          </button>
+
+          <a
+            href="https://www.facebook.com/share/1Ne75mfUre/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-shimmer inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 min-h-[42px] rounded-full border border-brass/75 bg-parchment/85 text-petrol hover:bg-brass hover:text-white hover:border-brass text-xs sm:text-sm font-semibold transition-all duration-300 shadow-2xs"
+          >
+            <span>ফেসবুক গ্রুপ</span>
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H14l6 6v14H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              <path d="M14 2v6h6"/>
+            </svg>
+          </a>
+
+          <button
+            id="mobileMenuBtn"
+            type="button"
+            class="lg:hidden p-2.5 min-w-[42px] min-h-[42px] rounded-xl text-petrol hover:bg-parchment focus:outline-none focus:ring-2 focus:ring-meghna/40 flex items-center justify-center cursor-pointer"
+            aria-label="মেনু খুলুন"
+            aria-expanded="false"
+          >
+            <svg id="hamburgerIcon" class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Drawer -->
+      <div id="mobileMenu" class="hidden lg:hidden pb-4 pt-2 border-t border-meghna/15">
+        <nav class="flex flex-col space-y-1.5 text-base font-medium text-ink">
+          <a href="#home" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-parchment hover:text-petrol flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-meghna"></span>
+            <span>হোম</span>
+          </a>
+          <a href="#about" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-parchment hover:text-petrol flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-meghna"></span>
+            <span>আমাদের গল্প</span>
+          </a>
+          <a href="members.html" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-parchment hover:text-petrol flex items-center justify-between">
+            <span class="flex items-center gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-brass"></span>
+              <span>সদস্যবৃন্দ</span>
+            </span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-brass/15 text-brass font-semibold">আলাদা পেজ ↗</span>
+          </a>
+          <a href="#storyboard" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-parchment hover:text-petrol flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-meghna"></span>
+            <span>পাঠচক্র</span>
+          </a>
+          <a href="#contact" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-parchment hover:text-petrol flex items-center gap-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-brass"></span>
+            <span>যোগাযোগ</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       2. HERO SECTION
+  ====================================================================== -->
+  <section id="home" class="relative overflow-hidden library-lamp-ambient pt-8 pb-14 sm:pt-14 sm:pb-20 border-b border-meghna/20">
+    <canvas id="literaryCanvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-80" aria-hidden="true"></canvas>
+
+    <!-- Corner Flourishes -->
+    <svg class="hidden md:block absolute top-5 left-5 w-14 h-14 text-brass/40 pointer-events-none" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+      <path d="M4 36V8C4 5.8 5.8 4 8 4H36" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M10 26V12C10 10.9 10.9 10 12 10H26" stroke="var(--accent-teal)" stroke-opacity="0.45" stroke-width="1"/>
+      <circle cx="10" cy="10" r="2" fill="currentColor"/>
+    </svg>
+    <svg class="hidden md:block absolute top-5 right-5 w-14 h-14 text-brass/40 pointer-events-none" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+      <path d="M56 36V8C56 5.8 54.2 4 52 4H24" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M50 26V12C50 10.9 49.1 10 48 10H34" stroke="var(--accent-teal)" stroke-opacity="0.45" stroke-width="1"/>
+      <circle cx="50" cy="10" r="2" fill="currentColor"/>
+    </svg>
+
+    <!-- Top Floating Books -->
+    <svg data-parallax="0.06" class="hidden sm:block absolute top-8 left-6 lg:left-16 w-44 h-44 text-meghna/40 pointer-events-none float-slow" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="rotate(-14 70 110)">
+        <path d="M35 85C55 78 75 82 92 92L82 145C65 135 45 131 25 138L35 85Z" stroke="currentColor" stroke-width="1.3" fill="var(--bg-paper)"/>
+        <path d="M40 97C55 92 68 95 81 102M38 109C53 104 66 107 79 114M35 121C50 116 63 119 76 126" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+      </g>
+      <circle cx="96" cy="74" r="2.2" fill="var(--accent-teal)"/>
+      <circle cx="24" cy="158" r="2.5" fill="var(--accent-petrol)"/>
+    </svg>
+
+    <svg data-parallax="-0.06" class="hidden sm:block absolute top-6 right-4 lg:right-14 w-56 h-56 text-meghna/40 pointer-events-none float-delayed" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="rotate(14 135 110)">
+        <path d="M75 85C98 78 118 86 130 100C142 86 162 78 185 85L173 142C152 135 136 142 124 155C112 142 96 135 75 142L75 85Z" stroke="currentColor" stroke-width="1.4" fill="var(--bg-paper)"/>
+        <path d="M130 100L124 155" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M86 98C101 94 113 99 121 108M84 110C99 106 111 111 119 120M82 122C97 118 109 123 117 132" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+      </g>
+      <circle cx="88" cy="48" r="3" fill="var(--accent-petrol)"/>
+      <circle cx="204" cy="96" r="2.2" fill="var(--accent-teal)"/>
+    </svg>
+
+    <!-- Bottom Left & Right Botanical Sprigs -->
+    <svg class="absolute bottom-0 left-0 w-44 sm:w-80 h-40 sm:h-48 text-petrol/75 pointer-events-none" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-10 155C45 140 85 162 135 148C175 137 205 144 240 135" stroke="var(--accent-teal)" stroke-opacity="0.34" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M12 205C18 158 24 115 34 68" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      <path d="M24 135C10 122 4 106 6 92C16 102 22 117 24 135Z" stroke="currentColor" stroke-width="1.4" fill="var(--bg-paper)"/>
+      <path d="M28 112C42 98 54 88 68 85C58 98 44 108 28 112Z" stroke="currentColor" stroke-width="1.4" fill="var(--bg-paper)"/>
+    </svg>
+
+    <svg class="absolute bottom-0 right-0 w-44 sm:w-80 h-40 sm:h-48 text-petrol/75 pointer-events-none" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M330 140C270 124 220 148 165 134C120 122 88 132 52 122" stroke="var(--accent-teal)" stroke-opacity="0.34" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M306 205C298 158 290 116 278 72" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      <path d="M292 132C306 118 314 102 312 88C302 98 295 114 292 132Z" stroke="currentColor" stroke-width="1.4" fill="var(--bg-paper)"/>
+      <path d="M286 110C272 96 258 86 244 84C254 96 268 106 286 110Z" stroke="currentColor" stroke-width="1.4" fill="var(--bg-paper)"/>
+    </svg>
+
+    <!-- Main Centered Hero Content -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <div
+        id="heroLogoStage"
+        class="logo-interactive-stage mx-auto max-w-[265px] sm:max-w-[350px] mb-5 animate-hero-1 cursor-pointer"
+        role="button"
+        tabindex="0"
+        aria-label="বইছায়া লোগো — স্পর্শ করুন"
+      >
+        <svg class="logo-ribbon-bookmark !w-5 !h-8 text-brass" viewBox="0 0 18 28" fill="currentColor" aria-hidden="true">
+          <path d="M1 0h16v26l-8-6-8 6V0z"/>
+        </svg>
+        <div class="logo-book-cover">
+          <img
+            src="images/logo.jpg"
+            alt="বইছায়া — বই হোক প্রজ্ঞার বাহন"
+            class="w-full h-auto mx-auto logo-adaptive select-none"
+            onerror="this.style.display='none'; document.getElementById('heroLogoFallback').classList.remove('hidden');"
+          />
+          <div id="heroLogoFallback" class="hidden py-4">
+            <h1 class="font-serif text-5xl sm:text-6xl font-bold text-petrol mt-1">বইছায়া</h1>
+            <p class="font-literary text-xl sm:text-2xl text-petrol/90 mt-2">বই হোক প্রজ্ঞার বাহন</p>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="sr-only">বইছায়া (Boichaya) — বই হোক প্রজ্ঞার বাহন</h1>
+      <p class="max-w-xl mx-auto text-base sm:text-lg text-ink/90 leading-relaxed mb-7 animate-hero-2">
+        মেঘনা-ডাকাতিয়ার তীরে বই, মুক্তচিন্তা, যুক্তি ও মানবিক বোধের এক সৃজনশীল পাঠচক্র।
+      </p>
+
+      <!-- Dual Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-11 animate-hero-3">
+        <a
+          href="#storyboard"
+          class="btn-shimmer w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 min-h-[48px] rounded-full bg-brass hover:brightness-95 text-white font-semibold text-base sm:text-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 5s3-1.5 6-1.5S12 5 12 5v13s-1-1.5-4-1.5S2 18 2 18V5z"/>
+            <path d="M22 5s-3-1.5-6-1.5S12 5 12 5v13s1-1.5 4-1.5 6 1.5 6 1.5V5z"/>
+            <path d="M12 18v4m-2.5-2L12 22.5 14.5 20"/>
+          </svg>
+          <span>পাঠচক্রের গল্প দেখুন</span>
+        </a>
+
+        <a
+          href="members.html"
+          class="inline-flex items-center gap-2 py-2 min-h-[44px] text-petrol hover:text-meghna font-semibold text-base sm:text-lg border-b-2 border-petrol/40 hover:border-meghna transition-all"
+        >
+          <span>সকল সদস্যের পরিচিতি দেখুন</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <!-- 3-Column Club Metadata Strip -->
+      <div class="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-meghna/20 bg-parchment/85 backdrop-blur-xs border border-meghna/25 rounded-2xl py-4 px-4 shadow-xs animate-hero-4">
+        <div class="flex flex-col items-center justify-center py-3 sm:py-1 px-3 group">
+          <svg class="w-7 h-7 text-petrol mb-1.5 transition-transform duration-300 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <path d="M12 2v8l2.5-1.8L17 10V2" fill="var(--accent-brass)" fill-opacity="0.28"/>
+          </svg>
+          <span class="text-xs sm:text-sm text-ink/75 font-medium">প্রতিষ্ঠাকাল</span>
+          <span class="font-serif font-bold text-petrol text-base sm:text-lg mt-0.5">২০২২ ইং</span>
+        </div>
+
+        <div class="flex flex-col items-center justify-center py-3 sm:py-1 px-3 group">
+          <svg class="w-7 h-7 text-petrol mb-1.5 transition-transform duration-300 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 7s2.5-1 5-1 5 1 5 1v11s-2.5-1-5-1-5 1-5 1V7z"/>
+            <path d="M12 7s2.5-1 5-1 5 1 5 1v11s-2.5-1-5-1-5 1-5 1V7z"/>
+            <circle cx="7" cy="3.5" r="1.5" fill="var(--accent-brass)"/>
+            <circle cx="17" cy="3.5" r="1.5" fill="var(--accent-teal)"/>
+          </svg>
+          <span class="text-xs sm:text-sm text-ink/75 font-medium">সক্রিয় পাঠক পরিবার</span>
+          <span class="font-serif font-bold text-petrol text-base sm:text-lg mt-0.5">২০ জন নিবেদিতপ্রাণ পাঠক</span>
+        </div>
+
+        <div class="flex flex-col items-center justify-center py-3 sm:py-1 px-3 group">
+          <svg class="w-7 h-7 text-brass mb-1.5 transition-transform duration-300 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" fill="var(--accent-brass)" fill-opacity="0.22"/>
+            <circle cx="12" cy="11" r="2.5" fill="currentColor"/>
+          </svg>
+          <span class="text-xs sm:text-sm text-ink/75 font-medium">ঠিকানা ও প্রাঙ্গণ</span>
+          <span class="font-serif font-bold text-petrol text-lg sm:text-xl mt-0.5">চাঁদপুর</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       3. আমাদের গল্প ও পরিচিতি (About & Unified Founder/President)
+  ====================================================================== -->
+  <section id="about" class="py-16 sm:py-22 relative overflow-hidden scroll-mt-16">
+    <span class="hidden lg:block absolute top-16 left-10 font-literary text-5xl text-meghna bangla-whisper pointer-events-none" aria-hidden="true">বই</span>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal-session">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="text-xs sm:text-sm font-serif font-semibold text-brass mb-1.5" aria-hidden="true">পরিচ্ছেদ ০১</div>
+        <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-meghna bg-meghna/12 px-4 py-1.5 rounded-full mb-3">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <line x1="8" y1="7" x2="16" y2="7"/>
+            <line x1="8" y1="11" x2="14" y2="11"/>
+          </svg>
+          <span>আমাদের গল্প ও পরিচিতি</span>
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-petrol">
+          বইয়ের ছায়ায় মুক্তচিন্তার এক নিরন্তর যাত্রা
+        </h2>
+        <div class="w-24 h-0.5 bg-brass mx-auto mt-4 rounded-full editorial-rule"></div>
+      </div>
+
+      <div class="bg-parchment/85 border border-meghna/20 rounded-3xl p-6 sm:p-10 shadow-parchment relative overflow-hidden">
+        <svg class="absolute -bottom-8 -right-8 w-44 h-44 text-meghna/10 pointer-events-none" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+          <path d="M22 38C34 36 44 42 48 52V80C41 73 31 70 22 72V38ZM78 38C66 36 56 42 52 52V80C59 73 69 70 78 72V38Z"/>
+        </svg>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <div class="lg:col-span-7 space-y-4 text-ink/95 leading-relaxed text-base sm:text-[18.5px]">
+            <p class="font-literary text-xl sm:text-2xl text-petrol leading-snug">
+              “পড়ি, ভাবি, প্রশ্ন করি—একসঙ্গে বেড়ে উঠি।”
+            </p>
+            <p>
+              ২০২২ সালে চাঁদপুরের একদল বইপ্রেমী তরুণের হাত ধরে যাত্রা শুরু করে <strong>বইছায়া (Boichaya)</strong>। যান্ত্রিক ব্যস্ততার ভিড়ে তরুণ প্রজন্মের মাঝে গভীর পাঠাভ্যাস গড়ে তোলা, মুক্তবুদ্ধির চর্চা এবং ভিন্নমতের প্রতি শ্রদ্ধাশীল সংলাপ তৈরির লক্ষ্যেই আমাদের এই উদ্যোগ।
+            </p>
+            <p>
+              চাঁদপুর সরকারি কলেজ মাঠ, বড়স্টেশন মোলহেড কিংবা দর্জি ঘাটের খোলা আকাশের নিচে—প্রতিটি পাঠচক্রে আমরা সাহিত্য, ইতিহাস, দর্শন ও সমকালীন সমাজ-বাস্তবতা নিয়ে মুখোমুখি বসি। আলোচনার পাশাপাশি নিয়মিত বুক রিভিউ ও নিজেদের সংগৃহীত বই বিনিময়ের মাধ্যমে জ্ঞানকে সবার মাঝে ছড়িয়ে দেওয়াই বইছায়ার প্রাণ।
+            </p>
+          </div>
+
+          <!-- Unified Founder & President Card: আবু বকর সিদ্দিক -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="bg-cardpaper border-2 border-brass/45 rounded-2xl p-6 shadow-sm magazine-card-lift">
+              <div class="flex items-start gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-brass/15 text-brass flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                    <path d="M2 2l7.586 7.586"/>
+                    <circle cx="11" cy="11" r="2"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <span class="inline-block text-xs font-bold text-brass bg-brass/15 px-3 py-1 rounded-full">
+                    প্রতিষ্ঠাতা ও সভাপতি
+                  </span>
+                  <h3 class="font-serif text-2xl font-bold text-petrol mt-2">আবু বকর সিদ্দিক</h3>
+                  <p class="text-sm sm:text-base text-ink/80 mt-1 leading-relaxed">
+                    স্বপ্নদ্রষ্টা, উদ্যোক্তা ও সাংগঠনিক নেতৃত্ব — বইছায়া (Boichaya)
+                  </p>
+                  <div class="mt-4">
+                    <a
+                      href="https://www.facebook.com/siddikkhan.siddik"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-shimmer inline-flex items-center gap-2 text-sm font-semibold text-white bg-petrol hover:bg-meghna px-4 py-2.5 min-h-[42px] rounded-full transition-colors shadow-2xs"
+                      title="আবু বকর সিদ্দিক-এর ফেসবুক প্রোফাইল"
+                    >
+                      <span>ফেসবুক প্রোফাইল দেখুন</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="text-xs sm:text-sm font-medium bg-meghna/12 text-petrol px-3.5 py-1.5 rounded-full">সাপ্তাহিক পাঠচক্র</span>
+              <span class="text-xs sm:text-sm font-medium bg-meghna/12 text-petrol px-3.5 py-1.5 rounded-full">বুক রিভিউ</span>
+              <span class="text-xs sm:text-sm font-medium bg-brass/18 text-petrol px-3.5 py-1.5 rounded-full">বই বিনিময় কর্মসূচি</span>
+              <span class="text-xs sm:text-sm font-medium bg-meghna/12 text-petrol px-3.5 py-1.5 rounded-full">সাহিত্য সেমিনার</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       4. সদস্যবৃন্দ সেকশন (Left-to-Right Swipe Carousel + Link to members.html)
+  ====================================================================== -->
+  <section id="members" class="py-16 sm:py-22 bg-parchment/60 border-y border-meghna/20 relative overflow-hidden scroll-mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal-session">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <div class="text-xs sm:text-sm font-serif font-semibold text-brass mb-1.5" aria-hidden="true">পরিচ্ছেদ ০২ • আমাদের পাঠক পরিবার</div>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-petrol">
+            বইছায়ার নিবেদিতপ্রাণ সদস্যবৃন্দ
+          </h2>
+          <p class="text-ink/85 text-base sm:text-[17.5px] mt-2">
+            ডানে-বামে সোয়াইপ করে সদস্যদের একঝলক দেখুন অথবা আলাদা পেজে সবার পূর্ণাঙ্গ পরিচিতি পড়ুন।
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 self-start md:self-end">
+          <a
+            href="members.html"
+            class="btn-shimmer inline-flex items-center gap-2 px-5 py-2.5 min-h-[44px] rounded-full bg-petrol hover:bg-meghna text-white text-sm sm:text-base font-semibold shadow-sm transition-all"
+          >
+            <span>সকল সদস্য দেখুন (আলাদা পেজ)</span>
+            <span>→</span>
+          </a>
+
+          <div class="flex items-center gap-2">
+            <button
+              id="membersPrevBtn"
+              type="button"
+              class="w-11 h-11 rounded-full bg-cardpaper border border-meghna/30 hover:border-brass text-petrol hover:bg-brass hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs"
+              aria-label="বামে স্ক্রল করুন"
+              title="বামে স্ক্রল করুন"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              id="membersNextBtn"
+              type="button"
+              class="w-11 h-11 rounded-full bg-cardpaper border border-meghna/30 hover:border-brass text-petrol hover:bg-brass hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs"
+              aria-label="ডানে স্ক্রল করুন"
+              title="ডানে স্ক্রল করুন"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="membersCarouselTrack"
+        class="flex overflow-x-auto snap-x snap-mandatory gap-5 sm:gap-6 pb-4 pt-2 no-scrollbar scroll-smooth"
+        role="region"
+        aria-label="সদস্যদের প্রোফাইল তালিকা"
+      ></div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5. বিশেষ আয়োজন: আহমদ ছফার ৮৩তম জন্মবার্ষিকী (Appears on Scroll)
+  ====================================================================== -->
+  <section id="ahmed-sofa" class="py-16 sm:py-24 bg-parchment/85 border-b border-brass/30 relative overflow-hidden scroll-mt-16">
+    <span class="hidden xl:block absolute top-24 right-10 font-literary text-6xl text-brass bangla-whisper-delayed pointer-events-none" aria-hidden="true">ছফা</span>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-10 reveal-session">
+        <div class="text-xs sm:text-sm font-serif font-semibold text-brass mb-1.5" aria-hidden="true">পরিচ্ছেদ ০৩ • বিশেষ ক্রোড়পত্র</div>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brass/15 border border-brass/40 text-petrol text-sm font-semibold mb-4">
+          <svg class="w-4 h-4 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <polygon points="13 6 14.2 8.5 17 8.9 15 10.8 15.5 13.5 13 12.2 10.5 13.5 11 10.8 9 8.9 11.8 8.5 13 6" fill="currentColor" fill-opacity="0.3"/>
+          </svg>
+          <span>বিশেষ আয়োজন • আহমদ ছফার ৮৩তম জন্মবার্ষিকী</span>
+        </div>
+
+        <h2 class="font-serif text-2xl sm:text-4xl font-bold text-petrol leading-snug">
+          বাঙালি সত্তা ও আহমদ ছফা (আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে বিশেষ সেমিনার)
+        </h2>
+
+        <div class="mt-5 inline-flex items-center gap-2.5 text-base sm:text-lg font-bold text-petrol bg-cardpaper px-5 py-2.5 rounded-full border border-brass/40 shadow-xs">
+          <svg class="w-5 h-5 text-brass shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" fill="var(--accent-brass)" fill-opacity="0.25"/>
+            <circle cx="12" cy="11" r="2.5" fill="currentColor"/>
+          </svg>
+          <span>স্থান: চাঁদপুর সরকারি টেকনিক্যাল স্কুল এন্ড কলেজ অডিটোরিয়াম</span>
+        </div>
+      </div>
+
+      <blockquote class="max-w-4xl mx-auto mb-12 bg-cardpaper border-l-4 border-brass rounded-r-2xl rounded-l-md p-6 sm:p-8 shadow-parchment relative reveal-session">
+        <svg class="w-9 h-9 text-brass/30 absolute top-4 right-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+        </svg>
+        <p class="font-literary text-xl sm:text-2xl text-petrol leading-relaxed italic pr-6">
+          “সভ্যতা কোন দেশ জাতি বা সম্প্রদায় বিশেষের সম্পত্তি নয়- অথচ প্রতিটি তথাকথিত সুসভ্য জাতির মধ্যেই এই সভ্য অভিমান প্রচন্ডভাবে লক্ষ্য করা যায়।”
+        </p>
+        <footer class="mt-3 font-serif font-bold text-brass text-base sm:text-lg">
+          — আহমদ ছফা
+        </footer>
+      </blockquote>
+
+      <div class="max-w-4xl mx-auto bg-cardpaper border border-meghna/20 rounded-3xl p-6 sm:p-9 shadow-parchment mb-14 reveal-session">
+        <p class="text-base sm:text-[18.5px] text-ink/95 leading-relaxed font-medium pb-5 border-b border-meghna/15">
+          কিছু মানুষ জন্ম নেন শুধু বেঁচে থাকতে নয়—জন্ম নেন জাতিকে কিছু একটা দিয়ে যেতে। আহমদ ছফা সেই মানুষ। বইছায়া (Boichaya) কর্তৃক আয়োজিত আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে ‘বাঙালি সত্তা ও আহমদ ছফা’ শীর্ষক বিশেষ সেমিনার ও মুক্ত আলোচনা।
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-5 text-center">
+          <div class="bg-parchment/80 rounded-xl p-3 border border-meghna/15">
+            <span class="block text-xs sm:text-sm text-ink/75">প্রধান আলোচক</span>
+            <span class="font-serif font-bold text-petrol text-sm sm:text-base mt-0.5 block">তাহমিদাল জামি</span>
+          </div>
+          <div class="bg-parchment/80 rounded-xl p-3 border border-meghna/15">
+            <span class="block text-xs sm:text-sm text-ink/75">বিশেষ আলোচক</span>
+            <span class="font-serif font-bold text-petrol text-sm sm:text-base mt-0.5 block">বেলায়েত হোসেন</span>
+          </div>
+          <div class="bg-parchment/80 rounded-xl p-3 border border-meghna/15">
+            <span class="block text-xs sm:text-sm text-ink/75">বিশেষ আলোচক</span>
+            <span class="font-serif font-bold text-petrol text-sm sm:text-base mt-0.5 block">লায়ন আরমান চৌধুরী রবিন</span>
+          </div>
+          <div class="bg-parchment/80 rounded-xl p-3 border border-meghna/15">
+            <span class="block text-xs sm:text-sm text-ink/75">আয়োজনসমূহ</span>
+            <span class="font-serif font-bold text-brass text-sm sm:text-base mt-0.5 block">সেমিনার, কুইজ ও আবৃত্তি</span>
+          </div>
+        </div>
+
+        <div id="sofaFullText" class="space-y-4 text-ink/95 text-base sm:text-[18px] leading-relaxed transition-all">
+          <p>
+            সফলতার সঙ্গে সম্পন্ন হলো আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে বইছায়া আয়োজিত বিশেষ আলোচনা সভা— ‘বাঙালি সত্তা ও আহমদ ছফা’। অনুষ্ঠানের উপস্থাপনায় ছিলেন বইছায়ার ক্ষুদে সদস্য আয়েশা লী ও সুস্মিতা দাস।
+          </p>
+          <p>
+            জাতীয় সংগীতের মাধ্যমে অনুষ্ঠানের শুভ সূচনা হয়। এরপর বইছায়ার প্রতিষ্ঠাতা ও সভাপতি আবু বকর সিদ্দিক-এর সভাপতিত্বে ও সূচনা বক্তব্যের মাধ্যমে অনুষ্ঠানের আনুষ্ঠানিক কার্যক্রম শুরু হয়। তাঁর বক্তব্যে তিনি আহমদ ছফার সাহিত্য, চিন্তা ও মুক্তবুদ্ধির চর্চাকে নতুন প্রজন্মের কাছে পৌঁছে দেওয়ার গুরুত্ব তুলে ধরেন।
+          </p>
+          <div id="sofaExtraParagraphs" class="hidden space-y-4">
+            <p>
+              বিশেষ আলোচক বেলায়েত হোসেন (ব্যাংকার ও সাহিত্য অনুরাগী) আহমদ ছফার নির্বাচিত গ্রন্থসমূহের আলোকে তাঁর সাহিত্যকর্মের শক্তি, সমাজ-বাস্তবতার নির্মোহ বিশ্লেষণ এবং সমকালীন প্রাসঙ্গিকতা নিয়ে একটি পর্যালোচনামূলক আলোচনা উপস্থাপন করেন।
+            </p>
+            <p>
+              পরবর্তীতে বিশেষ আলোচক লায়ন আরমান চৌধুরী রবিন (নাট্যকার, সমাজসেবক ও শিক্ষানুরাগী) ‘বাংলা সাহিত্যে আহমদ ছফার প্রয়োজনীয়তা’ বিষয়ক আলোচনায় বর্তমান সময়ে আহমদ ছফার সাহিত্য, চিন্তা ও বুদ্ধিবৃত্তিক অবস্থানের গুরুত্ব তুলে ধরেন এবং নতুন প্রজন্মকে মুক্তচিন্তা, আত্মপরিচয় ও মানবিক মূল্যবোধের চর্চায় উদ্বুদ্ধ হওয়ার আহ্বান জানান।
+            </p>
+            <p>
+              আলোচনা পর্বের পর অনুষ্ঠিত হয় আহমদ ছফার জীবন, সাহিত্য ও দর্শনভিত্তিক কুইজ প্রতিযোগিতা। কুইজ প্রতিযোগিতা শেষে প্রধান আলোচক তাহমিদাল জামি (লেখক ও গবেষক) তাঁর গভীর ও বিশ্লেষণধর্মী বক্তব্যে আহমদ ছফার বহুল আলোচিত গ্রন্থ ‘বাঙালি মুসলমানের মন’-এর ঐতিহাসিক প্রেক্ষাপট, দার্শনিক ভিত্তি, রাষ্ট্রচিন্তা, সংস্কৃতিবোধ এবং সমকালীন প্রাসঙ্গিকতা তুলে ধরেন। আলোচনা শেষে উপস্থিত সদস্যদের বিভিন্ন প্রশ্নের তিনি তথ্যসমৃদ্ধ, প্রাঞ্জল ও যুক্তিনিষ্ঠ উত্তর প্রদান করেন।
+            </p>
+            <p>
+              এরপর চাঁদপুর সরকারি টেকনিক্যাল স্কুল এন্ড কলেজ-এর অধ্যক্ষ মহোদয় বর্তমান শিক্ষার্থীরা কীভাবে আহমদ ছফার জীবনদর্শন ব্যক্তিজীবনে প্রতিফলন ঘটাতে পারে সে বিষয়ে বিস্তারিত আলোচনা করেন। বইছায়ার সদস্য রকি রহমান আহমদ ছফার ‘পুষ্প বিহঙ্গ’ গ্রন্থের একটি সংক্ষিপ্ত ও প্রাঞ্জল পর্যালোচনা উপস্থাপন করেন এবং সুস্মিতা দাস তাঁর আবৃত্তির মাধ্যমে অনুষ্ঠানে ভিন্ন মাত্রা যোগ করেন। অনুষ্ঠানে ‘সীল মাছের খাসলত’ কবিতা আবৃত্তি ও সদস্যদের নিয়ে মুক্ত ‘খুচরা আলাপ’ অনুষ্ঠিত হয়। শেষপর্বে কুইজ প্রতিযোগিতার বিজয়ীদের মাঝে পুরস্কার বিতরণ এবং আহমদ ছফার ৮৩তম জন্মবার্ষিকীর কেক কাটার মধ্য দিয়ে আয়োজনের সফল সমাপ্তি ঘটে।
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-5 pt-3 border-t border-meghna/15 flex justify-end">
+          <button
+            id="toggleSofaTextBtn"
+            type="button"
+            class="inline-flex items-center gap-2 py-2 px-3 min-h-[42px] text-base font-semibold text-meghna hover:text-petrol transition-colors cursor-pointer"
+          >
+            <span id="toggleSofaLabel">সম্পূর্ণ অনুষ্ঠানের বিবরণ পড়ুন</span>
+            <svg id="toggleSofaIcon" class="w-4 h-4 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- 15-Photo Handmade Masonry Gallery -->
+      <div class="mb-16 reveal-session">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-7">
+          <div>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-petrol">উৎসবের স্থিরচিত্র গ্যালারি</h3>
+            <p class="text-sm sm:text-base text-ink/80 mt-0.5">যেকোনো ছবিতে ক্লিক করে বড় পর্দায় দেখুন (১৫টি স্মৃতিময় মুহূর্ত)</p>
+          </div>
+          <span class="text-xs sm:text-sm font-semibold text-brass bg-brass/15 px-3.5 py-1.5 rounded-full self-start sm:self-auto">
+            আহমদ ছফা ৮৩তম জন্মবার্ষিকী অ্যালবাম
+          </span>
+        </div>
+
+        <div id="ahmedSofaGallery" class="columns-2 sm:columns-3 lg:columns-5 gap-3.5 sm:gap-4 space-y-3.5 sm:space-y-4"></div>
+      </div>
+
+      <!-- 2 Video Showcase Cards -->
+      <div class="reveal-session">
+        <div class="mb-6">
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold text-petrol">অনুষ্ঠানের ভিডিও মুহূর্ত</h3>
+          <p class="text-sm sm:text-base text-ink/80 mt-0.5">আবৃত্তি ও মুক্ত আলোচনার নির্বাচিত ভিডিওচিত্র</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+          <article class="bg-cardpaper border border-meghna/20 rounded-2xl p-4 sm:p-5 shadow-parchment relative magazine-card-lift">
+            <div class="brass-tape -top-2.5 left-6 -rotate-3"></div>
+            <div class="relative rounded-xl overflow-hidden bg-petrol/10 aspect-video border border-meghna/15">
+              <video
+                controls
+                preload="metadata"
+                poster="images/ahmed-safa/1.jpg"
+                class="w-full h-full object-cover"
+                onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+              >
+                <source src="images/ahmed-safa/video-1.mp4" type="video/mp4" />
+                আপনার ব্রাউজার ভিডিও প্লেব্যাক সমর্থন করে না।
+              </video>
+              <div class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-parchment to-paper">
+                <div class="w-12 h-12 rounded-full bg-brass/20 text-brass flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+                <p class="font-serif font-bold text-petrol text-base">“সীল মাছের খাসলত” কবিতা আবৃত্তি</p>
+                <p class="text-xs text-ink/75 mt-1 max-w-xs">
+                  ভিডিও ফাইলটি (<code class="text-meghna">images/ahmed-safa/video-1.mp4</code>) যুক্ত করা হলে এখানে সরাসরি প্রদর্শিত হবে।
+                </p>
+              </div>
+            </div>
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div>
+                <span class="text-xs sm:text-sm font-semibold text-brass">কবিতা আবৃত্তি পর্ব</span>
+                <h4 class="font-serif text-lg sm:text-xl font-bold text-petrol mt-0.5">
+                  “সীল মাছের খাসলত” কবিতা আবৃত্তি
+                </h4>
+              </div>
+              <span class="text-xs bg-meghna/12 text-petrol font-medium px-2.5 py-1 rounded-full shrink-0">ভিডিও ০১</span>
+            </div>
+          </article>
+
+          <article class="bg-cardpaper border border-meghna/20 rounded-2xl p-4 sm:p-5 shadow-parchment relative magazine-card-lift">
+            <div class="brass-tape -top-2.5 right-6 rotate-3"></div>
+            <div class="relative rounded-xl overflow-hidden bg-petrol/10 aspect-video border border-meghna/15">
+              <video
+                controls
+                preload="metadata"
+                poster="images/ahmed-safa/2.jpg"
+                class="w-full h-full object-cover"
+                onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+              >
+                <source src="images/ahmed-safa/video-2.mp4" type="video/mp4" />
+                আপনার ব্রাউজার ভিডিও প্লেব্যাক সমর্থন করে না।
+              </video>
+              <div class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-parchment to-paper">
+                <div class="w-12 h-12 rounded-full bg-meghna/15 text-meghna flex items-center justify-center mb-3">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+                <p class="font-serif font-bold text-petrol text-base">আলোচনা সভা ও খুচরা আলাপ</p>
+                <p class="text-xs text-ink/75 mt-1 max-w-xs">
+                  ভিডিও ফাইলটি (<code class="text-meghna">images/ahmed-safa/video-2.mp4</code>) যুক্ত করা হলে এখানে সরাসরি প্রদর্শিত হবে।
+                </p>
+              </div>
+            </div>
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div>
+                <span class="text-xs sm:text-sm font-semibold text-meghna">সেমিনার ও মুক্ত আড্ডা</span>
+                <h4 class="font-serif text-lg sm:text-xl font-bold text-petrol mt-0.5">
+                  আলোচনা সভা ও খুচরা আলাপ
+                </h4>
+              </div>
+              <span class="text-xs bg-meghna/12 text-petrol font-medium px-2.5 py-1 rounded-full shrink-0">ভিডিও ০২</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       6. পাঠচক্র স্টোরিবোর্ড (Pathchokro Storyboard)
+  ====================================================================== -->
+  <section id="storyboard" class="py-16 sm:py-24 relative overflow-hidden scroll-mt-16">
+    <span class="hidden lg:block absolute top-20 right-10 font-literary text-5xl text-meghna bangla-whisper pointer-events-none" aria-hidden="true">পাঠ</span>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12 reveal-session">
+        <div class="text-xs sm:text-sm font-serif font-semibold text-brass mb-1.5" aria-hidden="true">পরিচ্ছেদ ০৪ • পাঠ-সংকলন</div>
+        <div class="inline-flex items-center justify-center gap-2.5 mb-2">
+          <svg class="w-6 h-6 text-meghna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 5s3-1.5 6-1.5S12 5 12 5v14s-1-1.5-4-1.5S2 19 2 19V5z"/>
+            <path d="M22 5s-3-1.5-6-1.5S12 5 12 5v14s1-1.5 4-1.5 6 1.5 6 1.5V5z"/>
+          </svg>
+          <span class="font-serif font-bold text-petrol text-lg">বইছায়া</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-petrol">
+          আমাদের কার্যক্রম / পাঠচক্র স্টোরিবোর্ড
+        </h2>
+        <p class="text-ink/85 text-base sm:text-[17.5px] mt-2.5">
+          হাতে গড়া ফ্রেমে বন্দি আমাদের প্রতিটি পাঠচক্রের গল্প। ছবিতে ক্লিক করে বড় করে দেখুন অথবা প্রতিটি আসরের পূর্ণাঙ্গ আলোচনা পড়ুন।
+        </p>
+        <div class="w-24 h-0.5 bg-brass mx-auto mt-4 rounded-full editorial-rule"></div>
+      </div>
+
+      <div id="storyboardFilterBar" class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-12 sm:mb-14 reveal-session" role="tablist" aria-label="পাঠচক্র ফিল্টার"></div>
+      <div id="storyboardTimeline" class="space-y-6"></div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       7. যোগাযোগ ও যুক্ত হোন (Dedicated Contact Section with WhatsApp 01777-988577)
+  ====================================================================== -->
+  <section id="contact" class="py-16 sm:py-22 bg-parchment/75 border-t border-meghna/20 relative overflow-hidden scroll-mt-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal-session">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="text-xs sm:text-sm font-serif font-semibold text-brass mb-1.5" aria-hidden="true">পরিচ্ছেদ ০৫ • যোগাযোগ ও আমন্ত্রণ</div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-petrol">
+          বইছায়ার সাথে যোগাযোগ করুন
+        </h2>
+        <p class="text-ink/85 text-base sm:text-[17.5px] mt-2.5 leading-relaxed">
+          আমাদের সাপ্তাহিক পাঠচক্রে যোগ দিতে, বই বিনিময় করতে কিংবা যেকোনো সাহিত্য আড্ডার তথ্যের জন্য সরাসরি যোগাযোগ করুন।
+        </p>
+        <div class="w-24 h-0.5 bg-brass mx-auto mt-4 rounded-full editorial-rule"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-stretch">
+        <div class="lg:col-span-7 bg-cardpaper border border-meghna/25 rounded-3xl p-6 sm:p-9 shadow-parchment space-y-5">
+          <div class="flex items-start gap-4 pb-4 border-b border-meghna/15">
+            <div class="w-11 h-11 rounded-2xl bg-meghna/15 text-meghna flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-xs sm:text-sm font-semibold text-meghna">যোগাযোগের প্রতিনিধি (প্রতিষ্ঠাতা ও সভাপতি)</span>
+              <h3 class="font-serif text-xl sm:text-2xl font-bold text-petrol mt-0.5">আবু বকর সিদ্দিক</h3>
+              <p class="text-sm sm:text-base text-ink/75 mt-0.5">বইছায়া (Boichaya), চাঁদপুর</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-meghna/15">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-2xl bg-emerald-600/15 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs sm:text-sm font-semibold text-ink/75">হোয়াটসঅ্যাপ নম্বর (WhatsApp)</span>
+                <p id="contactWhatsappText" class="font-serif text-xl sm:text-2xl font-bold text-petrol mt-0.5">০১৭৭৭-৯৮৮৫৭৭</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <a
+                href="https://wa.me/8801777988577"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold transition-colors shadow-2xs"
+              >
+                মেসেজ দিন ↗
+              </a>
+              <button
+                type="button"
+                onclick="copyContactValue('contactWhatsappText', this)"
+                class="px-3.5 py-2 rounded-full bg-parchment hover:bg-brass hover:text-white text-petrol text-xs sm:text-sm font-semibold border border-meghna/25 transition-colors cursor-pointer"
+              >
+                কপি করুন
+              </button>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-meghna/15">
+            <div class="flex items-start gap-4 min-w-0">
+              <div class="w-11 h-11 rounded-2xl bg-brass/15 text-brass flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <span class="text-xs sm:text-sm font-semibold text-ink/75">ইমেইল ঠিকানা (Email)</span>
+                <p id="contactEmailText" class="font-sans text-base sm:text-lg font-bold text-petrol mt-0.5 break-all">boichaya.chandpur@gmail.com</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onclick="copyContactValue('contactEmailText', this)"
+              class="px-3.5 py-2 rounded-full bg-parchment hover:bg-brass hover:text-white text-petrol text-xs sm:text-sm font-semibold border border-meghna/25 transition-colors cursor-pointer shrink-0"
+            >
+              কপি করুন
+            </button>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-2xl bg-brass/15 text-brass flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" fill="var(--accent-brass)" fill-opacity="0.25"/>
+                <circle cx="12" cy="11" r="2.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-xs sm:text-sm font-semibold text-ink/75">আমাদের অবস্থান ও পাঠচক্র প্রাঙ্গণ</span>
+              <p class="font-serif text-xl sm:text-2xl font-bold text-petrol mt-0.5">চাঁদপুর সদর, চাঁদপুর</p>
+              <p class="text-sm sm:text-base text-ink/85 mt-0.5">বড়স্টেশন • চাঁদপুর সরকারি কলেজ মাঠ • দর্জি ঘাট</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-gradient-to-br from-[#08545D] to-[#0E828E] rounded-3xl p-7 sm:p-9 text-[#FAF6EE] shadow-xl flex flex-col justify-between relative overflow-hidden border border-brass/35">
+          <svg class="absolute -right-8 -bottom-8 w-44 h-44 text-white/10 pointer-events-none" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M25 60C60 50 85 65 100 90C115 65 140 50 175 60V155C140 145 115 160 100 180C85 160 60 145 25 155V60Z"/>
+            <line x1="100" y1="90" x2="100" y2="180"/>
+          </svg>
+
+          <div class="relative z-10">
+            <span class="inline-block text-xs font-semibold bg-white/15 px-3.5 py-1 rounded-full mb-3">
+              নতুন পাঠকদের স্বাগতম
+            </span>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold leading-snug">
+              আপনিও হতে পারেন বইছায়ার সহযাত্রী
+            </h3>
+            <p class="text-[#FAF6EE]/90 text-base sm:text-[17px] mt-3 leading-relaxed">
+              সাপ্তাহিক পাঠচক্রের সময়সূচি ও বই বিনিময় আড্ডার নিয়মিত আপডেট পেতে আমাদের ফেসবুক কমিউনিটিতে যুক্ত হোন।
+            </p>
+          </div>
+
+          <div class="relative z-10 mt-7 space-y-3">
+            <a
+              href="https://www.facebook.com/share/1Ne75mfUre/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-shimmer w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 min-h-[48px] rounded-full bg-[#C68B3F] hover:bg-[#b57a31] text-white font-semibold text-base shadow-md transition-all"
+            >
+              <span>ফেসবুক কমিউনিটিতে যুক্ত হোন</span>
+              <span>↗</span>
+            </a>
+            <a
+              href="https://www.facebook.com/siddikkhan.siddik"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px] rounded-full bg-white/12 hover:bg-white/20 text-[#FAF6EE] font-medium text-sm sm:text-base transition-all"
+            >
+              <span>প্রতিষ্ঠাতা ও সভাপতির ফেসবুক</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       8. LITERARY FOOTER
+  ====================================================================== -->
+  <footer class="bg-parchment border-t border-meghna/20 py-10 text-ink/85 transition-colors duration-500">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3.5">
+          <img
+            src="images/logo.jpg"
+            alt="বইছায়া লোগো"
+            class="w-12 h-12 object-contain logo-adaptive"
+            onerror="this.style.display='none'"
+          />
+          <div>
+            <p class="font-serif text-xl font-bold text-petrol leading-none">বইছায়া (Boichaya)</p>
+            <p class="text-xs sm:text-sm text-meghna font-medium mt-1.5 inline-flex items-center gap-1.5 flex-wrap">
+              <span>বই হোক প্রজ্ঞার বাহন • প্রতিষ্ঠাকাল: ২০২২ ইং •</span>
+              <span class="inline-flex items-center gap-1 font-bold text-petrol text-sm sm:text-base">
+                <svg class="w-4 h-4 text-brass inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                  <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z"/>
+                  <circle cx="12" cy="11" r="2.5"/>
+                </svg>
+                <span>চাঁদপুর</span>
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-5 text-sm sm:text-base font-medium">
+          <a href="members.html" class="text-petrol hover:text-meghna transition-colors py-1">সদস্যবৃন্দ</a>
+          <span class="text-meghna/35">•</span>
+          <a
+            href="https://www.facebook.com/share/1Ne75mfUre/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-petrol hover:text-meghna transition-colors inline-flex items-center gap-1 py-1"
+          >
+            <span>ফেসবুক গ্রুপ</span>
+            <span>↗</span>
+          </a>
+          <span class="text-meghna/35">•</span>
+          <a
+            href="https://www.facebook.com/siddikkhan.siddik"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-petrol hover:text-meghna transition-colors inline-flex items-center gap-1 py-1"
+          >
+            <span>প্রতিষ্ঠাতা ও সভাপতি: আবু বকর সিদ্দিক</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-meghna/15 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm text-ink/75 text-center sm:text-left">
+        <p>© ২০২২–২০২৬ বইছায়া (Boichaya), চাঁদপুর। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p>সাহিত্য, মুক্তচিন্তা ও পাঠাভ্যাস বিকাশে নিবেদিত একটি অলাভজনক পাঠচক্র।</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       9. ENLARGED TACTILE ROTARY BOOK-WHEEL CONTROLLER
+  ====================================================================== -->
+  <div id="rotaryWheelContainer" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 select-none">
+    <div
+      id="wheelChapterMenu"
+      class="hidden bg-cardpaper/95 backdrop-blur-md border border-meghna/30 rounded-2xl p-3 shadow-2xl w-64 text-sm modal-animate"
+      role="menu"
+      aria-label="দ্রুত পরিচ্ছেদ নির্বাচন"
+    >
+      <div class="px-2.5 py-1.5 border-b border-meghna/15 flex items-center justify-between">
+        <span class="font-serif font-bold text-petrol text-xs sm:text-sm">পাঠ-পরিচ্ছেদ সূচক</span>
+        <span id="wheelMenuPercent" class="text-xs font-bold text-brass">০%</span>
+      </div>
+      <div class="max-h-64 overflow-y-auto py-1 space-y-0.5" id="wheelChapterLinks"></div>
+    </div>
+
+    <div class="flex items-center gap-2.5">
+      <button
+        id="wheelMenuToggle"
+        type="button"
+        class="h-11 px-4 rounded-full bg-cardpaper/95 backdrop-blur-md border border-meghna/35 hover:border-brass text-petrol hover:text-brass text-xs sm:text-sm font-semibold shadow-lg transition-all flex items-center gap-1.5 cursor-pointer"
+        aria-label="পরিচ্ছেদ সূচক খুলুন"
+        aria-expanded="false"
+        title="দ্রুত পরিচ্ছেদ পরিবর্তন"
+      >
+        <svg class="w-4 h-4 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <span id="activeChapterPill">সূচিপত্র</span>
+      </button>
+
+      <button
+        id="rotaryScrollWheel"
+        type="button"
+        class="relative w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full bg-cardpaper/95 backdrop-blur-md border-2 border-meghna/45 flex items-center justify-center scroll-wheel-aura cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brass touch-none"
+        aria-label="ঘূর্ণায়মান স্ক্রল হুইল — উপরে ফিরে যান"
+        title="স্ক্রল হুইল (চাকা ঘোরান, টেনে স্ক্রল করুন বা ক্লিক করে উপরে যান)"
+      >
+        <svg id="rotaryWheelSpokes" class="w-full h-full p-1 transition-transform duration-75 ease-out" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <circle cx="50" cy="50" r="44" stroke="var(--accent-teal)" stroke-opacity="0.3" stroke-width="2.5" stroke-dasharray="4 4"/>
+          <circle
+            id="rotaryProgressCircle"
+            cx="50"
+            cy="50"
+            r="44"
+            stroke="var(--accent-brass)"
+            stroke-width="3.8"
+            stroke-linecap="round"
+            stroke-dasharray="276.46"
+            stroke-dashoffset="276.46"
+            transform="rotate(-90 50 50)"
+          />
+          <g stroke="var(--accent-petrol)" stroke-opacity="0.55" stroke-width="1.8" stroke-linecap="round">
+            <line x1="50" y1="6" x2="50" y2="15"/>
+            <line x1="50" y1="85" x2="50" y2="94"/>
+            <line x1="6" y1="50" x2="15" y2="50"/>
+            <line x1="85" y1="50" x2="94" y2="50"/>
+            <line x1="18.9" y1="18.9" x2="25.2" y2="25.2"/>
+            <line x1="74.8" y1="74.8" x2="81.1" y2="81.1"/>
+            <line x1="81.1" y1="18.9" x2="74.8" y2="25.2"/>
+            <line x1="25.2" y1="74.8" x2="18.9" y2="81.1"/>
+          </g>
+        </svg>
+
+        <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+          <div class="flex flex-col items-center group-hover:hidden">
+            <svg class="w-4 h-4 text-brass mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <path d="M2 6s3-1.5 6-1.5S12 6 12 6v12s-1-1.5-4-1.5S2 18 2 18V6z"/>
+              <path d="M22 6s-3-1.5-6-1.5S12 6 12 6v12s1-1.5 4-1.5 6 1.5 6 1.5V6z"/>
+            </svg>
+            <span id="wheelPercentLabel" class="font-serif text-xs sm:text-sm font-bold text-petrol leading-none">০%</span>
+          </div>
+          <svg class="hidden group-hover:block w-5 h-5 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       10. HIGH-RESOLUTION PHOTO LIGHTBOX MODAL
+  ====================================================================== -->
+  <div
+    id="photoLightbox"
+    class="fixed inset-0 z-50 hidden bg-[#080F11]/95 backdrop-blur-md flex flex-col items-center justify-center p-3 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-label="ছবি প্রদর্শনী"
+  >
+    <div class="absolute top-3.5 right-3.5 sm:top-5 sm:right-6 z-30 flex items-center gap-2">
+      <button
+        id="lightboxZoomBtn"
+        type="button"
+        class="w-11 h-11 rounded-full bg-white/15 hover:bg-meghna text-white flex items-center justify-center transition-colors cursor-pointer"
+        aria-label="ছবি জুম করুন"
+        title="জুম ইন / আউট"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+        </svg>
+      </button>
+      <button
+        id="lightboxClose"
+        type="button"
+        class="w-11 h-11 rounded-full bg-white/15 hover:bg-brass text-white flex items-center justify-center transition-colors cursor-pointer"
+        aria-label="বন্ধ করুন"
+      >
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <button
+      id="lightboxPrev"
+      type="button"
+      class="absolute left-2.5 sm:left-6 z-20 w-11 h-11 rounded-full bg-white/15 hover:bg-meghna text-white flex items-center justify-center transition-colors cursor-pointer"
+      aria-label="পূর্ববর্তী ছবি"
+    >
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <div id="lightboxSwipeArea" class="max-w-4xl w-full flex flex-col items-center modal-animate">
+      <div class="bg-[#FCF9F2] p-2 sm:p-3 pb-3 rounded-xl shadow-2xl max-h-[68vh] sm:max-h-[72vh] flex items-center justify-center overflow-hidden">
+        <img
+          id="lightboxImg"
+          src=""
+          alt="পাঠচক্রের স্থিরচিত্র"
+          class="max-h-[62vh] sm:max-h-[66vh] w-auto object-contain rounded-lg select-none transition-transform duration-300 cursor-zoom-in"
+        />
+      </div>
+      <div class="mt-3 text-center text-[#FAF6EE] px-4">
+        <p id="lightboxCaption" class="font-serif text-base sm:text-lg font-semibold"></p>
+        <p id="lightboxCounter" class="text-xs sm:text-sm text-[#E0A354] font-semibold mt-0.5"></p>
+      </div>
+      <div id="lightboxFilmstrip" class="mt-3 flex items-center gap-2 overflow-x-auto max-w-full px-3 py-1.5"></div>
+    </div>
+
+    <button
+      id="lightboxNext"
+      type="button"
+      class="absolute right-2.5 sm:right-6 z-20 w-11 h-11 rounded-full bg-white/15 hover:bg-meghna text-white flex items-center justify-center transition-colors cursor-pointer"
+      aria-label="পরবর্তী ছবি"
+    >
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- =====================================================================
+       11. DISTRACTION-FREE BANGLA READING CHAMBER MODAL
+  ====================================================================== -->
+  <div
+    id="readingModal"
+    class="fixed inset-0 z-50 hidden bg-[#080F11]/82 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalSessionTitle"
+  >
+    <div class="bg-paper border border-meghna/30 rounded-3xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden relative modal-animate">
+      <div class="h-1.5 w-full bg-gradient-to-r from-petrol via-meghna to-brass"></div>
+
+      <div class="px-5 sm:px-8 pt-5 pb-4 border-b border-meghna/15 flex items-start justify-between gap-3 bg-parchment/80">
+        <div>
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span id="modalSessionNumber" class="inline-block text-xs sm:text-sm font-bold text-brass bg-brass/15 px-3 py-1 rounded-full"></span>
+            <div class="inline-flex items-center gap-1 bg-cardpaper border border-meghna/20 rounded-full px-2.5 py-0.5 text-xs">
+              <button id="fontDecreaseBtn" type="button" class="px-1.5 py-0.5 text-petrol hover:text-brass font-bold cursor-pointer" title="অক্ষর ছোট করুন">অ-</button>
+              <span class="text-meghna/30">|</span>
+              <button id="fontIncreaseBtn" type="button" class="px-1.5 py-0.5 text-petrol hover:text-brass font-bold cursor-pointer" title="অক্ষর বড় করুন">অ+</button>
+              <span class="text-meghna/30">|</span>
+              <button id="fontStyleToggleBtn" type="button" class="px-1.5 py-0.5 text-meghna hover:text-petrol font-serif font-semibold cursor-pointer" title="ফন্ট পরিবর্তন করুন">সেরিফ</button>
+            </div>
+          </div>
+          <h3 id="modalSessionTitle" class="font-serif text-xl sm:text-2xl font-bold text-petrol leading-snug"></h3>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm sm:text-base text-ink/85 mt-2">
+            <span id="modalSessionDate" class="inline-flex items-center gap-1.5"></span>
+            <span id="modalSessionVenue" class="inline-flex items-center gap-1.5 font-bold text-petrol text-base sm:text-lg"></span>
+          </div>
+        </div>
+
+        <button
+          id="closeReadingModal"
+          type="button"
+          class="w-10 h-10 rounded-full bg-cardpaper border border-meghna/25 text-petrol hover:bg-petrol hover:text-white flex items-center justify-center transition-colors shrink-0 cursor-pointer"
+          aria-label="পাঠ উইন্ডো বন্ধ করুন"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="px-5 sm:px-8 py-6 overflow-y-auto notebook-lines text-ink/95 leading-[2.1] text-[18.5px] font-sans transition-all" id="modalReadingBody">
+        <div id="modalFullDiscussion" class="space-y-4"></div>
+      </div>
+
+      <div class="px-4 sm:px-8 py-3.5 bg-parchment/85 border-t border-meghna/15 flex flex-wrap items-center justify-between gap-2.5">
+        <div class="flex items-center gap-2">
+          <button
+            id="modalPrevSessionBtn"
+            type="button"
+            class="px-3.5 py-2 min-h-[38px] rounded-full text-xs sm:text-sm font-semibold border border-meghna/35 text-petrol hover:bg-meghna hover:text-white transition-colors cursor-pointer"
+          >
+            ← আগের পাঠচক্র
+          </button>
+          <button
+            id="modalNextSessionBtn"
+            type="button"
+            class="px-3.5 py-2 min-h-[38px] rounded-full text-xs sm:text-sm font-semibold border border-meghna/35 text-petrol hover:bg-meghna hover:text-white transition-colors cursor-pointer"
+          >
+            পরের পাঠচক্র →
+          </button>
+        </div>
+
+        <button
+          id="modalBottomCloseBtn"
+          type="button"
+          class="px-5 py-2 min-h-[38px] rounded-full bg-petrol hover:bg-meghna text-paper text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+        >
+          বন্ধ করুন
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       12. STRUCTURED DATA & INTERACTIVE LITERARY ENGINE
+  ====================================================================== -->
+  <script>
+    /**
+     * সদস্যবৃন্দ ডেটা অ্যারে (৬ নং সদস্য হিসেবে খাদিজা আক্তার যুক্ত)
+     */
+    const boichayaMembers = [
+      {
+        name: 'আবু বকর সিদ্দিক',
+        roleBadge: 'প্রতিষ্ঠাতা ও সভাপতি',
+        joined: '২০২২ ইং',
+        photo: 'images/members/abu-bakar-siddik.jpg',
+        bio: 'বইছায়ার স্বপ্নদ্রষ্টা, প্রতিষ্ঠাতা ও সভাপতি। ২০২২ সালে চাঁদপুরের তরুণদের মাঝে গভীর পাঠাভ্যাস, মুক্তবুদ্ধির চর্চা এবং সাহিত্য সংলাপ গড়ে তোলার লক্ষ্যে বইছায়া প্রতিষ্ঠা করেন এবং নিয়মিত পাঠচক্র ও সেমিনার পরিচালনা করে আসছেন।'
+      },
+      {
+        name: 'চৈতিশীল তৃণা',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/chaity-shil-trina.jpg',
+        bio: 'বইছায়ার নিয়মিত পাঠচক্র ও সাহিত্য আড্ডার অন্যতম সক্রিয় সদস্য। সমকালীন কথাসাহিত্য পাঠ, গঠনমূলক আলোচনা এবং পাঠচক্রের সাংস্কৃতিক আয়োজনে নিয়মিত অংশগ্রহণ করেন।'
+      },
+      {
+        name: 'সুস্মিতা দাস',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/sushmita-das.jpg',
+        bio: 'আবৃত্তিশিল্পী ও অনুষ্ঠান উপস্থাপক। আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে আয়োজিত ‘বাঙালি সত্তা ও আহমদ ছফা’ সেমিনারে প্রাঞ্জল সঞ্চালনা ও কবিতা আবৃত্তির মাধ্যমে বিশেষ ভূমিকা রাখেন।'
+      },
+      {
+        name: 'বিশ্বজিৎ দেবনাথ',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/bishwajit-debnath.jpg',
+        bio: 'বইছায়ার নিয়মিত পাঠচক্র, বুক রিভিউ ও বই বিনিময় কর্মসূচির সক্রিয় অংশগ্রহণকারী। ইতিহাস, সমাজচিন্তা ও সমকালীন সাহিত্য আলোচনায় নিয়মিত মতামত তুলে ধরেন।'
+      },
+      {
+        name: 'রবিউল আলম',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/rabiul-alam.jpg',
+        bio: 'বইছায়ার পাঠচক্র ও মুক্তবুদ্ধি চর্চার নিয়মিত সদস্য। সাপ্তাহিক বই আড্ডা, বই বিনিময় কার্যক্রম এবং পাঠক সমাজ সম্প্রসারণে সক্রিয়ভাবে যুক্ত আছেন।'
+      },
+      {
+        name: 'খাদিজা আক্তার',
+        roleBadge: 'অনিয়মিত সদস্য • নিয়মিত বক্তা',
+        joined: '২০২৪ ইং',
+        photo: 'images/members/khadija-akter.jpg',
+        bio: 'বইছায়ার অনিয়মিত সদস্য ও নিয়মিত বক্তা। বর্তমানে নার্সিং নিয়ে পড়াশোনা করছেন। আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে আয়োজিত বিশেষ সেমিনার ও আলোচনা অনুষ্ঠানে অংশগ্রহণ করেছেন এবং পাঠচক্রের মুক্ত আলোচনায় নিয়মিত বক্তব্য রাখেন।'
+      },
+      {
+        name: 'মরিয়ম মাহি',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/mahi.jpg',
+        bio: 'বইছায়ার নিয়মিত পাঠক ও আলোচক। সাপ্তাহিক পাঠচক্র, বুক রিভিউ এবং তরুণদের মাঝে পাঠাভ্যাস ছড়িয়ে দেওয়ার কার্যক্রমে সক্রিয়ভাবে অংশগ্রহণ করেন।'
+      },
+      {
+        name: 'প্রান্ত সাহা',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/pranto-saha.jpg',
+        bio: 'পাঠচক্র আলোচক, লেখক ও বই পর্যালোচক। যোগাযোগ দক্ষতা, আত্মোন্নয়ন ও মননশীল সাহিত্য আলোচনায় নিয়মিত অংশগ্রহণ করেন এবং বইছায়ার সৃজনশীল আয়োজনে সক্রিয় ভূমিকা রাখেন।'
+      }
+    ];
+
+    const pathchokroSessions = [
+      {
+        id: 'pc-18',
+        number: 'পাঠচক্র ১৮',
+        topic: 'হুমায়ূন আহমেদ: পাঠপদ্ধতি ও তাৎপর্য',
+        dateTime: '১৩ নভেম্বর ২০২৬, শুক্রবার | সন্ধ্যা ৬:০০ ঘটিকা',
+        venue: 'বড়স্টেশন, চাঁদপুর',
+        images: ['images/pc-18/1.jpg'],
+        summary: 'বরেণ্য কথাসাহিত্যিক হুমায়ূন আহমেদের ৭৮তম জন্মবার্ষিকী উপলক্ষে তাঁর ভাষা, দর্শন, চরিত্র নির্মাণ ও সমাজ-বাস্তবতা নিয়ে বইছায়ার ২০২৬ সালের অষ্টাদশতম পাঠচক্র।',
+        fullDiscussion: 'একজন লেখককে পাঠ করা কেবল তাঁর গল্পের সঙ্গে পরিচিত হওয়া নয়; বরং তাঁর ভাষা, দর্শন, চরিত্র নির্মাণ, সময় ও সমাজের সঙ্গে তাঁর রচনার সম্পর্ক অনুধাবন করাও পাঠের গুরুত্বপূর্ণ অংশ। এই পাঠ ও বিশ্লেষণের অভিপ্রায় নিয়েই বরেণ্য কথাসাহিত্যিক হুমায়ূন আহমেদের ৭৮তম জন্মবার্ষিকী উপলক্ষে বইছায়ার ২০২৬ সালের অষ্টাদশতম পাঠচক্র অনুষ্ঠিত হয়। আলোচনার মূল বিষয় ছিল— “হুমায়ূন আহমেদ: পাঠপদ্ধতি ও তাৎপর্য”।'
+      },
+      {
+        id: 'pc-17',
+        number: 'পাঠচক্র ১৭',
+        topic: 'সংবিধান সংস্কার বনাম পূর্ণলিখন',
+        dateTime: '৬ নভেম্বর ২০২৬, শুক্রবার | সকাল ১০:০০ ঘটিকা',
+        venue: 'চাঁদপুর সরকারি কলেজ মাঠ',
+        images: ['images/pc-17/1.jpg'],
+        summary: 'রাষ্ট্র, সংবিধান, গণতন্ত্র, নাগরিক অধিকার ও সামাজিক ন্যায়বিচার নিয়ে যুক্তি, ইতিহাস ও ভিন্নমতের প্রতি শ্রদ্ধার আলোকে বইছায়ার ১৭তম মুক্ত পাঠচক্র।',
+        fullDiscussion: 'সংবিধান শুধু রাষ্ট্র পরিচালনার দলিল নয়, এটি আমাদের অধিকার, গণতন্ত্র ও ভবিষ্যতেরও ভিত্তি। সংস্কার, নাকি পূর্ণলিখন—কোন পথে এগোবে বাংলাদেশ? যুক্তি, ইতিহাস ও চিন্তার আলোকে বইছায়ার ১৭তম পাঠচক্রে আমাদের আলোচনার বিষয় ছিল— ‘সংবিধান সংস্কার বনাম পূর্ণলিখন’। রাষ্ট্র, সংবিধান, গণতন্ত্র, নাগরিক অধিকার ও সামাজিক ন্যায়বিচার নিয়ে উঠে এসেছে নানা প্রশ্ন, যুক্তি, মত ও ভিন্নমত। আমরা বিশ্বাস করি, মতের মিল নয়, বরং ভিন্নমতের প্রতি শ্রদ্ধা, যুক্তির চর্চা এবং জানার নিরন্তর আগ্রহই একটি সুন্দর বুদ্ধিবৃত্তিক সমাজের ভিত্তি। বইছায়া এমনই একটি পরিসর হয়ে উঠুক, যেখানে প্রশ্ন করতে দ্বিধা নেই। পড়ি, ভাবি, প্রশ্ন করি—একসঙ্গে বেড়ে উঠি।'
+      },
+      {
+        id: 'pc-16',
+        number: 'পাঠচক্র ১৬',
+        topic: 'যে জঙ্গল কেটে ফেলা হচ্ছে, তার পাখিদের কথোপকথন',
+        dateTime: 'উল্লেখ নেই (মুক্ত প্রকৃতি প্রাঙ্গণ)',
+        venue: 'চাঁদপুর',
+        images: ['images/pc-16/1.jpg', 'images/pc-16/2.jpg', 'images/pc-16/3.jpg'],
+        summary: 'বৃক্ষনিধন ও প্রকৃতি ধ্বংসের ফলে পাখিদের আশ্রয় এবং প্রাণের ঠিকানা হারানোর মানবিক ও পরিবেশগত সংবেদনশীলতা নিয়ে ষোড়শতম পাঠচক্র।',
+        fullDiscussion: 'মাথার ওপর আকাশ, চারপাশে হাওয়া। কেটে ফেলা জঙ্গলের পাখিদের নিয়ে কথা বলার জন্য খোলা প্রকৃতির চেয়ে ভালো জায়গা আর কী হতে পারে! একটা গাছ কাটা পড়লে শুধু গাছটাই যায় না; সাথে যায় পাখির বাসা, ভোরের ডাক, অনেকগুলো প্রাণের ঠিকানা। “যে জঙ্গল কেটে ফেলা হচ্ছে, তার পাখিদের কথোপকথন” শীর্ষক এই আসরে পরিবেশ, প্রকৃতি ও প্রাণের পারস্পরিক সম্পর্কের এই কথাগুলোই ঘুরেফিরে এসেছে আমাদের আলোচনায়।'
+      },
+      {
+        id: 'pc-15',
+        number: 'পাঠচক্র ১৫',
+        topic: 'ঢাকা বিশ্ববিদ্যালয় প্রতিষ্ঠায় রবীন্দ্রনাথের অবস্থান',
+        dateTime: 'উল্লেখ নেই',
+        venue: 'চাঁদপুর',
+        images: ['images/pc-15/1.jpg', 'images/pc-15/2.jpg'],
+        summary: 'ঢাকা বিশ্ববিদ্যালয় প্রতিষ্ঠার ঐতিহাসিক প্রেক্ষাপট, রবীন্দ্রনাথ ঠাকুরের ভূমিকা নিয়ে প্রচলিত বিতর্ক ও তথ্যনিষ্ঠ ইতিহাস চর্চা বিষয়ক পঞ্চদশ পাঠচক্র।',
+        fullDiscussion: 'সফলভাবে সম্পন্ন হলো আমাদের পঞ্চদশ পাঠচক্র, যার আলোচ্য বিষয় ছিল— “ঢাকা বিশ্ববিদ্যালয় প্রতিষ্ঠায় রবীন্দ্রনাথের অবস্থান”। আলোচনায় উঠে আসে ঢাকা বিশ্ববিদ্যালয় প্রতিষ্ঠার ঐতিহাসিক প্রেক্ষাপট, রবীন্দ্রনাথ ঠাকুরের ভূমিকা ও তাঁকে ঘিরে প্রচলিত বিতর্ক, তৎকালীন সময়ে বিশ্ববিদ্যালয় প্রতিষ্ঠার পক্ষে-বিপক্ষে বিভিন্ন ব্যক্তি ও পক্ষের অবস্থান এবং তাঁদের অবদান। ইতিহাসকে একপাক্ষিকভাবে না দেখে তথ্য, যুক্তি ও প্রাসঙ্গিক দলিলের আলোকে বিষয়গুলো বোঝার চেষ্টা ছিল বইছায়ার অন্যতম লক্ষ্য। পাশাপাশি সমসাময়িক প্রেক্ষাপটে মতপ্রকাশের স্বাধীনতা এবং বিশ্বের উন্নত জাতি ও প্রযুক্তির অগ্রগতির সঙ্গে তাল মিলিয়ে কীভাবে আমরা জ্ঞান, চিন্তা ও কর্মে নিজেদের এগিয়ে নিতে পারি তা নিয়েও হয় প্রাণবন্ত আলোচনা। বিশেষ কৃতজ্ঞতা বেলাল ভাই, শুভ ভাইসহ আলোচনায় অংশ নেওয়া সকলের প্রতি।'
+      },
+      {
+        id: 'pc-10',
+        number: 'পাঠচক্র ১০',
+        topic: 'ধর্মনিরপেক্ষতা ও মানবতাবাদের কবি নজরুল',
+        dateTime: '২২ মে ২০২৬, শুক্রবার | বিকাল ৪:০০ ঘটিকা',
+        venue: 'চাঁদপুর সরকারি কলেজ মাঠ',
+        images: ['images/pc-10/1.jpg', 'images/pc-10/2.jpg', 'images/pc-10/3.jpg', 'images/pc-10/4.jpg', 'images/pc-10/5.jpg'],
+        summary: 'জাতীয় কবি কাজী নজরুল ইসলামের জন্মদিবস উপলক্ষে তাঁর ধর্মনিরপেক্ষ ও মানবতাবাদী দর্শন নিয়ে পাঠচক্র, বুক রিভিউ ও নিয়মিত বই বিনিময় আসর।',
+        fullDiscussion: 'কাজী নজরুল ইসলামের জন্মদিবস উপলক্ষে ২২শে মে শুক্রবার বিকাল ৪টায় চাঁদপুর সরকারি কলেজ প্রাঙ্গণে অনুষ্ঠিত হয় বইছায়ার দশম পাঠচক্র। উক্ত আসরের মূল আলোচ্য বিষয় ছিল— “ধর্মনিরপেক্ষতা ও মানবতাবাদের কবি নজরুল”। পাঠচক্রের পাশাপাশি সদস্যদের অংশগ্রহণে নিয়মিত বুক রিভিউ এবং পূর্বের পঠিত বই ফেরত দিয়ে নতুন বই গ্রহণের মাধ্যমে বই বিনিময় কার্যক্রম অনুষ্ঠিত হয়।'
+      },
+      {
+        id: 'pc-09',
+        number: 'পাঠচক্র ০৯',
+        topic: 'সার্বিক পরিস্থিতি ও নজরুলের সাম্যবাদের প্রয়োজনীয়তা',
+        dateTime: '২ মে ২০২৬, শনিবার | সকাল ১০:৩০ ঘটিকা',
+        venue: 'দর্জি ঘাট, চাঁদপুর',
+        images: ['images/pc-9/1.jpg'],
+        summary: 'সমকালীন সামাজিক প্রেক্ষাপটে কাজী নজরুল ইসলামের সাম্যবাদী চেতনার প্রাসঙ্গিকতা নিয়ে পাঠচক্র, বুক রিভিউ ও বই বিনিময়।',
+        fullDiscussion: '২ মে শনিবার সকাল ১০.৩০ টায় চাঁদপুরের দর্জি ঘাটে বইছায়ার নবম পাঠচক্র অনুষ্ঠিত হয়। উক্ত আসরের আলোচ্য বিষয় ছিল— “সার্বিক পরিস্থিতি ও নজরুলের সাম্যবাদের প্রয়োজনীয়তা”। আলোচনা শেষে সদস্যদের স্বতঃস্ফূর্ত অংশগ্রহণে বুক রিভিউ ও নিয়মিত বই বিনিময় কার্যক্রম পরিচালিত হয়।'
+      },
+      {
+        id: 'pc-08',
+        number: 'পাঠচক্র ০৮',
+        topic: 'ইরানে আমেরিকা যুদ্ধে বিশ্ব রাজনীতি তথা বাংলাদেশের প্রভাব',
+        dateTime: '১৮ এপ্রিল ২০২৬, শনিবার | সকাল ১০:৩০ ঘটিকা',
+        venue: 'দর্জি ঘাট, চাঁদপুর',
+        images: ['images/pc-8/1.jpg'],
+        summary: 'সমকালীন ভূ-রাজনৈতিক সংকট, মধ্যপ্রাচ্য পরিস্থিতি এবং বিশ্ব রাজনীতিতে বাংলাদেশের অর্থনৈতিক ও কূটনৈতিক প্রভাব নিয়ে অষ্টম পাঠচক্র।',
+        fullDiscussion: '১৮ এপ্রিল শনিবার সকাল ১০.৩০ টায় চাঁদপুরের দর্জি ঘাটে বইছায়ার অষ্টম পাঠচক্র অনুষ্ঠিত হয়। উক্ত আসরে সমকালীন আন্তর্জাতিক প্রেক্ষাপট নিয়ে “ইরানে আমেরিকা যুদ্ধে বিশ্ব রাজনীতি তথা বাংলাদেশের প্রভাব” শীর্ষক মুক্ত আলোচনা অনুষ্ঠিত হয়। পাশাপাশি সদস্যদের অংশগ্রহণে বুক রিভিউ ও নিয়মিত বই বিনিময় সম্পন্ন হয়।'
+      }
+    ];
+
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function toBanglaDigits(num) {
+      const bnDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+      return String(num).replace(/\d/g, (d) => bnDigits[Number(d)]);
+    }
+
+    function handlePhotoError(imgEl, labelText) {
+      const parent = imgEl.parentElement;
+      if (!parent || parent.dataset.fallbackApplied) return;
+      parent.dataset.fallbackApplied = 'true';
+      imgEl.style.display = 'none';
+
+      const placeholder = document.createElement('div');
+      placeholder.className = 'w-full h-full min-h-[195px] bg-gradient-to-br from-parchment via-paper to-meghna/12 flex flex-col items-center justify-center p-4 text-center border border-dashed border-meghna/35';
+      placeholder.innerHTML = `
+        <svg class="w-9 h-9 text-meghna/70 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        <span class="font-serif font-bold text-petrol text-sm">${labelText}</span>
+        <span class="text-xs text-ink/65 mt-1">স্থিরচিত্র সংরক্ষিত</span>
+      `;
+      parent.appendChild(placeholder);
+    }
+
+    function copyContactValue(elementId, btnEl) {
+      const textEl = document.getElementById(elementId);
+      if (!textEl) return;
+      const value = textEl.textContent.trim();
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(value).then(() => {
+          const original = btnEl.textContent;
+          btnEl.textContent = 'কপি হয়েছে ✓';
+          setTimeout(() => { btnEl.textContent = original; }, 1800);
+        });
+      }
+    }
+
+    function renderTopMembers() {
+      const track = document.getElementById('membersCarouselTrack');
+      if (!track) return;
+
+      track.innerHTML = boichayaMembers
+        .map((member, idx) => `
+          <article class="snap-start shrink-0 w-[280px] sm:w-[310px] bg-cardpaper border border-meghna/25 rounded-3xl p-5 shadow-parchment relative magazine-card-lift flex flex-col justify-between">
+            <div class="brass-tape -top-2.5 left-1/2 -translate-x-1/2 ${idx % 2 === 0 ? '-rotate-2' : 'rotate-2'} !w-14 !h-4"></div>
+
+            <div>
+              <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden bg-parchment/70 border border-meghna/15 mb-4">
+                <img
+                  src="${member.photo}"
+                  alt="${member.name}"
+                  loading="lazy"
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  onerror="handlePhotoError(this, '${member.name}')"
+                />
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="inline-block text-xs font-bold text-brass bg-brass/15 px-3 py-1 rounded-full">
+                  ${member.roleBadge}
+                </span>
+                <span class="text-xs font-medium text-ink/70">যোগদান: ${member.joined}</span>
+              </div>
+
+              <h3 class="font-serif text-xl sm:text-2xl font-bold text-petrol mt-2.5">
+                ${member.name}
+              </h3>
+
+              <p class="text-sm sm:text-[15.5px] text-ink/85 mt-2 leading-relaxed line-clamp-3">
+                ${member.bio}
+              </p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-meghna/15">
+              <a
+                href="members.html#member-${idx + 1}"
+                class="inline-flex items-center gap-1.5 text-sm font-semibold text-meghna hover:text-petrol transition-colors"
+              >
+                <span>বিস্তারিত পরিচিতি পড়ুন</span>
+                <span>→</span>
+              </a>
+            </div>
+          </article>
+        `)
+        .join('');
+
+      const prevBtn = document.getElementById('membersPrevBtn');
+      const nextBtn = document.getElementById('membersNextBtn');
+      if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => track.scrollBy({ left: -325, behavior: 'smooth' }));
+        nextBtn.addEventListener('click', () => track.scrollBy({ left: 325, behavior: 'smooth' }));
+      }
+    }
+
+    function spawnLogoSparkles(stageEl) {
+      if (!stageEl || prefersReducedMotion || document.hidden) return;
+      const items = [
+        { text: 'ব', color: 'var(--accent-teal)' },
+        { text: 'ছ', color: 'var(--accent-brass)' },
+        { text: '✦', color: 'var(--accent-brass)' },
+        { text: 'জ্ঞ', color: 'var(--accent-petrol)' },
+        { text: '✦', color: 'var(--accent-teal)' }
+      ];
+
+      items.forEach((item, idx) => {
+        const spark = document.createElement('span');
+        spark.className = 'logo-burst-particle text-xs sm:text-sm';
+        spark.textContent = item.text;
+        spark.style.color = item.color;
+
+        const angle = (-135 + idx * 55) * (Math.PI / 180);
+        const distance = 28 + Math.random() * 18;
+        spark.style.left = `${45 + (idx - 2) * 14}%`;
+        spark.style.top = `${25 + (idx % 2) * 20}%`;
+        spark.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
+        spark.style.setProperty('--ty', `${Math.sin(angle) * distance - 12}px`);
+
+        stageEl.appendChild(spark);
+        setTimeout(() => spark.remove(), 1200);
+      });
+    }
+
+    function initInteractiveLogos() {
+      const stages = [document.getElementById('navBrandLogo'), document.getElementById('heroLogoStage')].filter(Boolean);
+      stages.forEach((stage) => {
+        let lastBurst = 0;
+        const triggerBurst = () => {
+          const now = Date.now();
+          if (now - lastBurst < 650) return;
+          lastBurst = now;
+          spawnLogoSparkles(stage);
+        };
+        stage.addEventListener('mouseenter', triggerBurst);
+        stage.addEventListener('click', () => {
+          stage.classList.add('is-tapped');
+          triggerBurst();
+          setTimeout(() => stage.classList.remove('is-tapped'), 900);
+        });
+      });
+    }
+
+    let canvasAnimId = null;
+    let renderCanvasFrameFn = null;
+
+    function initLiteraryCanvas() {
+      const canvas = document.getElementById('literaryCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const glyphs = ['অ', 'আ', 'ক', 'ব', 'ছ', 'জ্ঞ', '“', '”', '✦'];
+      let width = 0, height = 0, particles = [], mouse = { x: -999, y: -999 };
+
+      function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = rect.width;
+        height = rect.height;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const count = width < 640 ? 14 : 26;
+        particles = Array.from({ length: count }, (_, i) => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: -0.14 - Math.random() * 0.22,
+          size: i % 3 === 0 ? 15 + Math.random() * 9 : 2 + Math.random() * 2.5,
+          isGlyph: i % 3 === 0,
+          glyph: glyphs[i % glyphs.length],
+          alpha: 0.13 + Math.random() * 0.22,
+          phase: Math.random() * Math.PI * 2
+        }));
+        if (prefersReducedMotion) drawFrame(false);
+      }
+
+      window.addEventListener('resize', resize, { passive: true });
+      canvas.parentElement.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      }, { passive: true });
+      canvas.parentElement.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+
+      function drawFrame(advance = true) {
+        ctx.clearRect(0, 0, width, height);
+        const isDark = document.documentElement.classList.contains('dark');
+        const tealColor = isDark ? '39, 178, 194' : '14, 130, 142';
+        const brassColor = isDark ? '224, 163, 84' : '198, 139, 63';
+
+        particles.forEach((p, idx) => {
+          if (advance) {
+            p.phase += 0.014;
+            p.x += p.vx + Math.sin(p.phase) * 0.16;
+            p.y += p.vy;
+            const dx = p.x - mouse.x;
+            const dy = p.y - mouse.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < 110 && dist > 0) {
+              p.x += (dx / dist) * 0.65;
+              p.y += (dy / dist) * 0.65;
+            }
+            if (p.y < -30) { p.y = height + 20; p.x = Math.random() * width; }
+            if (p.x < -30) p.x = width + 20;
+            if (p.x > width + 30) p.x = -20;
+          }
+          const rgb = idx % 2 === 0 ? tealColor : brassColor;
+          ctx.fillStyle = `rgba(${rgb}, ${p.alpha})`;
+          if (p.isGlyph) {
+            ctx.font = `600 ${Math.round(p.size)}px "Tiro Bangla", serif`;
+            ctx.fillText(p.glyph, p.x, p.y);
+          } else {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+      }
+
+      renderCanvasFrameFn = function loop() {
+        if (document.hidden || prefersReducedMotion) { canvasAnimId = null; return; }
+        drawFrame(true);
+        canvasAnimId = requestAnimationFrame(loop);
+      };
+
+      resize();
+      if (!prefersReducedMotion && !document.hidden) canvasAnimId = requestAnimationFrame(renderCanvasFrameFn);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        document.body.classList.add('page-hidden');
+        if (canvasAnimId) { cancelAnimationFrame(canvasAnimId); canvasAnimId = null; }
+      } else {
+        document.body.classList.remove('page-hidden');
+        if (!prefersReducedMotion && renderCanvasFrameFn && !canvasAnimId) canvasAnimId = requestAnimationFrame(renderCanvasFrameFn);
+      }
+    });
+
+    function syncThemeUI() {
+      const isDark = document.documentElement.classList.contains('dark');
+      const iconDark = document.getElementById('themeIconDark');
+      const iconLight = document.getElementById('themeIconLight');
+      const label = document.getElementById('themeToggleLabel');
+      if (isDark) {
+        iconDark.classList.add('hidden');
+        iconLight.classList.remove('hidden');
+        if (label) label.textContent = 'হালকা থিম';
+      } else {
+        iconDark.classList.remove('hidden');
+        iconLight.classList.add('hidden');
+        if (label) label.textContent = 'ডার্ক থিম';
+      }
+    }
+
+    function toggleTheme() {
+      const htmlEl = document.documentElement;
+      htmlEl.classList.add('theme-switching');
+      const willBeDark = !htmlEl.classList.contains('dark');
+      htmlEl.classList.toggle('dark', willBeDark);
+      try { localStorage.setItem('boichaya-theme', willBeDark ? 'dark' : 'light'); } catch (e) {}
+      syncThemeUI();
+      setTimeout(() => htmlEl.classList.remove('theme-switching'), 700);
+    }
+    document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
+
+    function attachPolaroid3DTilt(rootEl = document) {
+      if (prefersReducedMotion || window.matchMedia('(pointer: coarse)').matches) return;
+      rootEl.querySelectorAll('.polaroid-frame').forEach((card) => {
+        if (card.dataset.tiltBound) return;
+        card.dataset.tiltBound = 'true';
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -6;
+          const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 6;
+          card.style.setProperty('--mx', `${(x / rect.width) * 100}%`);
+          card.style.setProperty('--my', `${(y / rect.height) * 100}%`);
+          card.style.transform = `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px) scale(1.025)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      });
+    }
+
+    const ahmedSofaImages = Array.from({ length: 15 }, (_, i) => ({
+      src: `images/ahmed-safa/${i + 1}.jpg`,
+      caption: `বাঙালি সত্তা ও আহমদ ছফা — বিশেষ সেমিনার (স্থিরচিত্র ${toBanglaDigits(i + 1)})`
+    }));
+
+    function renderAhmedSofaGallery() {
+      const container = document.getElementById('ahmedSofaGallery');
+      if (!container) return;
+      const tilts = ['-rotate-1', 'rotate-1', '-rotate-[1.5deg]', 'rotate-[1.5deg]', 'rotate-0'];
+
+      container.innerHTML = ahmedSofaImages
+        .map((item, idx) => {
+          const tiltClass = tilts[idx % tilts.length];
+          const tapePos = idx % 2 === 0
+            ? 'brass-tape -top-2.5 left-1/2 -translate-x-1/2 -rotate-2 !w-12 sm:!w-14 !h-3.5 sm:!h-4'
+            : 'brass-tape -top-2.5 right-3 rotate-6 !w-12 sm:!w-14 !h-3.5 sm:!h-4';
+
+          return `
+            <div class="break-inside-avoid mb-3.5 sm:mb-4 reveal-stagger" style="--stagger-delay: ${(idx % 5) * 70}ms;">
+              <button
+                type="button"
+                onclick="openLightbox('ahmed-sofa', ${idx})"
+                class="group w-full text-left polaroid-frame ${tiltClass} shadow-polaroid cursor-pointer focus:outline-none focus:ring-2 focus:ring-meghna"
+                aria-label="${item.caption} বড় করে দেখুন"
+              >
+                <div class="${tapePos}"></div>
+                <div class="overflow-hidden bg-parchment/60 rounded-xs">
+                  <img
+                    src="${item.src}"
+                    alt="${item.caption}"
+                    loading="lazy"
+                    class="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    onerror="handlePhotoError(this, 'আহমদ ছফা উৎসব • ছবি ${toBanglaDigits(idx + 1)}')"
+                  />
+                </div>
+                <div class="pt-2 px-1 flex items-center justify-between text-xs text-ink/85">
+                  <span class="font-serif font-semibold text-petrol">স্মৃতিচিত্র ${toBanglaDigits(idx + 1)}</span>
+                  <span class="text-meghna opacity-85 group-hover:opacity-100">বড় করুন ↗</span>
+                </div>
+              </button>
+            </div>
+          `;
+        })
+        .join('');
+
+      attachPolaroid3DTilt(container);
+    }
+
+    let activeVenueFilter = 'all';
+    let bookmarkedSessions = new Set();
+    try {
+      const savedBookmarks = JSON.parse(localStorage.getItem('boichaya-bookmarks') || '[]');
+      if (Array.isArray(savedBookmarks)) bookmarkedSessions = new Set(savedBookmarks);
+    } catch (e) {}
+
+    function toggleSessionBookmark(sessionId) {
+      if (bookmarkedSessions.has(sessionId)) bookmarkedSessions.delete(sessionId);
+      else bookmarkedSessions.add(sessionId);
+      try { localStorage.setItem('boichaya-bookmarks', JSON.stringify([...bookmarkedSessions])); } catch (e) {}
+      renderStoryboardTimeline(true);
+    }
+
+    function renderFilterBar() {
+      const filterBar = document.getElementById('storyboardFilterBar');
+      if (!filterBar) return;
+
+      const venues = ['all', ...new Set(pathchokroSessions.map((s) => s.venue))];
+      filterBar.innerHTML = venues
+        .map((venue) => {
+          const isAll = venue === 'all';
+          const label = isAll ? `সকল পাঠচক্র (${toBanglaDigits(pathchokroSessions.length)})` : venue;
+          const active = activeVenueFilter === venue;
+          const pinSvg = !isAll
+            ? `<svg class="w-4 h-4 text-brass shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                 <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z"/>
+                 <circle cx="12" cy="11" r="2.5"/>
+               </svg>`
+            : '';
+          return `
+            <button
+              type="button"
+              onclick="setStoryboardFilter('${venue}')"
+              class="inline-flex items-center gap-1.5 px-4 py-2 min-h-[42px] rounded-full text-sm sm:text-base font-semibold border transition-all duration-300 cursor-pointer ${
+                active
+                  ? 'bg-petrol text-paper border-petrol shadow-sm'
+                  : 'bg-cardpaper/90 text-ink/90 border-meghna/25 hover:border-brass hover:text-petrol'
+              }"
+            >
+              ${pinSvg}
+              <span>${label}</span>
+            </button>
+          `;
+        })
+        .join('');
+    }
+
+    function setStoryboardFilter(venue) {
+      activeVenueFilter = venue;
+      renderFilterBar();
+      renderStoryboardTimeline(true);
+    }
+
+    function buildPolaroidCard(sessionId, imgSrc, imgIdx, totalImgs, sessionNumber, topic) {
+      const tiltPresets = ['-rotate-1 sm:-rotate-2', 'rotate-1', 'rotate-1 sm:rotate-2', '-rotate-1', 'rotate-[1.5deg]'];
+      const tilt = totalImgs === 1 ? '-rotate-1' : tiltPresets[imgIdx % tiltPresets.length];
+      const tapeHtml = imgIdx % 2 === 0
+        ? `<div class="brass-tape -top-2.5 -left-2 sm:-left-3.5 -rotate-[26deg] !w-14 sm:!w-16 !h-4"></div>
+           <div class="brass-tape -top-2.5 -right-2 sm:-right-3.5 rotate-[26deg] !w-14 sm:!w-16 !h-4"></div>`
+        : `<div class="brass-tape -top-2.5 -right-2 sm:-right-3.5 rotate-[30deg] !w-14 sm:!w-16 !h-4"></div>
+           <div class="brass-tape -bottom-2 -left-2 sm:-left-3.5 rotate-[26deg] !w-14 sm:!w-16 !h-4"></div>`;
+
+      return `
+        <button
+          type="button"
+          onclick="openLightbox('${sessionId}', ${imgIdx})"
+          class="group polaroid-frame ${tilt} shadow-polaroid cursor-pointer text-left w-full focus:outline-none focus:ring-2 focus:ring-meghna"
+          aria-label="${sessionNumber} — ছবি ${toBanglaDigits(imgIdx + 1)} বড় করে দেখুন"
+        >
+          ${tapeHtml}
+          <div class="aspect-[4/3] w-full overflow-hidden bg-parchment/70 relative">
+            <img
+              src="${imgSrc}"
+              alt="${sessionNumber}: ${topic} (ছবি ${toBanglaDigits(imgIdx + 1)})"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              onerror="handlePhotoError(this, '${sessionNumber} • ছবি ${toBanglaDigits(imgIdx + 1)}')"
+            />
+            <div class="absolute inset-0 bg-petrol/0 group-hover:bg-petrol/15 transition-colors flex items-end justify-end p-2.5">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-cardpaper/95 text-petrol text-xs font-semibold px-2.5 py-1 rounded-full shadow-xs">
+                ছবি দেখুন ↗
+              </span>
+            </div>
+          </div>
+          <div class="pt-2.5 px-1 flex items-center justify-between text-xs sm:text-sm text-ink/80">
+            <span class="font-serif font-semibold text-petrol">${sessionNumber}</span>
+            <span class="text-brass font-medium">ফ্রেম ${toBanglaDigits(imgIdx + 1)}/${toBanglaDigits(totalImgs)}</span>
+          </div>
+        </button>
+      `;
+    }
+
+    function renderStoryboardTimeline(immediateVisible = false) {
+      const container = document.getElementById('storyboardTimeline');
+      if (!container) return;
+
+      const filtered = activeVenueFilter === 'all'
+        ? pathchokroSessions
+        : pathchokroSessions.filter((s) => s.venue === activeVenueFilter);
+
+      container.innerHTML = filtered
+        .map((session, sIdx) => {
+          const originalIdx = pathchokroSessions.findIndex((item) => item.id === session.id);
+          const count = session.images.length;
+          const isBookmarked = bookmarkedSessions.has(session.id);
+          const chapterLabel = `অধ্যায় ${toBanglaDigits(String(sIdx + 1).padStart(2, '0'))}`;
+          let photoLayoutHtml = '';
+
+          if (count === 1) {
+            photoLayoutHtml = `
+              <div class="relative max-w-xl mx-auto flex items-center justify-center px-2">
+                <div class="w-full max-w-md z-10">
+                  ${buildPolaroidCard(session.id, session.images[0], 0, 1, session.number, session.topic)}
+                </div>
+              </div>
+            `;
+          } else if (count === 2) {
+            photoLayoutHtml = `
+              <div class="relative max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 items-center px-2 sm:px-6">
+                ${session.images.map((img, i) => buildPolaroidCard(session.id, img, i, count, session.number, session.topic)).join('')}
+              </div>
+            `;
+          } else if (count === 3) {
+            photoLayoutHtml = `
+              <div class="relative max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-9 items-center px-2 sm:px-4">
+                ${session.images.map((img, i) => buildPolaroidCard(session.id, img, i, count, session.number, session.topic)).join('')}
+              </div>
+            `;
+          } else {
+            const topRow = session.images.slice(0, 3);
+            const bottomRow = session.images.slice(3);
+            photoLayoutHtml = `
+              <div class="relative max-w-5xl mx-auto space-y-6 sm:space-y-8 px-2 sm:px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center">
+                  ${topRow.map((img, i) => buildPolaroidCard(session.id, img, i, count, session.number, session.topic)).join('')}
+                </div>
+                <div class="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-10 items-center">
+                  ${bottomRow.map((img, i) => buildPolaroidCard(session.id, img, i + 3, count, session.number, session.topic)).join('')}
+                </div>
+              </div>
+            `;
+          }
+
+          const connectorSvg = sIdx < filtered.length - 1
+            ? `
+              <div class="flex justify-center py-5 sm:py-8" aria-hidden="true">
+                <svg class="w-40 h-20 text-meghna/65" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M80 4 C 52 24, 108 52, 80 76" stroke="currentColor" stroke-width="1.8" stroke-dasharray="4 5" stroke-linecap="round" class="animated-dash" />
+                  <circle cx="94" cy="44" r="2.5" fill="var(--accent-brass)"/>
+                  <circle cx="80" cy="76" r="3" fill="var(--accent-teal)"/>
+                </svg>
+              </div>
+            `
+            : '';
+
+          return `
+            <article class="reveal-session ${immediateVisible ? 'is-visible' : ''} relative scroll-mt-24" id="${session.id}">
+              <div class="relative">${photoLayoutHtml}</div>
+
+              <div class="max-w-4xl mx-auto mt-7 sm:mt-8 bg-cardpaper border ${isBookmarked ? 'border-brass/60' : 'border-meghna/22'} rounded-2xl p-5 sm:p-8 shadow-parchment relative magazine-card-lift">
+                <div class="brass-tape -top-2.5 left-6 sm:left-8 -rotate-2 !w-14 sm:!w-16 !h-4"></div>
+
+                <button
+                  type="button"
+                  onclick="toggleSessionBookmark('${session.id}')"
+                  class="absolute -top-1.5 right-5 sm:right-7 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-b-xl border border-t-0 transition-all duration-300 cursor-pointer shadow-2xs ${
+                    isBookmarked
+                      ? 'bg-brass text-white border-brass translate-y-0.5'
+                      : 'bg-parchment/95 text-petrol/80 hover:text-brass border-meghna/25'
+                  }"
+                  aria-pressed="${isBookmarked}"
+                  title="${isBookmarked ? 'বুকমার্ক সরান' : 'পাঠচক্রটি বুকমার্ক করুন'}"
+                >
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="${isBookmarked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  <span class="text-xs font-semibold">${isBookmarked ? 'সংরক্ষিত' : 'বুকমার্ক'}</span>
+                </button>
+
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 pt-2 sm:pt-1">
+                  <div class="space-y-3 flex-1">
+                    <div class="flex flex-wrap items-center gap-2.5 pr-16 sm:pr-20">
+                      <span class="text-xs font-serif font-bold text-brass bg-brass/12 px-2.5 py-0.5 rounded-md border border-brass/25">
+                        ${chapterLabel}
+                      </span>
+                      <span class="font-serif text-xl sm:text-2xl font-bold text-petrol mr-1">
+                        ${session.number}
+                      </span>
+
+                      <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium bg-parchment text-ink/90 px-3 py-1 rounded-full border border-meghna/20">
+                        <svg class="w-4 h-4 text-meghna shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                          <line x1="16" y1="2" x2="16" y2="6"/>
+                          <line x1="8" y1="2" x2="8" y2="6"/>
+                          <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        <span>${session.dateTime}</span>
+                      </span>
+
+                      <span class="inline-flex items-center gap-1.5 text-sm sm:text-base font-bold bg-brass/15 text-petrol px-3.5 py-1 rounded-full border border-brass/35">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-brass shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" fill="var(--accent-brass)" fill-opacity="0.25"/>
+                          <circle cx="12" cy="11" r="2.5" fill="currentColor"/>
+                        </svg>
+                        <span>${session.venue}</span>
+                      </span>
+                    </div>
+
+                    <h3 class="font-serif text-lg sm:text-xl font-bold text-meghna leading-snug">
+                      আলোচিত বিষয়: ${session.topic}
+                    </h3>
+
+                    <p class="text-ink/90 text-base sm:text-[17.5px] leading-relaxed">
+                      ${session.summary}
+                    </p>
+                  </div>
+
+                  <div class="shrink-0">
+                    <button
+                      type="button"
+                      onclick="openReadingModal(${originalIdx})"
+                      class="btn-shimmer w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[48px] rounded-full bg-brass hover:brightness-95 text-white font-semibold text-base shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
+                    >
+                      <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M2 6s3-1.5 6-1.5S12 6 12 6v13s-1-1.5-4-1.5S2 19 2 19V6z"/>
+                        <path d="M22 6s-3-1.5-6-1.5S12 6 12 6v13s1-1.5 4-1.5 6 1.5 6 1.5V6z"/>
+                      </svg>
+                      <span>বিস্তারিত আলোচনা পড়ুন ↗</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              ${connectorSvg}
+            </article>
+          `;
+        })
+        .join('');
+
+      attachPolaroid3DTilt(container);
+      if (!immediateVisible) initScrollReveal();
+    }
+
+    function initScrollReveal() {
+      const elements = document.querySelectorAll('.reveal-session');
+      if (!('IntersectionObserver' in window) || prefersReducedMotion) {
+        elements.forEach((el) => el.classList.add('is-visible'));
+        return;
+      }
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.09, rootMargin: '0px 0px -30px 0px' }
+      );
+      elements.forEach((el) => observer.observe(el));
+    }
+
+    function initSectionSpy() {
+      const sections = [
+        { id: 'home', label: 'হোম' },
+        { id: 'about', label: 'আমাদের গল্প' },
+        { id: 'members', label: 'সদস্যবৃন্দ' },
+        { id: 'ahmed-sofa', label: 'আহমদ ছফা উৎসব' },
+        { id: 'storyboard', label: 'পাঠচক্র' },
+        { id: 'contact', label: 'যোগাযোগ' }
+      ];
+      const navLinks = document.querySelectorAll('.nav-link');
+      const activeChapterPill = document.getElementById('activeChapterPill');
+
+      const spyObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              const match = sections.find((s) => s.id === id);
+              if (match && activeChapterPill) activeChapterPill.textContent = match.label;
+              navLinks.forEach((link) => {
+                const isActive = link.dataset.nav === id;
+                link.classList.toggle('border-brass', isActive);
+                link.classList.toggle('text-petrol', isActive);
+                link.classList.toggle('font-semibold', isActive);
+                link.classList.toggle('border-transparent', !isActive);
+              });
+            }
+          });
+        },
+        { rootMargin: '-25% 0px -55% 0px' }
+      );
+      sections.forEach((s) => {
+        const el = document.getElementById(s.id);
+        if (el) spyObserver.observe(el);
+      });
+    }
+
+    function initRotaryScrollWheel() {
+      const spokesEl = document.getElementById('rotaryWheelSpokes');
+      const progressCircle = document.getElementById('rotaryProgressCircle');
+      const percentLabel = document.getElementById('wheelPercentLabel');
+      const menuPercentLabel = document.getElementById('wheelMenuPercent');
+      const topProgressBar = document.getElementById('topProgressBar');
+      const topBookmarkMarker = document.getElementById('topBookmarkMarker');
+      const rotaryWheelBtn = document.getElementById('rotaryScrollWheel');
+      const wheelMenuToggle = document.getElementById('wheelMenuToggle');
+      const wheelChapterMenu = document.getElementById('wheelChapterMenu');
+      const wheelChapterLinks = document.getElementById('wheelChapterLinks');
+      const parallaxEls = document.querySelectorAll('[data-parallax]');
+
+      const circumference = 2 * Math.PI * 44;
+
+      const chapterItems = [
+        { href: '#home', label: 'হোম (সূচনা)' },
+        { href: '#about', label: 'আমাদের গল্প ও পরিচিতি' },
+        { href: 'members.html', label: 'সকল সদস্যবৃন্দ (আলাদা পেজ)' },
+        { href: '#ahmed-sofa', label: 'আহমদ ছফা উৎসব' },
+        ...pathchokroSessions.map((s) => ({
+          href: `#${s.id}`,
+          label: `${s.number}: ${s.topic}`
+        })),
+        { href: '#contact', label: 'যোগাযোগ' }
+      ];
+
+      wheelChapterLinks.innerHTML = chapterItems
+        .map(
+          (item) => `
+          <a
+            href="${item.href}"
+            class="wheel-chapter-link block px-2.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-ink/90 hover:bg-parchment hover:text-petrol truncate transition-colors"
+            title="${item.label}"
+          >
+            ${item.label}
+          </a>
+        `
+        )
+        .join('');
+
+      let ticking = false;
+
+      function updateScrollWheel() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
+        const percent = Math.round(progress * 100);
+
+        if (spokesEl && !prefersReducedMotion) spokesEl.style.transform = `rotate(${progress * 720}deg)`;
+        if (progressCircle) progressCircle.style.strokeDashoffset = String(circumference - progress * circumference);
+        if (topProgressBar) topProgressBar.style.width = `${percent}%`;
+        if (topBookmarkMarker) topBookmarkMarker.style.opacity = percent > 2 && percent < 99 ? '1' : '0';
+
+        const bnPercent = `${toBanglaDigits(percent)}%`;
+        if (percentLabel) percentLabel.textContent = bnPercent;
+        if (menuPercentLabel) menuPercentLabel.textContent = bnPercent;
+
+        if (!prefersReducedMotion && window.innerWidth >= 640 && scrollTop < 850) {
+          parallaxEls.forEach((el) => {
+            const speed = parseFloat(el.dataset.parallax || '0');
+            el.style.transform = `translate3d(0, ${scrollTop * speed}px, 0)`;
+          });
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) { window.requestAnimationFrame(updateScrollWheel); ticking = true; }
+      }, { passive: true });
+
+      rotaryWheelBtn.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        window.scrollBy({ top: e.deltaY * 1.4, behavior: 'auto' });
+      }, { passive: false });
+
+      let isDraggingWheel = false, dragStartY = 0, dragMoved = false;
+
+      rotaryWheelBtn.addEventListener('pointerdown', (e) => {
+        isDraggingWheel = true;
+        dragStartY = e.clientY;
+        dragMoved = false;
+        rotaryWheelBtn.setPointerCapture(e.pointerId);
+      });
+
+      rotaryWheelBtn.addEventListener('pointermove', (e) => {
+        if (!isDraggingWheel) return;
+        const deltaY = e.clientY - dragStartY;
+        if (Math.abs(deltaY) > 4) dragMoved = true;
+        if (dragMoved) {
+          dragStartY = e.clientY;
+          window.scrollBy({ top: deltaY * 6, behavior: 'auto' });
+        }
+      });
+
+      rotaryWheelBtn.addEventListener('pointerup', (e) => {
+        if (!isDraggingWheel) return;
+        isDraggingWheel = false;
+        rotaryWheelBtn.releasePointerCapture(e.pointerId);
+        if (!dragMoved) window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      wheelMenuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = wheelChapterMenu.classList.contains('hidden');
+        wheelChapterMenu.classList.toggle('hidden');
+        wheelMenuToggle.setAttribute('aria-expanded', String(isHidden));
+      });
+
+      document.querySelectorAll('.wheel-chapter-link').forEach((link) => {
+        link.addEventListener('click', () => {
+          wheelChapterMenu.classList.add('hidden');
+          wheelMenuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!document.getElementById('rotaryWheelContainer').contains(e.target)) {
+          wheelChapterMenu.classList.add('hidden');
+          wheelMenuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      updateScrollWheel();
+    }
+
+    // Lightbox Modal
+    let currentLightboxItems = [], currentLightboxIndex = 0, isLightboxZoomed = false;
+    const lightboxEl = document.getElementById('photoLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxFilmstrip = document.getElementById('lightboxFilmstrip');
+    const lightboxSwipeArea = document.getElementById('lightboxSwipeArea');
+
+    function openLightbox(collectionKey, index) {
+      if (collectionKey === 'ahmed-sofa') {
+        currentLightboxItems = ahmedSofaImages;
+      } else {
+        const session = pathchokroSessions.find((s) => s.id === collectionKey);
+        if (!session) return;
+        currentLightboxItems = session.images.map((src, i) => ({
+          src,
+          caption: `${session.number} — ${session.topic} (ছবি ${toBanglaDigits(i + 1)})`
+        }));
+      }
+      currentLightboxIndex = index;
+      isLightboxZoomed = false;
+      lightboxImg.style.transform = 'scale(1)';
+      renderLightboxFilmstrip();
+      updateLightboxView();
+      lightboxEl.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderLightboxFilmstrip() {
+      if (currentLightboxItems.length <= 1) { lightboxFilmstrip.innerHTML = ''; return; }
+      lightboxFilmstrip.innerHTML = currentLightboxItems
+        .map((item, i) => `
+          <button
+            type="button"
+            onclick="jumpLightboxTo(${i})"
+            class="w-11 h-11 rounded-lg overflow-hidden border-2 shrink-0 transition-all cursor-pointer ${
+              i === currentLightboxIndex ? 'border-brass scale-105 opacity-100' : 'border-transparent opacity-55 hover:opacity-90'
+            }"
+            aria-label="ছবি ${toBanglaDigits(i + 1)}"
+          >
+            <img src="${item.src}" alt="" class="w-full h-full object-cover" />
+          </button>
+        `)
+        .join('');
+    }
+
+    function jumpLightboxTo(idx) {
+      currentLightboxIndex = idx;
+      isLightboxZoomed = false;
+      lightboxImg.style.transform = 'scale(1)';
+      updateLightboxView();
+    }
+
+    function updateLightboxView() {
+      const item = currentLightboxItems[currentLightboxIndex];
+      if (!item) return;
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.caption;
+      lightboxCaption.textContent = item.caption;
+      lightboxCounter.textContent = `ছবি ${toBanglaDigits(currentLightboxIndex + 1)} / ${toBanglaDigits(currentLightboxItems.length)}`;
+      renderLightboxFilmstrip();
+    }
+
+    function toggleLightboxZoom() {
+      isLightboxZoomed = !isLightboxZoomed;
+      lightboxImg.style.transform = isLightboxZoomed ? 'scale(1.45)' : 'scale(1)';
+      lightboxImg.classList.toggle('cursor-zoom-out', isLightboxZoomed);
+      lightboxImg.classList.toggle('cursor-zoom-in', !isLightboxZoomed);
+    }
+
+    function closeLightbox() {
+      lightboxEl.classList.add('hidden');
+      isLightboxZoomed = false;
+      lightboxImg.style.transform = 'scale(1)';
+      document.body.style.overflow = '';
+    }
+
+    function prevLightboxPhoto() {
+      if (!currentLightboxItems.length) return;
+      currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxItems.length) % currentLightboxItems.length;
+      isLightboxZoomed = false;
+      lightboxImg.style.transform = 'scale(1)';
+      updateLightboxView();
+    }
+
+    function nextLightboxPhoto() {
+      if (!currentLightboxItems.length) return;
+      currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxItems.length;
+      isLightboxZoomed = false;
+      lightboxImg.style.transform = 'scale(1)';
+      updateLightboxView();
+    }
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxZoomBtn').addEventListener('click', toggleLightboxZoom);
+    lightboxImg.addEventListener('click', toggleLightboxZoom);
+    document.getElementById('lightboxPrev').addEventListener('click', prevLightboxPhoto);
+    document.getElementById('lightboxNext').addEventListener('click', nextLightboxPhoto);
+    lightboxEl.addEventListener('click', (e) => { if (e.target === lightboxEl) closeLightbox(); });
+
+    let touchStartX = 0, touchStartY = 0;
+    lightboxSwipeArea.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    lightboxSwipeArea.addEventListener('touchend', (e) => {
+      if (isLightboxZoomed) return;
+      const diffX = e.changedTouches[0].screenX - touchStartX;
+      const diffY = e.changedTouches[0].screenY - touchStartY;
+      if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX < 0) nextLightboxPhoto();
+        else prevLightboxPhoto();
+      } else if (diffY > 85 && Math.abs(diffY) > Math.abs(diffX)) closeLightbox();
+    }, { passive: true });
+
+    // Reading Modal
+    let activeSessionIndex = 0, modalFontSize = 18.5, modalIsSerif = false;
+    const readingModal = document.getElementById('readingModal');
+    const modalSessionNumber = document.getElementById('modalSessionNumber');
+    const modalSessionTitle = document.getElementById('modalSessionTitle');
+    const modalSessionDate = document.getElementById('modalSessionDate');
+    const modalSessionVenue = document.getElementById('modalSessionVenue');
+    const modalFullDiscussion = document.getElementById('modalFullDiscussion');
+    const modalReadingBody = document.getElementById('modalReadingBody');
+    const modalPrevSessionBtn = document.getElementById('modalPrevSessionBtn');
+    const modalNextSessionBtn = document.getElementById('modalNextSessionBtn');
+    const fontStyleToggleBtn = document.getElementById('fontStyleToggleBtn');
+
+    function openReadingModal(sessionIndex) {
+      activeSessionIndex = sessionIndex;
+      const session = pathchokroSessions[sessionIndex];
+      if (!session) return;
+
+      modalSessionNumber.textContent = session.number;
+      modalSessionTitle.textContent = session.topic;
+      modalSessionDate.textContent = `তারিখ ও সময়: ${session.dateTime}`;
+      modalSessionVenue.innerHTML = `
+        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-brass inline shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z"/>
+          <circle cx="12" cy="11" r="2.5"/>
+        </svg>
+        <span>স্থান: ${session.venue}</span>
+      `;
+
+      modalFullDiscussion.innerHTML = session.fullDiscussion
+        .split('\n')
+        .filter(Boolean)
+        .map((para) => `<p>${para}</p>`)
+        .join('');
+
+      modalPrevSessionBtn.disabled = sessionIndex === 0;
+      modalPrevSessionBtn.classList.toggle('opacity-40', sessionIndex === 0);
+      modalPrevSessionBtn.classList.toggle('pointer-events-none', sessionIndex === 0);
+
+      const isLast = sessionIndex === pathchokroSessions.length - 1;
+      modalNextSessionBtn.disabled = isLast;
+      modalNextSessionBtn.classList.toggle('opacity-40', isLast);
+      modalNextSessionBtn.classList.toggle('pointer-events-none', isLast);
+
+      readingModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeReadingModalFn() {
+      readingModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('fontIncreaseBtn').addEventListener('click', () => {
+      modalFontSize = Math.min(modalFontSize + 2, 24);
+      modalReadingBody.style.fontSize = `${modalFontSize}px`;
+    });
+
+    document.getElementById('fontDecreaseBtn').addEventListener('click', () => {
+      modalFontSize = Math.max(modalFontSize - 2, 16);
+      modalReadingBody.style.fontSize = `${modalFontSize}px`;
+    });
+
+    fontStyleToggleBtn.addEventListener('click', () => {
+      modalIsSerif = !modalIsSerif;
+      modalReadingBody.classList.toggle('font-serif', modalIsSerif);
+      modalReadingBody.classList.toggle('font-sans', !modalIsSerif);
+      fontStyleToggleBtn.textContent = modalIsSerif ? 'সাধারণ' : 'সেরিফ';
+    });
+
+    document.getElementById('closeReadingModal').addEventListener('click', closeReadingModalFn);
+    document.getElementById('modalBottomCloseBtn').addEventListener('click', closeReadingModalFn);
+    readingModal.addEventListener('click', (e) => { if (e.target === readingModal) closeReadingModalFn(); });
+    modalPrevSessionBtn.addEventListener('click', () => { if (activeSessionIndex > 0) openReadingModal(activeSessionIndex - 1); });
+    modalNextSessionBtn.addEventListener('click', () => { if (activeSessionIndex < pathchokroSessions.length - 1) openReadingModal(activeSessionIndex + 1); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightboxEl.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevLightboxPhoto();
+        if (e.key === 'ArrowRight') nextLightboxPhoto();
+      } else if (!readingModal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeReadingModalFn();
+        if (e.key === 'ArrowLeft' && activeSessionIndex > 0) openReadingModal(activeSessionIndex - 1);
+        if (e.key === 'ArrowRight' && activeSessionIndex < pathchokroSessions.length - 1) openReadingModal(activeSessionIndex + 1);
+      }
+    });
+
+    const toggleSofaBtn = document.getElementById('toggleSofaTextBtn');
+    const sofaExtra = document.getElementById('sofaExtraParagraphs');
+    const toggleSofaLabel = document.getElementById('toggleSofaLabel');
+    const toggleSofaIcon = document.getElementById('toggleSofaIcon');
+
+    toggleSofaBtn.addEventListener('click', () => {
+      const isHidden = sofaExtra.classList.contains('hidden');
+      sofaExtra.classList.toggle('hidden');
+      toggleSofaLabel.textContent = isHidden ? 'সংক্ষিপ্ত করুন' : 'সম্পূর্ণ অনুষ্ঠানের বিবরণ পড়ুন';
+      toggleSofaIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      const expanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      syncThemeUI();
+      initInteractiveLogos();
+      initLiteraryCanvas();
+      renderTopMembers();
+      renderAhmedSofaGallery();
+      renderFilterBar();
+      renderStoryboardTimeline(false);
+      initScrollReveal();
+      initSectionSpy();
+      initRotaryScrollWheel();
+    });
+  </script>
+</body>
+</html>
