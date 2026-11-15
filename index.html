@@ -618,6 +618,8 @@
           <img
             src="images/logo.jpg"
             alt="বইছায়া — বই হোক প্রজ্ঞার বাহন"
+            loading="lazy"
+            decoding="async"
             class="w-full h-auto mx-auto logo-adaptive select-none"
             onerror="this.style.display='none'; document.getElementById('heroLogoFallback').classList.remove('hidden');"
           />
@@ -1229,6 +1231,7 @@
             src="images/logo.jpg"
             alt="বইছায়া লোগো"
             loading="lazy"
+            decoding="async"
             class="w-12 h-12 object-contain logo-adaptive"
             onerror="this.style.display='none'"
           />
@@ -1412,6 +1415,8 @@
           id="lightboxImg"
           src=""
           alt="পাঠচক্রের স্থিরচিত্র"
+          loading="lazy"
+          decoding="async"
           class="max-h-[62vh] sm:max-h-[66vh] w-auto object-contain rounded-lg select-none transition-transform duration-300 cursor-zoom-in"
         />
       </div>
@@ -1704,6 +1709,7 @@
                   src="${member.photo}"
                   alt="${member.name}"
                   loading="lazy"
+                  decoding="async"
                   class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   onerror="handlePhotoError(this, '${member.name}')"
                 />
@@ -1967,6 +1973,7 @@
                     src="${item.src}"
                     alt="${item.caption}"
                     loading="lazy"
+                    decoding="async"
                     class="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     onerror="handlePhotoError(this, 'আহমদ ছফা উৎসব • ছবি ${toBanglaDigits(idx + 1)}')"
                   />
@@ -2060,6 +2067,7 @@
               src="${imgSrc}"
               alt="${sessionNumber}: ${topic} (ছবি ${toBanglaDigits(imgIdx + 1)})"
               loading="lazy"
+              decoding="async"
               class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               onerror="handlePhotoError(this, '${sessionNumber} • ছবি ${toBanglaDigits(imgIdx + 1)}')"
             />
@@ -2452,7 +2460,7 @@
             }"
             aria-label="ছবি ${toBanglaDigits(i + 1)}"
           >
-            <img src="${item.src}" alt="" loading="lazy" class="w-full h-full object-cover" />
+            <img src="${item.src}" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover" />
           </button>
         `)
         .join('');

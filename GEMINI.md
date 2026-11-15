@@ -87,5 +87,5 @@ This project is actively evolving. You are encouraged to build and integrate new
 ## 7. Automatic Image Compression & Performance Rules
 - **Auto-Compress Before Push:** Always run `python compress.py` before committing or pushing changes whenever new images are added or modified inside `images/`.
 - **Keep Filenames & Extensions Intact:** Compress `.jpg`/`.jpeg`/`.png` files in place without changing their filenames or extensions so existing HTML paths never break.
-- **Size Limits:** Resize member portraits (`images/members/`) to max `600px` width and event/session photos to max `1600px` width at `80%` JPEG quality.
+- **Size Limits:** Resize member portraits (`images/members/`) to max `400px` width and event/session photos to max `1000px` width at `72%` JPEG quality.
 - **Lazy Loading:** Ensure below-the-fold `<img>` tags in `index.html` and `members.html` include `loading="lazy"`.

@@ -426,6 +426,7 @@
                         src="${member.photo}"
                         alt="${member.name}"
                         loading="lazy"
+                        decoding="async"
                         class="w-full h-full object-cover"
                         onerror="handlePhotoError(this, '${member.name}')"
                       />
