@@ -387,6 +387,67 @@
     }
     .modal-animate { animation: modalSpringIn 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 
+    /* Hardcover Book Cover Styling */
+    .book-cover-card {
+      position: relative;
+      background-color: var(--bg-card);
+      border-radius: 4px 18px 18px 4px;
+      border: 1px solid rgba(14, 130, 142, 0.24);
+      box-shadow: 
+        -2px 0 0 0 rgba(8, 84, 93, 0.45),
+        4px 4px 16px rgba(0, 0, 0, 0.08),
+        10px 14px 28px -6px rgba(8, 84, 93, 0.18);
+      transition: transform 0.32s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.32s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .book-cover-card:hover {
+      transform: translateY(-7px) scale(1.012);
+      box-shadow: 
+        -3px 0 0 0 var(--accent-brass),
+        6px 8px 22px rgba(0, 0, 0, 0.12),
+        16px 20px 38px -6px rgba(8, 84, 93, 0.28);
+    }
+    .book-spine {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 24px;
+      background: linear-gradient(to right, rgba(8, 84, 93, 0.3) 0%, rgba(198, 139, 63, 0.45) 45%, rgba(8, 84, 93, 0.12) 80%, transparent 100%);
+      border-right: 1.5px solid rgba(198, 139, 63, 0.55);
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .book-spine::after {
+      content: "";
+      position: absolute;
+      right: 2px;
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: repeating-linear-gradient(to bottom, rgba(198, 139, 63, 0.75), rgba(198, 139, 63, 0.75) 4px, transparent 4px, transparent 8px);
+    }
+    .book-pages-edge {
+      position: absolute;
+      right: 0;
+      top: 4px;
+      bottom: 4px;
+      width: 8px;
+      background: repeating-linear-gradient(to bottom, #FAF6EE, #FAF6EE 2px, #E8DFC8 3px, #FAF6EE 4px);
+      border-left: 1px solid rgba(0, 0, 0, 0.08);
+      border-top-right-radius: 14px;
+      border-bottom-right-radius: 14px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+    html.dark .book-pages-edge {
+      background: repeating-linear-gradient(to bottom, #16282D, #16282D 2px, #112024 3px, #16282D 4px);
+      opacity: 0.65;
+    }
+
     @keyframes wheelPulse {
       0%, 100% { box-shadow: 0 10px 28px rgba(8, 84, 93, 0.24), 0 0 0 0 rgba(198, 139, 63, 0.3); }
       50% { box-shadow: 0 12px 32px rgba(8, 84, 93, 0.34), 0 0 0 8px rgba(198, 139, 63, 0); }
@@ -461,7 +522,7 @@
           <a href="members.html" data-nav="members" class="nav-link hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent inline-flex items-center gap-1">
             <span>সদস্যবৃন্দ</span>
           </a>
-          <a href="#storyboard" data-nav="storyboard" class="nav-link hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">পাঠচক্র</a>
+          <a href="pathchokro.html" class="nav-link hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">পাঠচক্র</a>
           <a href="#contact" data-nav="contact" class="nav-link hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">যোগাযোগ</a>
         </nav>
 
@@ -536,9 +597,12 @@
             </span>
             <span class="text-xs px-2.5 py-0.5 rounded-full bg-brass/15 text-brass font-semibold">আলাদা পেজ ↗</span>
           </a>
-          <a href="#storyboard" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-parchment hover:text-petrol flex items-center gap-2.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-meghna"></span>
-            <span>পাঠচক্র</span>
+          <a href="pathchokro.html" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-parchment hover:text-petrol flex items-center justify-between">
+            <span class="flex items-center gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-meghna"></span>
+              <span>পাঠচক্র</span>
+            </span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-brass/15 text-brass font-semibold">সংগ্রহ পেজ ↗</span>
           </a>
           <a href="#contact" class="mobile-nav-link px-3.5 py-2.5 rounded-xl hover:bg-parchment hover:text-petrol flex items-center gap-2.5">
             <span class="w-1.5 h-1.5 rounded-full bg-brass"></span>
@@ -1048,14 +1112,14 @@
   </section>
 
   <!-- =====================================================================
-       6. পাঠচক্র স্টোরিবোর্ড (Pathchokro Storyboard)
+       6. পাঠচক্র শোকেস (Unified Pathchokro Showcase)
   ====================================================================== -->
-  <section id="storyboard" class="py-16 sm:py-24 relative overflow-hidden scroll-mt-16">
+  <section id="storyboard" class="py-16 sm:py-24 relative overflow-hidden scroll-mt-16 bg-parchment/35 border-t border-meghna/15">
     <span class="hidden lg:block absolute top-20 right-10 font-literary text-5xl text-meghna bangla-whisper pointer-events-none" aria-hidden="true">পাঠ</span>
 
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12 reveal-session">
-        <div class="text-xs sm:text-sm font-serif font-semibold text-brass mb-1.5" aria-hidden="true">পরিচ্ছেদ ০৪ • পাঠ-সংকলন</div>
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-14 reveal-session">
+        <div class="text-xs sm:text-sm font-serif font-semibold text-brass mb-1.5" aria-hidden="true">পরিচ্ছেদ ০৪ • পাঠচক্র শোকেস</div>
         <div class="inline-flex items-center justify-center gap-2.5 mb-2">
           <svg class="w-6 h-6 text-meghna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M2 5s3-1.5 6-1.5S12 5 12 5v14s-1-1.5-4-1.5S2 19 2 19V5z"/>
@@ -1064,16 +1128,129 @@
           <span class="font-serif font-bold text-petrol text-lg">বইছায়া</span>
         </div>
         <h2 class="font-serif text-3xl sm:text-4xl font-bold text-petrol">
-          আমাদের কার্যক্রম / পাঠচক্র স্টোরিবোর্ড
+          বইছায়া পাঠচক্রের আসর ও জ্ঞানচর্চা
         </h2>
-        <p class="text-ink/85 text-base sm:text-[17.5px] mt-2.5">
-          হাতে গড়া ফ্রেমে বন্দি আমাদের প্রতিটি পাঠচক্রের গল্প। ছবিতে ক্লিক করে বড় করে দেখুন অথবা প্রতিটি আসরের পূর্ণাঙ্গ আলোচনা পড়ুন।
+        <p class="text-ink/85 text-base sm:text-[17.5px] mt-2.5 leading-relaxed">
+          মেঘনা-ডাকাতিয়া নদীর তীরে সাহিত্য, দর্শন, ইতিহাস ও সমকালীন সমাজবাস্তবতা নিয়ে আমাদের নিয়মিত বুদ্ধিবৃত্তিক আসর।
         </p>
         <div class="w-24 h-0.5 bg-brass mx-auto mt-4 rounded-full editorial-rule"></div>
       </div>
 
-      <div id="storyboardFilterBar" class="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-12 sm:mb-14 reveal-session" role="tablist" aria-label="পাঠচক্র ফিল্টার"></div>
-      <div id="storyboardTimeline" class="space-y-6"></div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center reveal-session">
+        <!-- Left: Brief Overview of Boichaya's Pathchokro series -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-brass bg-brass/15 px-3.5 py-1.5 rounded-full border border-brass/30">
+            <span>নিয়মিত পাঠচর্চা ও বই বিনিময় পরিবার</span>
+          </div>
+
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold text-petrol leading-snug">
+            চিন্তার স্বাধীনতা ও সত্যের মুখোমুখি হওয়ার মুক্ত প্রাঙ্গণ
+          </h3>
+
+          <p class="text-base sm:text-[17.5px] text-ink/90 leading-relaxed font-sans">
+            চাঁদপুর সরকারি কলেজ মাঠ, বড়স্টেশন মোলহেড কিংবা দর্জি ঘাটের মুক্ত প্রকৃতির কোলে বইছায়ার পাঠচক্র নিয়মিত বসে। কঠিন বা স্পর্শকাতর প্রশ্নকে এড়িয়ে না গিয়ে তথ্য, যুক্তি ও পারস্পরিক শ্রদ্ধাবোধের মধ্য দিয়ে গভীর বোঝাপড়াই আমাদের পাঠচক্রের মূল শক্তি।
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-4 rounded-2xl bg-cardpaper border border-meghna/20 shadow-2xs space-y-1.5">
+              <div class="flex items-center gap-2 font-serif font-bold text-petrol text-base">
+                <svg class="w-5 h-5 text-brass shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+                <span>সাপ্তাহিক ও বিশেষ আসর</span>
+              </div>
+              <p class="text-xs sm:text-sm text-ink/75 leading-relaxed">
+                সাহিত্য, দর্শন, সংবিধান ও আন্তর্জাতিক ভূ-রাজনীতির গভীর তাত্ত্বিক বিশ্লেষণ।
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-cardpaper border border-meghna/20 shadow-2xs space-y-1.5">
+              <div class="flex items-center gap-2 font-serif font-bold text-petrol text-base">
+                <svg class="w-5 h-5 text-meghna shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                </svg>
+                <span>বই বিনিময় ও বুক রিভিউ</span>
+              </div>
+              <p class="text-xs sm:text-sm text-ink/75 leading-relaxed">
+                পঠিত বই ফেরত দিয়ে সহপাঠকদের কাছ থেকে নতুন বই গ্রহণের উন্মুক্ত ব্যবস্থা।
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-2 flex flex-wrap items-center gap-4">
+            <a
+              href="pathchokro.html"
+              class="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 min-h-[46px] rounded-full bg-petrol hover:bg-meghna text-white font-semibold text-sm sm:text-base shadow-md transition-all group"
+            >
+              <span>সকল পাঠচক্র পড়ুন (১৮তম–৮ম আসর)</span>
+              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+            <span class="text-xs sm:text-sm text-ink/70 font-medium">
+              সর্বমোট ৭টি বিস্তারিত নিবন্ধ ও অ্যালবাম
+            </span>
+          </div>
+        </div>
+
+        <!-- Right: Tactile Hardcover Book Cover Preview Card of 18th Session -->
+        <div class="lg:col-span-5 flex justify-center">
+          <a
+            href="pathchokro.html#pc-18"
+            class="book-cover-card group p-5 pl-7 sm:pl-8 pb-6 w-full max-w-md block"
+            aria-label="১৮তম পাঠচক্রটি পড়ুন — হুমায়ূন আহমেদ, পাঠপদ্ধতি ও তাৎপর্য"
+          >
+            <!-- Left Spine Crease -->
+            <div class="book-spine" aria-hidden="true"></div>
+            <!-- Right Page Edge -->
+            <div class="book-pages-edge" aria-hidden="true"></div>
+
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="inline-block text-xs font-bold text-brass bg-brass/15 px-3 py-1 rounded-full border border-brass/30">
+                ১৮তম পাঠচক্র • সর্বশেষ আসর
+              </span>
+              <span class="text-xs font-semibold text-petrol/75">
+                বড়স্টেশন, চাঁদপুর
+              </span>
+            </div>
+
+            <div class="aspect-[16/10] w-full rounded-lg overflow-hidden bg-parchment border border-meghna/20 mb-4 shadow-inner relative">
+              <img
+                src="images/pc-18/1.jpg"
+                alt="১৮তম পাঠচক্র: হুমায়ূন আহমেদ: পাঠপদ্ধতি ও তাৎপর্য"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                onerror="handlePhotoError(this, '১৮তম পাঠচক্র')"
+              />
+              <span class="absolute bottom-2 right-2 text-[11px] font-bold text-white bg-petrol/85 px-2.5 py-0.5 rounded-full shadow-xs">
+                সর্বশেষ স্মৃতিচিত্র
+              </span>
+            </div>
+
+            <div class="grow flex flex-col">
+              <h4 class="font-serif text-xl sm:text-2xl font-bold text-petrol leading-snug group-hover:text-meghna transition-colors">
+                হুমায়ূন আহমেদ: পাঠপদ্ধতি ও তাৎপর্য
+              </h4>
+              <p class="font-sans text-sm sm:text-[15.5px] text-ink/80 leading-relaxed line-clamp-2 mt-2">
+                কিছু লেখককে আমরা এত সহজে পড়ে ফেলি যে ভুলে যাই, পড়ারও একটা পদ্ধতি আছে। হুমায়ূন আহমেদ ঠিক তেমন একজন...
+              </p>
+            </div>
+
+            <div class="mt-5 pt-3.5 border-t border-meghna/15 flex items-center justify-between gap-2">
+              <span class="text-xs text-ink/65 font-medium">
+                ১৩ নভেম্বর ২০২৬, শুক্রবার
+              </span>
+              <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-petrol bg-parchment group-hover:bg-brass group-hover:text-white px-3.5 py-1.5 rounded-full border border-brass/40 transition-all shadow-2xs shrink-0">
+                <span>পাঠচক্রটি খুলুন</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 

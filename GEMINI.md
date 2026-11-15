@@ -5,8 +5,9 @@
 - **Tech Stack:** Pure static HTML5, Tailwind CSS (via CDN), and Vanilla JavaScript (no Node.js, React, or build step).
 - **Deployment:** Static hosting on Netlify (`index.html` as the root entry point).
 - **Current Files:**
-  - `index.html` — Main landing page (Navbar, Hero, About, Members Swipe Carousel, Ahmed Sofa 83rd Birth Anniversary section, Pathchokro Storyboard, Contact section, Lightbox & Reading Modals).
+  - `index.html` — Main landing page (Navbar, Hero, About, Members Swipe Carousel, Ahmed Sofa 83rd Birth Anniversary section, Unified Pathchokro Showcase, Contact section, Lightbox & Modals).
   - `members.html` — Standalone full members directory page.
+  - `pathchokro.html` — Standalone Pathchokro collection archive page (tactile hardcover book-cover cards, interactive book-reading modal with hash routing `#pc-[number]`, and session photo albums).
   - `images/` — Local static assets (`logo.jpg`, `ahmed-safa/`, `members/`, `pc-8/` through `pc-18/`).
 
 ---
@@ -70,22 +71,39 @@ This project is actively evolving. You are encouraged to build and integrate new
 ---
 
 ## 5. Member Directory & Image Naming Standards
-1. **Synchronize `boichayaMembers`:** Both `index.html` (homepage horizontal swipe carousel) and `members.html` (line-by-line full directory) use the `boichayaMembers` JavaScript array. Whenever adding, reordering, or editing members or their designations (`roleBadge`), update `boichayaMembers` identically in **both** files.
-2. **Member Photo Naming Convention (`images/members/`):**
-   - Name member photos using lowercase English letters with hyphens instead of spaces (e.g., `abu-bakar-siddik.jpg`). Never use spaces or Bangla characters in filenames.
-3. **Current Canonical Members & Designations:**
-  ## 5. Member Directory & Image Naming Standards
 1. **Dual-File Synchronization:** Whenever adding, removing, reordering, or editing members or their designations (`roleBadge`), update the `boichayaMembers` JavaScript array identically in **both** `index.html` and `members.html`.
 2. **Member Photo Naming Convention (`images/members/`):** Name all member photos using lowercase English letters with hyphens instead of spaces (e.g., `abu-bakar-siddik.jpg`). Never use spaces or Bangla characters in filenames.
 3. **Single Source of Truth:** Treat the `boichayaMembers` array inside `index.html` and `members.html` as the live member list—always follow the user's latest prompt when updating member bios, join dates, or designations.
 
 ---
 
-## 6. Safe Editing Workflow
-- **Surgical Edits on Existing Files:** When updating `index.html` or `members.html`, modify only the targeted sections or arrays—never rewrite an entire existing HTML file from scratch unless explicitly asked.
+## 6. Pathchokro Collection & Book-Cover Architecture Standards
+1. **Navbar Synchronization Across All Pages:** The top navigation link "পাঠচক্র" must point to `pathchokro.html` in the same tab (`target="_self"` / no `target="_blank"`) across `index.html`, `members.html`, and `pathchokro.html`.
+2. **Tactile Hardcover Book-Cover Card Design:**
+   - Both `pathchokro.html` (full archive) and `index.html` (homepage showcase preview card) must render Pathchokro cards with the tactile hardcover book aesthetic.
+   - Required styling elements:
+     - Left spine crease (`.book-spine` with vertical binding gradient and stitched accents).
+     - Right page-edge layered shadow (`.book-pages-edge`).
+     - Session badge (e.g., "১৮তম পাঠচক্র • ১৩ নভেম্বর ২০২৬") and venue indicator.
+     - Cover image from `images/pc-[number]/1.jpg` with `loading="lazy" decoding="async"`.
+     - Bold Bangla serif title (`font-serif font-bold text-petrol`).
+     - Short 2-line excerpt (`line-clamp-2 text-ink/80`).
+     - "পাঠচক্রটি পড়ুন" action button with open-book icon.
+3. **Interactive Reading Modal & URL Hash Routing:**
+   - Clicking any book card opens a clean, responsive reading modal displaying the full UTF-8 Bangla article with styled subheadings (`কেন এই বিষয়?`, `পটভূমি: কিছু তথ্য`, `আসরে`, `কৃতজ্ঞতা`, etc.).
+   - Multi-photo sessions (e.g., `images/pc-10/1.jpg`–`5.jpg`, `images/pc-16/1.jpg`–`3.jpg`, `images/pc-15/1.jpg`–`2.jpg`) must display full polaroid photo albums inside the modal.
+   - URL hash routing (`#pc-18`, `#pc-17`, etc.) must automatically open the targeted session on page load and update browser history cleanly.
+
+---
+
+## 7. Safe Editing Workflow
+- **Surgical Edits on Existing Files:** When updating `index.html`, `members.html`, or `pathchokro.html`, modify only the targeted sections or arrays—never rewrite an entire existing HTML file from scratch unless explicitly asked.
 - **Confirm Before Batch File Renames:** Before renaming files inside `images/` on disk, show the list of old and new filenames and wait for user approval.
-## 7. Automatic Image Compression & Performance Rules
+
+---
+
+## 8. Automatic Image Compression & Performance Rules
 - **Auto-Compress Before Push:** Always run `python compress.py` before committing or pushing changes whenever new images are added or modified inside `images/`.
 - **Keep Filenames & Extensions Intact:** Compress `.jpg`/`.jpeg`/`.png` files in place without changing their filenames or extensions so existing HTML paths never break.
-- **Size Limits:** Resize member portraits (`images/members/`) to max `400px` width and event/session photos to max `1000px` width at `72%` JPEG quality.
-- **Lazy Loading:** Ensure below-the-fold `<img>` tags in `index.html` and `members.html` include `loading="lazy"`.
+- **Size Limits:** Resize member portraits (`images/members/`) to max `400px` width, `images/logo.jpeg` to max `300px` width, and event/session photos to max `1000px` width at `72%` JPEG quality.
+- **Lazy Loading & Async Decoding:** Ensure all below-the-fold `<img>` tags across `index.html`, `members.html`, and `pathchokro.html` include `loading="lazy" decoding="async"`.
