@@ -5,9 +5,10 @@
 - **Tech Stack:** Pure static HTML5, Tailwind CSS (via CDN), and Vanilla JavaScript (no Node.js, React, or build step).
 - **Deployment:** Static hosting on Netlify (`index.html` as the root entry point).
 - **Current Files:**
-  - `index.html` — Main landing page (Navbar, Hero, About, Members Swipe Carousel, Ahmed Sofa 83rd Birth Anniversary section, Unified Pathchokro Showcase, Contact section, Lightbox & Modals).
+  - `index.html` — Main landing page (Navbar, Hero, About, Members Swipe Carousel, Major Events Showcase with 3-photo collage linking to `events.html`, Unified Pathchokro Showcase, Contact section, Lightbox & Modals).
   - `members.html` — Standalone full members directory page.
   - `pathchokro.html` — Standalone Pathchokro collection archive page (tactile hardcover book-cover cards, interactive book-reading modal with hash routing `#pc-[number]`, and session photo albums).
+  - `events.html` — Standalone Major Events archive page (special seminars, full literary descriptions, speaker highlights, 15-photo gallery grid, and mobile-friendly full-screen lightbox viewer).
   - `images/` — Local static assets (`logo.jpg`, `ahmed-safa/`, `members/`, `pc-8/` through `pc-18/`).
 
 ---
@@ -79,7 +80,7 @@ This project is actively evolving. You are encouraged to build and integrate new
 ---
 
 ## 6. Pathchokro Collection & Book-Cover Architecture Standards
-1. **Navbar Synchronization Across All Pages:** The top navigation link "পাঠচক্র" must point to `pathchokro.html` in the same tab (`target="_self"` / no `target="_blank"`) across `index.html`, `members.html`, and `pathchokro.html`.
+1. **Navbar Synchronization Across All Pages:** The top navigation link "পাঠচক্র" must point to `pathchokro.html` in the same tab (`target="_self"` / no `target="_blank"`) across all pages (`index.html`, `members.html`, `pathchokro.html`, and `events.html`).
 2. **Tactile Hardcover Book-Cover Card Design:**
    - Both `pathchokro.html` (full archive) and `index.html` (homepage showcase preview card) must render Pathchokro cards with the tactile hardcover book aesthetic.
    - Required styling elements:
@@ -97,22 +98,33 @@ This project is actively evolving. You are encouraged to build and integrate new
 
 ---
 
-## 7. Safe Editing Workflow
-- **Surgical Edits on Existing Files:** When updating `index.html`, `members.html`, or `pathchokro.html`, modify only the targeted sections or arrays—never rewrite an entire existing HTML file from scratch unless explicitly asked.
+## 7. Major Events Archive & Gallery Standards (events.html)
+1. **Navbar Synchronization Across All Pages:** The top navigation link "আয়োজনসমূহ" must point to `events.html` in the same tab (`target="_self"` / no `target="_blank"`) across all four files (`index.html`, `members.html`, `pathchokro.html`, and `events.html`).
+2. **`boichayaEvents` Array Architecture:** Store all major event records (seminars, symposiums, birth anniversaries) in the `boichayaEvents` JavaScript array inside `events.html`, containing `id`, `badge`, `title`, `venue`, `quote`, `lead`, `speakers`, `paragraphs`, and `images` objects.
+3. **Gallery Grid & Mobile Lightbox Standards:**
+   - Inside each event section on `events.html`, render the full Bangla description first, followed by the responsive photo gallery grid.
+   - All gallery photo containers must specify explicit aspect ratios (`aspect-[4/3]`), explicit image dimensions (`width="600" height="450"`), and `loading="lazy" decoding="async"`.
+   - Clicking any photo opens the lightweight full-screen lightbox modal equipped with Next, Previous, Close buttons, thumbnail filmstrip, touch-swipe support, and keyboard arrows (`Escape`, `ArrowLeft`, `ArrowRight`).
+4. **Homepage Showcase Synchronization:** When a new major event is added, update the compact "আয়োজনসমূহ" showcase section on `index.html` with its title, a 2-line summary, 3 preview photos, and the direct link button to `events.html` in the same tab.
+
+---
+
+## 8. Safe Editing Workflow
+- **Surgical Edits on Existing Files:** When updating `index.html`, `members.html`, `pathchokro.html`, or `events.html`, modify only the targeted sections or arrays—never rewrite an entire existing HTML file from scratch unless explicitly asked.
 - **Confirm Before Batch File Renames:** Before renaming files inside `images/` on disk, show the list of old and new filenames and wait for user approval.
 
 ---
 
-## 8. Automatic Image Compression & Performance Rules
+## 9. Automatic Image Compression & Performance Rules
 - **Auto-Compress Before Push:** Always run `python compress.py` before committing or pushing changes whenever new images are added or modified inside `images/`.
 - **Keep Filenames & Extensions Intact:** Compress `.jpg`/`.jpeg`/`.png` files in place without changing their filenames or extensions so existing HTML paths never break.
 - **Size Limits:** Resize member portraits (`images/members/`) to max `400px` width, `images/logo.jpeg` to max `300px` width, and event/session photos to max `1000px` width at `72%` JPEG quality.
-- **Lazy Loading & Async Decoding:** Ensure all below-the-fold `<img>` tags across `index.html`, `members.html`, and `pathchokro.html` include `loading="lazy" decoding="async"`.
+- **Lazy Loading & Async Decoding:** Ensure all below-the-fold `<img>` tags across `index.html`, `members.html`, `pathchokro.html`, and `events.html` include `loading="lazy" decoding="async"`.
 
 ---
 
-## 9. Mobile 60fps & Scroll Performance Rules (LOCKED)
-To maintain smooth 60fps scrolling and eliminate GPU compositing bottlenecks on mobile devices across `index.html`, `members.html`, and `pathchokro.html`:
+## 10. Mobile 60fps & Scroll Performance Rules (LOCKED)
+To maintain smooth 60fps scrolling and eliminate GPU compositing bottlenecks on mobile devices across `index.html`, `members.html`, `pathchokro.html`, and `events.html`:
 1. **No Expensive GPU Filters or Fixed Backgrounds:**
    - **Never** use `backdrop-filter: blur(...)` or Tailwind `backdrop-blur-*` on sticky navbars, cards, modals, or floating controls. Always use clean, solid, or high-opacity backgrounds (90–98% opacity) instead.
    - **Never** use `background-attachment: fixed` on mobile screens.

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth text-[17px] sm:text-[18px]">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>আয়োজনসমূহ — বইছায়া (Boichaya) | বিশেষ আয়োজন ও সেমিনার সংগ্রহ</title>
+  <meta name="description" content="বইছায়া (Boichaya) আয়োজিত বিশেষ সেমিনার, সাহিত্য স্মরণসভা ও সাংস্কৃতিক আয়োজনসমূহের পূর্ণাঙ্গ বিবরণ ও স্থিরচিত্র সংগ্রহ।" />
+
+  <!-- Instant Theme Sync with index.html, members.html & pathchokro.html -->
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('boichaya-theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            meghna: 'var(--accent-teal)',
+            petrol: 'var(--accent-petrol)',
+            paper: 'var(--bg-paper)',
+            parchment: 'var(--bg-parchment)',
+            cardpaper: 'var(--bg-card)',
+            ink: 'var(--text-ink)',
+            brass: 'var(--accent-brass)',
+          },
+          fontFamily: {
+            sans: ['"Hind Siliguri"', 'sans-serif'],
+            serif: ['"Noto Serif Bengali"', '"Tiro Bangla"', 'serif'],
+            literary: ['"Tiro Bangla"', '"Noto Serif Bengali"', 'serif'],
+          },
+          boxShadow: {
+            polaroid: '0 4px 12px rgba(8, 84, 93, 0.12)',
+            parchment: '0 6px 16px rgba(8, 84, 93, 0.1)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --accent-teal: #0E828E;
+      --accent-petrol: #08545D;
+      --bg-paper: #FAF6EE;
+      --bg-parchment: #F1E9DC;
+      --bg-card: #FCF9F2;
+      --text-ink: #1E2426;
+      --accent-brass: #C68B3F;
+      --grain-opacity: 0.34;
+    }
+
+    html.dark {
+      --accent-teal: #27B2C2;
+      --accent-petrol: #82DCE6;
+      --bg-paper: #0B1517;
+      --bg-parchment: #112024;
+      --bg-card: #16282D;
+      --text-ink: #F2ECE1;
+      --accent-brass: #E0A354;
+      --grain-opacity: 0.16;
+    }
+
+    [lang="bn"], body, h1, h2, h3, h4, p, span, a, button {
+      letter-spacing: 0 !important;
+      font-feature-settings: "kern" 1, "liga" 1;
+    }
+
+    html, body {
+      background-color: var(--bg-paper);
+      color: var(--text-ink);
+      font-family: 'Hind Siliguri', sans-serif;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    button, a, input, select, textarea, [role="button"] {
+      touch-action: manipulation;
+    }
+
+    @media (max-width: 768px) {
+      *, *::before, *::after {
+        transition-property: transform, opacity !important;
+      }
+    }
+
+    .paper-grain {
+      background-color: var(--bg-paper);
+    }
+
+    .paper-grain::before {
+      display: none !important;
+    }
+
+    .logo-adaptive {
+      mix-blend-mode: multiply;
+    }
+    html.dark .logo-adaptive {
+      mix-blend-mode: normal;
+      background-color: #FAF6EE;
+      border-radius: 1.15rem;
+      padding: 0.45rem;
+    }
+
+    .polaroid-frame {
+      background-color: var(--bg-card);
+      border: 1px solid rgba(14, 130, 142, 0.22);
+      border-radius: 8px;
+      padding: 7px 7px 11px 7px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .polaroid-frame:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(8, 84, 93, 0.15);
+    }
+
+    .brass-tape {
+      position: absolute;
+      width: 48px;
+      height: 12px;
+      background: linear-gradient(135deg, rgba(198, 139, 63, 0.55), rgba(198, 139, 63, 0.35));
+      border: 1px dashed rgba(198, 139, 63, 0.7);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .scroll-wheel-aura {
+      box-shadow: 0 8px 24px rgba(8, 84, 93, 0.2), 0 2px 8px rgba(198, 139, 63, 0.22);
+    }
+  </style>
+</head>
+<body class="paper-grain min-h-screen flex flex-col relative antialiased selection:bg-meghna/20 selection:text-petrol">
+
+  <!-- =====================================================================
+       TOP MASTHEAD NAVBAR
+  ====================================================================== -->
+  <header id="mainHeader" class="sticky top-0 z-40 bg-paper/95 border-b border-meghna/20 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 sm:h-24">
+        <!-- Logo & Brand Name -->
+        <a href="index.html" class="flex items-center gap-3 sm:gap-4 group focus:outline-hidden" aria-label="বইছায়া নীড়পাতা">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden bg-parchment p-1 border border-meghna/30 shadow-xs shrink-0 transition-transform duration-300 group-hover:scale-105">
+            <img
+              src="images/logo.jpeg"
+              alt="বইছায়া লোগো"
+              width="44"
+              height="44"
+              class="w-full h-full object-contain logo-adaptive"
+            />
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-petrol leading-none">
+              বইছায়া
+            </span>
+            <span class="text-xs sm:text-sm text-ink/75 font-medium mt-1">
+              স্থাপিত ২০২২ • চাঁদপুর
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-6 lg:gap-8 font-medium text-base text-ink/85" aria-label="প্রধান নেভিগেশন">
+          <a href="index.html#about" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">আমাদের গল্প</a>
+          <a href="members.html" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">সদস্যবৃন্দ</a>
+          <a href="pathchokro.html" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">পাঠচক্র</a>
+          <a href="events.html" class="text-petrol font-semibold py-1.5 border-b-2 border-brass">আয়োজনসমূহ</a>
+          <a href="index.html#contact" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">যোগাযোগ</a>
+        </nav>
+
+        <!-- Right Controls: Theme Switcher & Mobile Menu Trigger -->
+        <div class="flex items-center gap-2.5 sm:gap-3">
+          <button
+            id="themeToggleBtn"
+            type="button"
+            class="p-2 sm:p-2.5 rounded-full bg-parchment hover:bg-cardpaper border border-meghna/30 text-petrol transition-colors cursor-pointer"
+            aria-label="ডার্ক মোড টগল করুন"
+            title="ডার্ক মোড চালু/বন্ধ করুন"
+          >
+            <!-- Sun Icon (Hidden in Light Mode) -->
+            <svg id="themeIconSun" class="w-5 h-5 hidden dark:block text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <!-- Moon Icon (Visible in Light Mode) -->
+            <svg id="themeIconMoon" class="w-5 h-5 block dark:hidden text-petrol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Button -->
+          <button
+            id="mobileMenuBtn"
+            type="button"
+            class="md:hidden p-2.5 rounded-xl bg-parchment hover:bg-cardpaper border border-meghna/30 text-petrol transition-colors cursor-pointer"
+            aria-label="মেনু খুলুন"
+            aria-expanded="false"
+          >
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobileMenu" class="hidden md:hidden py-4 border-t border-meghna/20 flex flex-col gap-2 font-medium text-base text-ink/90">
+        <a href="index.html#about" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">আমাদের গল্প</a>
+        <a href="members.html" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">সদস্যবৃন্দ</a>
+        <a href="pathchokro.html" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">পাঠচক্র</a>
+        <a href="events.html" class="px-3.5 py-2.5 rounded-xl bg-parchment text-petrol font-bold">আয়োজনসমূহ</a>
+        <a href="index.html#contact" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">যোগাযোগ</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       PAGE BANNER / HERO
+  ====================================================================== -->
+  <section class="py-12 sm:py-16 bg-parchment/65 border-b border-meghna/20 relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brass/15 border border-brass/40 text-petrol text-xs sm:text-sm font-semibold mb-3">
+        <svg class="w-4 h-4 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 6 14.2 8.5 17 8.9 15 10.8 15.5 13.5 13 12.2 10.5 13.5 11 10.8 9 8.9 11.8 8.5 13 6" fill="currentColor" fill-opacity="0.3"/>
+        </svg>
+        <span>বইছায়া আয়োজন সংগ্রহ</span>
+      </div>
+      <h1 class="font-serif text-3xl sm:text-5xl font-bold text-petrol tracking-tight leading-tight mb-4">
+        বইছায়ার বিশেষ আয়োজনসমূহ
+      </h1>
+      <p class="max-w-2xl mx-auto text-base sm:text-lg text-ink/80 leading-relaxed font-sans">
+        সাহিত্য সম্মেলন, বিশেষ সেমিনার, স্মরণসভা ও পাঠোৎসবের পূর্ণাঙ্গ বিবরণ ও আলোকচিত্র সংগ্রহ।
+      </p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MAJOR EVENTS CONTAINER
+  ====================================================================== -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 flex-1 w-full">
+    <div id="eventsContainer" class="space-y-16 sm:space-y-24">
+      <!-- Injected dynamically via boichayaEvents -->
+    </div>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+  ====================================================================== -->
+  <footer class="bg-parchment border-t border-meghna/20 py-10 text-ink/85 mt-auto">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <p class="font-serif font-bold text-petrol text-base">বইছায়া (Boichaya) — বই হোক প্রজ্ঞার বাহন</p>
+      <p class="text-ink/75">© ২০২২–২০২৬ বইছায়া, চাঁদপুর। সর্বস্বত্ব সংরক্ষিত।</p>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       ROTARY SCROLL WHEEL
+  ====================================================================== -->
+  <button
+    id="rotaryScrollWheel"
+    type="button"
+    class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full bg-cardpaper border-2 border-meghna/45 flex items-center justify-center scroll-wheel-aura cursor-pointer group touch-none"
+    aria-label="উপরে ফিরে যান"
+    title="উপরে ফিরে যান"
+  >
+    <svg id="rotaryWheelSpokes" class="w-full h-full p-1 transition-transform duration-75 ease-out" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <circle cx="50" cy="50" r="44" stroke="var(--accent-teal)" stroke-opacity="0.3" stroke-width="2.5" stroke-dasharray="4 4"/>
+      <circle
+        id="rotaryProgressCircle"
+        cx="50"
+        cy="50"
+        r="44"
+        stroke="var(--accent-brass)"
+        stroke-width="3.8"
+        stroke-linecap="round"
+        stroke-dasharray="276.46"
+        stroke-dashoffset="276.46"
+        transform="rotate(-90 50 50)"
+      />
+      <g stroke="var(--accent-petrol)" stroke-opacity="0.55" stroke-width="1.8" stroke-linecap="round">
+        <line x1="50" y1="6" x2="50" y2="15"/>
+        <line x1="50" y1="85" x2="50" y2="94"/>
+        <line x1="6" y1="50" x2="15" y2="50"/>
+        <line x1="85" y1="50" x2="94" y2="50"/>
+        <line x1="18.9" y1="18.9" x2="25.3" y2="25.3"/>
+        <line x1="74.7" y1="74.7" x2="81.1" y2="81.1"/>
+        <line x1="81.1" y1="18.9" x2="74.7" y2="25.3"/>
+        <line x1="25.3" y1="74.7" x2="18.9" y2="81.1"/>
+      </g>
+    </svg>
+    <div class="absolute inset-2.5 rounded-full bg-cardpaper/90 border border-meghna/35 flex flex-col items-center justify-center text-center select-none pointer-events-none">
+      <svg class="w-4 h-4 text-brass mb-0.5 group-hover:-translate-y-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+      </svg>
+      <span id="wheelPercentLabel" class="text-[10px] font-bold text-petrol leading-none">০%</span>
+    </div>
+  </button>
+
+  <!-- =====================================================================
+       LIGHTWEIGHT FULL-SCREEN LIGHTBOX VIEWER
+  ====================================================================== -->
+  <div
+    id="photoLightbox"
+    class="fixed inset-0 z-50 hidden bg-[#080F11]/98 flex flex-col items-center justify-center p-3 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-label="ছবি প্রদর্শনী"
+  >
+    <!-- Top Controls: Close -->
+    <div class="absolute top-3.5 right-3.5 sm:top-5 sm:right-6 z-30 flex items-center gap-2">
+      <button
+        id="lightboxClose"
+        type="button"
+        class="w-11 h-11 rounded-full bg-white/15 hover:bg-brass text-white flex items-center justify-center transition-colors cursor-pointer"
+        aria-label="বন্ধ করুন"
+      >
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navigation Prev Button -->
+    <button
+      id="lightboxPrev"
+      type="button"
+      class="absolute left-2.5 sm:left-6 z-20 w-11 h-11 rounded-full bg-white/15 hover:bg-meghna text-white flex items-center justify-center transition-colors cursor-pointer"
+      aria-label="পূর্ববর্তী ছবি"
+    >
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Main Content Area -->
+    <div id="lightboxSwipeArea" class="max-w-4xl w-full flex flex-col items-center">
+      <div class="bg-[#FCF9F2] p-2 sm:p-3 pb-3 rounded-xl shadow-2xl max-h-[68vh] sm:max-h-[72vh] flex items-center justify-center overflow-hidden">
+        <img
+          id="lightboxImg"
+          src=""
+          alt="অনুষ্ঠানের স্থিরচিত্র"
+          loading="lazy"
+          decoding="async"
+          class="max-h-[62vh] sm:max-h-[66vh] w-auto object-contain rounded-lg select-none"
+        />
+      </div>
+      <div class="mt-3 text-center text-[#FAF6EE] px-4">
+        <p id="lightboxCaption" class="font-serif text-base sm:text-lg font-semibold"></p>
+        <p id="lightboxCounter" class="text-xs sm:text-sm text-[#E0A354] font-semibold mt-0.5"></p>
+      </div>
+      <div id="lightboxFilmstrip" class="mt-3 flex items-center gap-2 overflow-x-auto max-w-full px-3 py-1.5"></div>
+    </div>
+
+    <!-- Navigation Next Button -->
+    <button
+      id="lightboxNext"
+      type="button"
+      class="absolute right-2.5 sm:right-6 z-20 w-11 h-11 rounded-full bg-white/15 hover:bg-meghna text-white flex items-center justify-center transition-colors cursor-pointer"
+      aria-label="পরবর্তী ছবি"
+    >
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- =====================================================================
+       CLIENT JAVASCRIPT & EVENT ARCHIVE LOGIC
+  ====================================================================== -->
+  <script>
+    function toBanglaDigits(num) {
+      const bnDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+      return String(num).replace(/\d/g, (d) => bnDigits[Number(d)]);
+    }
+
+    function handlePhotoError(imgEl, labelText) {
+      const parent = imgEl.parentElement;
+      if (!parent || parent.dataset.fallbackApplied) return;
+      parent.dataset.fallbackApplied = 'true';
+      imgEl.style.display = 'none';
+      const placeholder = document.createElement('div');
+      placeholder.className = 'w-full h-full min-h-[160px] bg-gradient-to-br from-parchment via-paper to-meghna/10 flex flex-col items-center justify-center p-3 text-center border border-dashed border-meghna/30';
+      placeholder.innerHTML = `
+        <svg class="w-8 h-8 text-meghna/60 mb-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span class="text-xs font-serif font-semibold text-petrol">${labelText}</span>
+      `;
+      parent.appendChild(placeholder);
+    }
+
+    // =====================================================================
+    // EVENT DATA REPOSITORY (Easy to expand in the future)
+    // =====================================================================
+    const boichayaEvents = [
+      {
+        id: 'ahmed-sofa-83rd',
+        badge: 'বিশেষ আয়োজন • আহমদ ছফার ৮৩তম জন্মবার্ষিকী',
+        title: 'বাঙালি সত্তা ও আহমদ ছফা (আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে বিশেষ সেমিনার)',
+        venue: 'স্থান: চাঁদপুর সরকারি টেকনিক্যাল স্কুল এন্ড কলেজ অডিটোরিয়াম',
+        quote: {
+          text: '“সভ্যতা কোন দেশ জাতি বা সম্প্রদায় বিশেষের সম্পত্তি নয়- অথচ প্রতিটি তথাকথিত সুসভ্য জাতির মধ্যেই এই সভ্য অভিমান প্রচন্ডভাবে লক্ষ্য করা যায়।”',
+          author: '— আহমদ ছফা'
+        },
+        lead: 'কিছু মানুষ জন্ম নেন শুধু বেঁচে থাকতে নয়—জন্ম নেন জাতিকে কিছু একটা দিয়ে যেতে। আহমদ ছফা সেই মানুষ। বইছায়া (Boichaya) কর্তৃক আয়োজিত আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে ‘বাঙালি সত্তা ও আহমদ ছফা’ শীর্ষক বিশেষ সেমিনার ও মুক্ত আলোচনা।',
+        speakers: [
+          { role: 'প্রধান আলোচক', name: 'তাহমিদাল জামি', desc: 'লেখক ও গবেষক' },
+          { role: 'বিশেষ আলোচক', name: 'বেলায়েত হোসেন', desc: 'ব্যাংকার ও সাহিত্য অনুরাগী' },
+          { role: 'বিশেষ আলোচক', name: 'লায়ন আরমান চৌধুরী রবিন', desc: 'নাট্যকার, সমাজসেবক ও শিক্ষানুরাগী' },
+          { role: 'আয়োজনসমূহ', name: 'সেমিনার, কুইজ ও আবৃত্তি', desc: 'বিশেষ স্মরণানুষ্ঠান' }
+        ],
+        paragraphs: [
+          'সফলতার সঙ্গে সম্পন্ন হলো আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে বইছায়া আয়োজিত বিশেষ আলোচনা সভা— ‘বাঙালি সত্তা ও আহমদ ছফা’। অনুষ্ঠানের উপস্থাপনায় ছিলেন বইছায়ার ক্ষুদে সদস্য আয়েশা লী ও সুস্মিতা দাস।',
+          'জাতীয় সংগীতের মাধ্যমে অনুষ্ঠানের শুভ সূচনা হয়। এরপর বইছায়ার প্রতিষ্ঠাতা ও সভাপতি আবু বকর সিদ্দিক-এর সভাপতিত্বে ও সূচনা বক্তব্যের মাধ্যমে অনুষ্ঠানের আনুষ্ঠানিক কার্যক্রম শুরু হয়। তাঁর বক্তব্যে তিনি আহমদ ছফার সাহিত্য, চিন্তা ও মুক্তবুদ্ধির চর্চাকে নতুন প্রজন্মের কাছে পৌঁছে দেওয়ার গুরুত্ব তুলে ধরেন।',
+          'বিশেষ আলোচক বেলায়েত হোসেন (ব্যাংকার ও সাহিত্য অনুরাগী) আহমদ ছফার নির্বাচিত গ্রন্থসমূহের আলোকে তাঁর সাহিত্যকর্মের শক্তি, সমাজ-বাস্তবতার নির্মোহ বিশ্লেষণ এবং সমকালীন প্রাসঙ্গিকতা নিয়ে একটি পর্যালোচনামূলক আলোচনা উপস্থাপন করেন।',
+          'পরবর্তীতে বিশেষ আলোচক লায়ন আরমান চৌধুরী রবিন (নাট্যকার, সমাজসেবক ও শিক্ষানুরাগী) ‘বাংলা সাহিত্যে আহমদ ছফার প্রয়োজনীয়তা’ বিষয়ক আলোচনায় বর্তমান সময়ে আহমদ ছফার সাহিত্য, চিন্তা ও বুদ্ধিবৃত্তিক অবস্থানের গুরুত্ব তুলে ধরেন এবং নতুন প্রজন্মকে মুক্তচিন্তা, আত্মপরিচয় ও মানবিক মূল্যবোধের চর্চায় উদ্বুদ্ধ হওয়ার আহ্বান জানান।',
+          'আলোচনা পর্বের পর অনুষ্ঠিত হয় আহমদ ছফার জীবন, সাহিত্য ও দর্শনভিত্তিক কুইজ প্রতিযোগিতা। কুইজ প্রতিযোগিতা শেষে প্রধান আলোচক তাহমিদাল জামি (লেখক ও গবেষক) তাঁর গভীর ও বিশ্লেষণধর্মী বক্তব্যে আহমদ ছফার বহুল আলোচিত গ্রন্থ ‘বাঙালি মুসলমানের মন’-এর ঐতিহাসিক প্রেক্ষাপট, দার্শনিক ভিত্তি, রাষ্ট্রচিন্তা, সংস্কৃতিবোধ এবং সমকালীন প্রাসঙ্গিকতা তুলে ধরেন। আলোচনা শেষে উপস্থিত সদস্যদের বিভিন্ন প্রশ্নের তিনি তথ্যসমৃদ্ধ, প্রাঞ্জল ও যুক্তিনিষ্ঠ উত্তর প্রদান করেন।',
+          'এরপর চাঁদপুর সরকারি টেকনিক্যাল স্কুল এন্ড কলেজ-এর অধ্যক্ষ মহোদয় বর্তমান শিক্ষার্থীরা কীভাবে আহমদ ছফার জীবনদর্শন ব্যক্তিজীবনে প্রতিফলন ঘটাতে পারে সে বিষয়ে বিস্তারিত আলোচনা করেন। বইছায়ার সদস্য রকি রহমান আহমদ ছফার ‘পুষ্প বিহঙ্গ’ গ্রন্থের একটি সংক্ষিপ্ত ও প্রাঞ্জল পর্যালোচনা উপস্থাপন করেন এবং সুস্মিতা দাস তাঁর আবৃত্তির মাধ্যমে অনুষ্ঠানে ভিন্ন মাত্রা যোগ করেন। অনুষ্ঠানে ‘সীল মাছের খাসলত’ কবিতা আবৃত্তি ও সদস্যদের নিয়ে মুক্ত ‘খুচরা আলাপ’ অনুষ্ঠিত হয়। শেষপর্বে কুইজ প্রতিযোগিতার বিজয়ীদের মাঝে পুরস্কার বিতরণ এবং আহমদ ছফার ৮৩তম জন্মবার্ষিকীর কেক কাটার মধ্য দিয়ে আয়োজনের সফল সমাপ্তি ঘটে।'
+        ],
+        images: Array.from({ length: 15 }, (_, i) => ({
+          src: `images/ahmed-safa/${i + 1}.jpg`,
+          caption: `বাঙালি সত্তা ও আহমদ ছফা — বিশেষ সেমিনার (স্থিরচিত্র ${toBanglaDigits(i + 1)})`
+        }))
+      }
+    ];
+
+    // Render Events in Container
+    function renderEvents() {
+      const container = document.getElementById('eventsContainer');
+      if (!container) return;
+
+      container.innerHTML = boichayaEvents
+        .map((event, eventIdx) => `
+          <article id="${event.id}" class="bg-cardpaper border border-meghna/20 rounded-3xl p-6 sm:p-10 shadow-parchment relative">
+            <div class="brass-tape -top-3 left-10 rotate-1"></div>
+
+            <!-- Top Event Header -->
+            <div class="mb-8">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brass/15 border border-brass/30 text-petrol text-xs sm:text-sm font-semibold mb-3">
+                <span class="w-2 h-2 rounded-full bg-brass"></span>
+                <span>${event.badge}</span>
+              </div>
+              <h2 class="font-serif text-2xl sm:text-4xl font-bold text-petrol leading-snug">
+                ${event.title}
+              </h2>
+              <div class="mt-4 inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-petrol bg-parchment/80 px-4 py-2 rounded-full border border-brass/35">
+                <svg class="w-4 h-4 text-brass shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" fill="var(--accent-brass)" fill-opacity="0.25"/>
+                  <circle cx="12" cy="11" r="2.5" fill="currentColor"/>
+                </svg>
+                <span>${event.venue}</span>
+              </div>
+            </div>
+
+            <!-- Literary Quote Block -->
+            <blockquote class="mb-8 bg-parchment/70 border-l-4 border-brass rounded-r-2xl rounded-l-md p-5 sm:p-7 relative shadow-inner">
+              <svg class="w-8 h-8 text-brass/25 absolute top-3 right-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+              </svg>
+              <p class="font-literary text-lg sm:text-xl text-petrol leading-relaxed italic pr-6">
+                ${event.quote.text}
+              </p>
+              <footer class="mt-2.5 font-serif font-bold text-brass text-sm sm:text-base">
+                ${event.quote.author}
+              </footer>
+            </blockquote>
+
+            <!-- Lead & Speakers Strip -->
+            <p class="text-base sm:text-lg text-ink/95 leading-relaxed font-medium pb-5 border-b border-meghna/15 mb-6">
+              ${event.lead}
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 text-center">
+              ${event.speakers
+                .map((speaker) => `
+                  <div class="bg-parchment/80 rounded-xl p-3 border border-meghna/15">
+                    <span class="block text-xs sm:text-sm text-ink/75">${speaker.role}</span>
+                    <span class="font-serif font-bold text-petrol text-sm sm:text-base mt-0.5 block">${speaker.name}</span>
+                    <span class="text-[11px] text-ink/65 block mt-0.5">${speaker.desc}</span>
+                  </div>
+                `)
+                .join('')}
+            </div>
+
+            <!-- Full Event Description Paragraphs -->
+            <div class="space-y-4 text-ink/95 text-base sm:text-[18px] leading-relaxed mb-10 pb-8 border-b border-meghna/20">
+              ${event.paragraphs.map((p) => `<p>${p}</p>`).join('')}
+            </div>
+
+            <!-- 15-Photo Gallery Grid -->
+            <div>
+              <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
+                <div>
+                  <h3 class="font-serif text-2xl sm:text-3xl font-bold text-petrol">ছবির গ্যালারি</h3>
+                  <p class="text-sm sm:text-base text-ink/80 mt-0.5">যেকোনো ছবিতে ক্লিক করে পূর্ণাঙ্গ স্থিরচিত্র দেখুন (${toBanglaDigits(event.images.length)}টি স্মৃতিময় মুহূর্ত)</p>
+                </div>
+                <span class="text-xs sm:text-sm font-semibold text-brass bg-brass/15 px-3.5 py-1.5 rounded-full self-start sm:self-auto">
+                  স্থিরচিত্র অ্যালবাম
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+                ${event.images
+                  .map((img, imgIdx) => `
+                    <div
+                      class="polaroid-frame group"
+                      onclick="openLightbox(${eventIdx}, ${imgIdx})"
+                      role="button"
+                      tabindex="0"
+                      aria-label="${img.caption}"
+                    >
+                      <div class="aspect-[4/3] w-full overflow-hidden bg-parchment/70 rounded-xs">
+                        <img
+                          src="${img.src}"
+                          alt="${img.caption}"
+                          width="600"
+                          height="450"
+                          loading="lazy"
+                          decoding="async"
+                          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          onerror="handlePhotoError(this, 'স্মৃতিচিত্র ${toBanglaDigits(imgIdx + 1)}')"
+                        />
+                      </div>
+                      <div class="pt-2 px-1 flex items-center justify-between text-xs text-ink/85">
+                        <span class="font-serif font-semibold text-petrol">স্মৃতিচিত্র ${toBanglaDigits(imgIdx + 1)}</span>
+                        <span class="text-meghna opacity-85 group-hover:opacity-100">বড় করুন ↗</span>
+                      </div>
+                    </div>
+                  `)
+                  .join('')}
+              </div>
+            </div>
+          </article>
+        `)
+        .join('');
+    }
+
+    // =====================================================================
+    // LIGHTBOX VIEWER LOGIC
+    // =====================================================================
+    let currentLightboxItems = [];
+    let currentLightboxIndex = 0;
+
+    const lightboxEl = document.getElementById('photoLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxFilmstrip = document.getElementById('lightboxFilmstrip');
+
+    function openLightbox(eventIdx, imgIdx) {
+      const event = boichayaEvents[eventIdx];
+      if (!event || !event.images[imgIdx]) return;
+
+      currentLightboxItems = event.images;
+      currentLightboxIndex = imgIdx;
+      updateLightboxView();
+      lightboxEl.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightboxEl.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightboxView() {
+      const item = currentLightboxItems[currentLightboxIndex];
+      if (!item) return;
+
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.caption;
+      lightboxCaption.textContent = item.caption;
+      lightboxCounter.textContent = `ছবি ${toBanglaDigits(currentLightboxIndex + 1)} / ${toBanglaDigits(currentLightboxItems.length)}`;
+
+      renderFilmstrip();
+    }
+
+    function renderFilmstrip() {
+      if (currentLightboxItems.length <= 1) {
+        lightboxFilmstrip.innerHTML = '';
+        return;
+      }
+
+      lightboxFilmstrip.innerHTML = currentLightboxItems
+        .map((item, i) => `
+          <button
+            type="button"
+            onclick="jumpToPhoto(${i})"
+            class="w-11 h-11 rounded-lg overflow-hidden border-2 shrink-0 transition-all cursor-pointer ${
+              i === currentLightboxIndex ? 'border-brass scale-105 opacity-100' : 'border-transparent opacity-55 hover:opacity-90'
+            }"
+            aria-label="ছবি ${toBanglaDigits(i + 1)}"
+          >
+            <img src="${item.src}" alt="" width="44" height="44" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+          </button>
+        `)
+        .join('');
+    }
+
+    function jumpToPhoto(idx) {
+      currentLightboxIndex = idx;
+      updateLightboxView();
+    }
+
+    function prevPhoto() {
+      if (!currentLightboxItems.length) return;
+      currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxItems.length) % currentLightboxItems.length;
+      updateLightboxView();
+    }
+
+    function nextPhoto() {
+      if (!currentLightboxItems.length) return;
+      currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxItems.length;
+      updateLightboxView();
+    }
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxPrev').addEventListener('click', prevPhoto);
+    document.getElementById('lightboxNext').addEventListener('click', nextPhoto);
+
+    lightboxEl.addEventListener('click', (e) => {
+      if (e.target === lightboxEl) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightboxEl.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevPhoto();
+      if (e.key === 'ArrowRight') nextPhoto();
+    });
+
+    // Touch Swipe for Mobile Lightbox
+    let touchStartX = 0;
+    const swipeArea = document.getElementById('lightboxSwipeArea');
+    swipeArea.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    swipeArea.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const diffX = touchEndX - touchStartX;
+      if (diffX > 50) prevPhoto();
+      else if (diffX < -50) nextPhoto();
+    }, { passive: true });
+
+    // =====================================================================
+    // THEME & NAVIGATION
+    // =====================================================================
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    function syncThemeUI() {
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('boichaya-theme', isDark ? 'dark' : 'light');
+    }
+    themeToggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      syncThemeUI();
+    });
+
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      const expanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Rotary Scroll Wheel
+    const rotaryWheelBtn = document.getElementById('rotaryScrollWheel');
+    const spokesEl = document.getElementById('rotaryWheelSpokes');
+    const progressCircle = document.getElementById('rotaryProgressCircle');
+    const percentLabel = document.getElementById('wheelPercentLabel');
+    const circumference = 2 * Math.PI * 44;
+
+    let wheelTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!wheelTicking) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
+          const percent = Math.round(progress * 100);
+          spokesEl.style.transform = `rotate(${progress * 720}deg)`;
+          progressCircle.style.strokeDashoffset = String(circumference - progress * circumference);
+          percentLabel.textContent = `${toBanglaDigits(percent)}%`;
+          wheelTicking = false;
+        });
+        wheelTicking = true;
+      }
+    }, { passive: true });
+
+    rotaryWheelBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    document.addEventListener('DOMContentLoaded', () => {
+      syncThemeUI();
+      renderEvents();
+    });
+  </script>
+</body>
+</html>
