@@ -74,6 +74,7 @@ This project is actively evolving. You are encouraged to build and integrate new
 1. **Dual-File Synchronization:** Whenever adding, removing, reordering, or editing members or their designations (`roleBadge`), update the `boichayaMembers` JavaScript array identically in **both** `index.html` and `members.html`.
 2. **Member Photo Naming Convention (`images/members/`):** Name all member photos using lowercase English letters with hyphens instead of spaces (e.g., `abu-bakar-siddik.jpg`). Never use spaces or Bangla characters in filenames.
 3. **Single Source of Truth:** Treat the `boichayaMembers` array inside `index.html` and `members.html` as the live member list—always follow the user's latest prompt when updating member bios, join dates, or designations.
+4. **Automated Member Ingestion & Privacy Protection:** Whenever the user pastes raw member biodata in English or Bangla, automatically translate and format it into a clean, concise Bangla bio, protect personal privacy by generalizing/shortening specific street, holding, or house addresses (e.g., to "চাঁদপুর সদর"), append the formatted entry in UTF-8 to any member text/markdown list file in `_notes/` (such as `_notes/members..txt`), and update the `boichayaMembers` array identically in both `index.html` and `members.html`.
 
 ---
 
