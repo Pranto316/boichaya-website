@@ -46,9 +46,9 @@
             literary: ['"Tiro Bangla"', '"Noto Serif Bengali"', 'serif'],
           },
           boxShadow: {
-            polaroid: '0 10px 26px -6px rgba(8, 84, 93, 0.16), 0 4px 10px -4px rgba(0, 0, 0, 0.12)',
-            'polaroid-hover': '0 22px 42px -8px rgba(14, 130, 142, 0.28), 0 10px 20px -6px rgba(0, 0, 0, 0.2)',
-            parchment: '0 14px 34px -10px rgba(8, 84, 93, 0.14), 0 2px 8px rgba(0, 0, 0, 0.08)',
+            polaroid: '0 4px 12px rgba(8, 84, 93, 0.12)',
+            'polaroid-hover': '0 8px 20px rgba(14, 130, 142, 0.18)',
+            parchment: '0 6px 16px rgba(8, 84, 93, 0.1)',
           }
         }
       }
@@ -91,10 +91,21 @@
       background-color: var(--bg-paper);
       color: var(--text-ink);
       font-family: 'Hind Siliguri', sans-serif;
-      overflow-x: clip;
+      overflow-x: hidden;
       position: relative;
-      transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                  color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    button, a, input, select, textarea, [role="button"] {
+      touch-action: manipulation;
+    }
+
+    @media (max-width: 768px) {
+      *, *::before, *::after {
+        transition-property: transform, opacity !important;
+      }
     }
 
     html.theme-switching,
@@ -107,10 +118,9 @@
     html.theme-switching div,
     html.theme-switching button,
     html.theme-switching a {
-      transition: background-color 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-                  color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-                  border-color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1) !important;
+      transition: background-color 0.4s ease,
+                  color 0.4s ease,
+                  border-color 0.4s ease !important;
     }
 
     body.page-hidden *,
@@ -119,15 +129,12 @@
       animation-play-state: paused !important;
     }
 
+    .paper-grain {
+      background-color: var(--bg-paper);
+    }
+
     .paper-grain::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 45;
-      opacity: var(--grain-opacity);
-      transition: opacity 0.6s ease;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0.94  0 1 0 0 0.90  0 0 1 0 0.82  0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
+      display: none !important;
     }
 
     .library-lamp-ambient {
@@ -260,10 +267,8 @@
       border: 1px solid rgba(14, 130, 142, 0.22);
       transform-style: preserve-3d;
       will-change: transform;
-      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-                  background-color 0.45s ease,
-                  border-color 0.45s ease;
+      box-shadow: 0 4px 12px rgba(8, 84, 93, 0.1);
+      transition: transform 0.3s ease, opacity 0.3s ease;
       position: relative;
     }
 
@@ -273,7 +278,7 @@
       inset: 0;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.3s ease;
       background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.24), transparent 65%);
     }
 
@@ -283,7 +288,7 @@
 
     .polaroid-frame:hover,
     .polaroid-frame:focus-visible {
-      box-shadow: 0 26px 48px -10px rgba(14, 130, 142, 0.28), 0 12px 22px -6px rgba(0, 0, 0, 0.22);
+      box-shadow: 0 8px 20px rgba(8, 84, 93, 0.18);
       border-color: var(--accent-brass);
       z-index: 25;
     }
@@ -392,21 +397,15 @@
       position: relative;
       background-color: var(--bg-card);
       border-radius: 4px 18px 18px 4px;
-      border: 1px solid rgba(14, 130, 142, 0.24);
-      box-shadow: 
-        -2px 0 0 0 rgba(8, 84, 93, 0.45),
-        4px 4px 16px rgba(0, 0, 0, 0.08),
-        10px 14px 28px -6px rgba(8, 84, 93, 0.18);
-      transition: transform 0.32s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.32s ease;
+      border: 1px solid rgba(14, 130, 142, 0.22);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s ease, opacity 0.25s ease;
       display: flex;
       flex-direction: column;
     }
     .book-cover-card:hover {
-      transform: translateY(-7px) scale(1.012);
-      box-shadow: 
-        -3px 0 0 0 var(--accent-brass),
-        6px 8px 22px rgba(0, 0, 0, 0.12),
-        16px 20px 38px -6px rgba(8, 84, 93, 0.28);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(8, 84, 93, 0.16);
     }
     .book-spine {
       position: absolute;
@@ -449,8 +448,8 @@
     }
 
     @keyframes wheelPulse {
-      0%, 100% { box-shadow: 0 10px 28px rgba(8, 84, 93, 0.24), 0 0 0 0 rgba(198, 139, 63, 0.3); }
-      50% { box-shadow: 0 12px 32px rgba(8, 84, 93, 0.34), 0 0 0 8px rgba(198, 139, 63, 0); }
+      0%, 100% { box-shadow: 0 6px 16px rgba(8, 84, 93, 0.2); }
+      50% { box-shadow: 0 8px 20px rgba(8, 84, 93, 0.28); }
     }
     .scroll-wheel-aura { animation: wheelPulse 4s ease-in-out infinite; }
 
@@ -480,7 +479,7 @@
   <!-- =====================================================================
        1. LITERARY MASTHEAD NAVBAR
   ====================================================================== -->
-  <header id="mainHeader" class="sticky top-0 z-30 bg-paper/90 backdrop-blur-md border-b border-meghna/20 transition-all duration-500">
+  <header id="mainHeader" class="sticky top-0 z-30 bg-paper border-b border-meghna/20">
     <div class="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between py-2.5 gap-2">
         <a
@@ -497,6 +496,8 @@
               <img
                 src="images/logo.jpg"
                 alt="বইছায়া লোগো"
+                width="44"
+                height="44"
                 class="w-full h-full object-contain logo-adaptive"
                 onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
               />
@@ -678,10 +679,12 @@
         <svg class="logo-ribbon-bookmark !w-5 !h-8 text-brass" viewBox="0 0 18 28" fill="currentColor" aria-hidden="true">
           <path d="M1 0h16v26l-8-6-8 6V0z"/>
         </svg>
-        <div class="logo-book-cover">
+        <div class="logo-book-cover max-w-[260px] mx-auto aspect-square flex items-center justify-center">
           <img
             src="images/logo.jpg"
             alt="বইছায়া — বই হোক প্রজ্ঞার বাহন"
+            width="260"
+            height="260"
             loading="lazy"
             decoding="async"
             class="w-full h-auto mx-auto logo-adaptive select-none"
@@ -723,7 +726,7 @@
       </div>
 
       <!-- 3-Column Club Metadata Strip -->
-      <div class="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-meghna/20 bg-parchment/85 backdrop-blur-xs border border-meghna/25 rounded-2xl py-4 px-4 shadow-xs animate-hero-4">
+      <div class="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-meghna/20 bg-parchment border border-meghna/25 rounded-2xl py-4 px-4 shadow-xs animate-hero-4">
         <div class="flex flex-col items-center justify-center py-3 sm:py-1 px-3 group">
           <svg class="w-7 h-7 text-petrol mb-1.5 transition-transform duration-300 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
@@ -1218,6 +1221,8 @@
               <img
                 src="images/pc-18/1.jpg"
                 alt="১৮তম পাঠচক্র: হুমায়ূন আহমেদ: পাঠপদ্ধতি ও তাৎপর্য"
+                width="600"
+                height="375"
                 loading="lazy"
                 decoding="async"
                 class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
@@ -1407,6 +1412,8 @@
           <img
             src="images/logo.jpg"
             alt="বইছায়া লোগো"
+            width="48"
+            height="48"
             loading="lazy"
             decoding="async"
             class="w-12 h-12 object-contain logo-adaptive"
@@ -1465,7 +1472,7 @@
   <div id="rotaryWheelContainer" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 select-none">
     <div
       id="wheelChapterMenu"
-      class="hidden bg-cardpaper/95 backdrop-blur-md border border-meghna/30 rounded-2xl p-3 shadow-2xl w-64 text-sm modal-animate"
+      class="hidden bg-cardpaper border border-meghna/30 rounded-2xl p-3 shadow-xl w-64 text-sm modal-animate"
       role="menu"
       aria-label="দ্রুত পরিচ্ছেদ নির্বাচন"
     >
@@ -1480,7 +1487,7 @@
       <button
         id="wheelMenuToggle"
         type="button"
-        class="h-11 px-4 rounded-full bg-cardpaper/95 backdrop-blur-md border border-meghna/35 hover:border-brass text-petrol hover:text-brass text-xs sm:text-sm font-semibold shadow-lg transition-all flex items-center gap-1.5 cursor-pointer"
+        class="h-11 px-4 rounded-full bg-cardpaper border border-meghna/35 hover:border-brass text-petrol hover:text-brass text-xs sm:text-sm font-semibold shadow-md transition-colors flex items-center gap-1.5 cursor-pointer"
         aria-label="পরিচ্ছেদ সূচক খুলুন"
         aria-expanded="false"
         title="দ্রুত পরিচ্ছেদ পরিবর্তন"
@@ -1495,7 +1502,7 @@
       <button
         id="rotaryScrollWheel"
         type="button"
-        class="relative w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full bg-cardpaper/95 backdrop-blur-md border-2 border-meghna/45 flex items-center justify-center scroll-wheel-aura cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brass touch-none"
+        class="relative w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full bg-cardpaper border-2 border-meghna/45 flex items-center justify-center scroll-wheel-aura cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brass touch-none"
         aria-label="ঘূর্ণায়মান স্ক্রল হুইল — উপরে ফিরে যান"
         title="স্ক্রল হুইল (চাকা ঘোরান, টেনে স্ক্রল করুন বা ক্লিক করে উপরে যান)"
       >
@@ -1546,7 +1553,7 @@
   ====================================================================== -->
   <div
     id="photoLightbox"
-    class="fixed inset-0 z-50 hidden bg-[#080F11]/95 backdrop-blur-md flex flex-col items-center justify-center p-3 sm:p-6"
+    class="fixed inset-0 z-50 hidden bg-[#080F11]/98 flex flex-col items-center justify-center p-3 sm:p-6"
     role="dialog"
     aria-modal="true"
     aria-label="ছবি প্রদর্শনী"
@@ -1621,7 +1628,7 @@
   ====================================================================== -->
   <div
     id="readingModal"
-    class="fixed inset-0 z-50 hidden bg-[#080F11]/82 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
+    class="fixed inset-0 z-50 hidden bg-[#080F11]/92 flex items-center justify-center p-3 sm:p-6"
     role="dialog"
     aria-modal="true"
     aria-labelledby="modalSessionTitle"
@@ -1885,6 +1892,8 @@
                 <img
                   src="${member.photo}"
                   alt="${member.name}"
+                  width="400"
+                  height="300"
                   loading="lazy"
                   decoding="async"
                   class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
@@ -2145,13 +2154,15 @@
                 aria-label="${item.caption} বড় করে দেখুন"
               >
                 <div class="${tapePos}"></div>
-                <div class="overflow-hidden bg-parchment/60 rounded-xs">
+                <div class="overflow-hidden bg-parchment/60 rounded-xs aspect-[4/3] w-full">
                   <img
                     src="${item.src}"
                     alt="${item.caption}"
+                    width="600"
+                    height="450"
                     loading="lazy"
                     decoding="async"
-                    class="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     onerror="handlePhotoError(this, 'আহমদ ছফা উৎসব • ছবি ${toBanglaDigits(idx + 1)}')"
                   />
                 </div>
@@ -2243,9 +2254,11 @@
             <img
               src="${imgSrc}"
               alt="${sessionNumber}: ${topic} (ছবি ${toBanglaDigits(imgIdx + 1)})"
+              width="600"
+              height="450"
               loading="lazy"
               decoding="async"
-              class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
               onerror="handlePhotoError(this, '${sessionNumber} • ছবি ${toBanglaDigits(imgIdx + 1)}')"
             />
             <div class="absolute inset-0 bg-petrol/0 group-hover:bg-petrol/15 transition-colors flex items-end justify-end p-2.5">
@@ -2637,7 +2650,7 @@
             }"
             aria-label="ছবি ${toBanglaDigits(i + 1)}"
           >
-            <img src="${item.src}" alt="" loading="lazy" decoding="async" class="w-full h-full object-cover" />
+            <img src="${item.src}" alt="" width="44" height="44" loading="lazy" decoding="async" class="w-full h-full object-cover" />
           </button>
         `)
         .join('');

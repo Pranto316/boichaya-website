@@ -107,3 +107,22 @@ This project is actively evolving. You are encouraged to build and integrate new
 - **Keep Filenames & Extensions Intact:** Compress `.jpg`/`.jpeg`/`.png` files in place without changing their filenames or extensions so existing HTML paths never break.
 - **Size Limits:** Resize member portraits (`images/members/`) to max `400px` width, `images/logo.jpeg` to max `300px` width, and event/session photos to max `1000px` width at `72%` JPEG quality.
 - **Lazy Loading & Async Decoding:** Ensure all below-the-fold `<img>` tags across `index.html`, `members.html`, and `pathchokro.html` include `loading="lazy" decoding="async"`.
+
+---
+
+## 9. Mobile 60fps & Scroll Performance Rules (LOCKED)
+To maintain smooth 60fps scrolling and eliminate GPU compositing bottlenecks on mobile devices across `index.html`, `members.html`, and `pathchokro.html`:
+1. **No Expensive GPU Filters or Fixed Backgrounds:**
+   - **Never** use `backdrop-filter: blur(...)` or Tailwind `backdrop-blur-*` on sticky navbars, cards, modals, or floating controls. Always use clean, solid, or high-opacity backgrounds (90–98% opacity) instead.
+   - **Never** use `background-attachment: fixed` on mobile screens.
+   - **Never** use heavy SVG `feTurbulence` noise filters or full-screen blend mode overlays (`mix-blend-mode`).
+2. **Strict CSS Transitions:**
+   - **Never** use `transition: all` or animate layout properties (`width`, `height`, `margin`, `padding`, `top`, `left`).
+   - Restrict CSS transitions strictly to `transform` and `opacity`.
+3. **Cumulative Layout Shift (CLS) Prevention:**
+   - **Always** specify an explicit `aspect-ratio` (e.g., `aspect-[16/10]`, `aspect-[4/3]`, `aspect-square`) on all image containers and wrappers.
+   - **Always** provide explicit `width` and `height` attributes on `<img>` tags so lazy-loaded photos never cause layout jumps during scroll.
+4. **Passive Listeners & Animation Frame Throttling:**
+   - Ensure all touch and scroll event listeners use `{ passive: true }`.
+   - Throttle continuous scroll calculations using `window.requestAnimationFrame`.
+   - Ensure any `IntersectionObserver` scroll-reveal instance calls `observer.unobserve(entry.target)` immediately after revealing an element.

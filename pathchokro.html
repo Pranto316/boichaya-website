@@ -46,8 +46,8 @@
             literary: ['"Tiro Bangla"', '"Noto Serif Bengali"', 'serif'],
           },
           boxShadow: {
-            polaroid: '0 10px 26px -6px rgba(8, 84, 93, 0.16), 0 4px 10px -4px rgba(0, 0, 0, 0.12)',
-            parchment: '0 14px 34px -10px rgba(8, 84, 93, 0.14), 0 2px 8px rgba(0, 0, 0, 0.08)',
+            polaroid: '0 4px 12px rgba(8, 84, 93, 0.12)',
+            parchment: '0 6px 16px rgba(8, 84, 93, 0.1)',
           }
         }
       }
@@ -86,18 +86,28 @@
       background-color: var(--bg-paper);
       color: var(--text-ink);
       font-family: 'Hind Siliguri', sans-serif;
-      overflow-x: clip;
-      transition: background-color 0.5s ease, color 0.5s ease;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    button, a, input, select, textarea, [role="button"] {
+      touch-action: manipulation;
+    }
+
+    @media (max-width: 768px) {
+      *, *::before, *::after {
+        transition-property: transform, opacity !important;
+      }
+    }
+
+    .paper-grain {
+      background-color: var(--bg-paper);
     }
 
     .paper-grain::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 45;
-      opacity: var(--grain-opacity);
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0.94  0 1 0 0 0.90  0 0 1 0 0.82  0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
+      display: none !important;
     }
 
     .logo-adaptive {
@@ -115,22 +125,16 @@
       position: relative;
       background-color: var(--bg-card);
       border-radius: 4px 18px 18px 4px;
-      border: 1px solid rgba(14, 130, 142, 0.24);
-      box-shadow: 
-        -2px 0 0 0 rgba(8, 84, 93, 0.45),
-        4px 4px 16px rgba(0, 0, 0, 0.08),
-        10px 14px 28px -6px rgba(8, 84, 93, 0.18);
-      transition: transform 0.32s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.32s ease;
+      border: 1px solid rgba(14, 130, 142, 0.22);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s ease, opacity 0.25s ease;
       display: flex;
       flex-direction: column;
       cursor: pointer;
     }
     .book-cover-card:hover {
-      transform: translateY(-7px) scale(1.012);
-      box-shadow: 
-        -3px 0 0 0 var(--accent-brass),
-        6px 8px 22px rgba(0, 0, 0, 0.12),
-        16px 20px 38px -6px rgba(8, 84, 93, 0.28);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(8, 84, 93, 0.16);
     }
 
     /* Left Spine Crease */
@@ -190,18 +194,19 @@
     .polaroid-frame {
       background: var(--bg-card);
       padding: 10px 10px 18px 10px;
-      border: 1px solid rgba(14, 130, 142, 0.25);
+      border: 1px solid rgba(14, 130, 142, 0.22);
       position: relative;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 4px 12px rgba(8, 84, 93, 0.1);
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
     .polaroid-frame:hover {
-      transform: translateY(-4px) rotate(0deg);
-      box-shadow: 0 20px 38px -10px rgba(14, 130, 142, 0.25);
+      transform: translateY(-3px) rotate(0deg);
+      box-shadow: 0 8px 18px rgba(8, 84, 93, 0.16);
     }
 
     @keyframes wheelPulse {
-      0%, 100% { box-shadow: 0 10px 28px rgba(8, 84, 93, 0.24), 0 0 0 0 rgba(198, 139, 63, 0.3); }
-      50% { box-shadow: 0 12px 32px rgba(8, 84, 93, 0.34), 0 0 0 8px rgba(198, 139, 63, 0); }
+      0%, 100% { box-shadow: 0 6px 16px rgba(8, 84, 93, 0.2); }
+      50% { box-shadow: 0 8px 20px rgba(8, 84, 93, 0.28); }
     }
     .scroll-wheel-aura { animation: wheelPulse 4s ease-in-out infinite; }
 
@@ -220,7 +225,7 @@
   <!-- =====================================================================
        1. NAVBAR
   ====================================================================== -->
-  <header class="sticky top-0 z-30 bg-paper/90 backdrop-blur-md border-b border-meghna/20">
+  <header class="sticky top-0 z-30 bg-paper border-b border-meghna/20">
     <div class="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between py-2.5 gap-2">
         <a href="index.html#home" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none min-h-[44px]">
@@ -228,6 +233,8 @@
             <img
               src="images/logo.jpg"
               alt="বইছায়া লোগো"
+              width="44"
+              height="44"
               class="w-full h-full object-contain logo-adaptive"
               onerror="this.style.display='none'"
             />
@@ -351,7 +358,7 @@
   ====================================================================== -->
   <div
     id="readingModal"
-    class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-5 sm:py-7 overflow-y-auto"
+    class="fixed inset-0 z-50 bg-black/85 hidden flex items-center justify-center p-3 sm:p-5 sm:py-7 overflow-y-auto"
     role="dialog"
     aria-modal="true"
     aria-labelledby="modalSessionTitle"
@@ -361,7 +368,7 @@
       class="max-w-4xl w-full bg-cardpaper rounded-2xl shadow-2xl border border-brass/50 overflow-hidden relative my-auto flex flex-col max-h-[92vh] modal-enter"
     >
       <!-- Modal Header -->
-      <div class="sticky top-0 z-20 bg-cardpaper/95 backdrop-blur-md px-5 sm:px-7 py-4 border-b border-meghna/20 flex items-center justify-between gap-3">
+      <div class="sticky top-0 z-20 bg-cardpaper px-5 sm:px-7 py-4 border-b border-meghna/20 flex items-center justify-between gap-3">
         <div class="min-w-0">
           <div class="flex items-center gap-2 flex-wrap">
             <span id="modalBadge" class="inline-block text-xs font-bold text-brass bg-brass/15 px-3 py-1 rounded-full border border-brass/30"></span>
@@ -408,25 +415,25 @@
       </div>
 
       <!-- Modal Footer (Navigation between sessions) -->
-      <div class="sticky bottom-0 z-20 bg-cardpaper/95 backdrop-blur-md px-5 sm:px-7 py-3.5 border-t border-meghna/20 flex items-center justify-between gap-3 text-sm">
+      <div class="sticky bottom-0 z-20 bg-cardpaper px-5 sm:px-7 py-3.5 border-t border-meghna/20 flex items-center justify-between gap-3 text-sm">
         <button
           id="modalPrevSessionBtn"
           type="button"
-          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-meghna/30 hover:border-brass hover:text-brass text-petrol font-semibold transition-all disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-meghna/30 hover:border-brass hover:text-brass text-petrol font-semibold transition-colors disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
         >
           <span>← আগের পাঠচক্র</span>
         </button>
         <button
           id="modalBottomCloseBtn"
           type="button"
-          class="hidden sm:inline-flex items-center gap-1 px-4 py-2 rounded-full bg-parchment hover:bg-brass hover:text-white text-petrol font-semibold transition-all cursor-pointer"
+          class="hidden sm:inline-flex items-center gap-1 px-4 py-2 rounded-full bg-parchment hover:bg-brass hover:text-white text-petrol font-semibold transition-colors cursor-pointer"
         >
           <span>বন্ধ করুন</span>
         </button>
         <button
           id="modalNextSessionBtn"
           type="button"
-          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-meghna/30 hover:border-brass hover:text-brass text-petrol font-semibold transition-all disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-meghna/30 hover:border-brass hover:text-brass text-petrol font-semibold transition-colors disabled:opacity-40 disabled:pointer-events-none cursor-pointer"
         >
           <span>পরের পাঠচক্র →</span>
         </button>
@@ -448,7 +455,7 @@
   <button
     id="rotaryScrollWheel"
     type="button"
-    class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full bg-cardpaper/95 backdrop-blur-md border-2 border-meghna/45 flex items-center justify-center scroll-wheel-aura cursor-pointer group touch-none"
+    class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full bg-cardpaper border-2 border-meghna/45 flex items-center justify-center scroll-wheel-aura cursor-pointer group touch-none"
     aria-label="উপরে ফিরে যান"
     title="উপরে ফিরে যান"
   >
@@ -535,6 +542,8 @@
                 <img
                   src="${session.coverImage}"
                   alt="${session.number}: ${session.topic}"
+                  width="600"
+                  height="375"
                   loading="lazy"
                   decoding="async"
                   class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
@@ -603,6 +612,8 @@
               <img
                 src="${session.images[0]}"
                 alt="${session.topic}"
+                width="800"
+                height="500"
                 loading="lazy"
                 decoding="async"
                 class="w-full h-full object-cover"
@@ -630,6 +641,8 @@
                       <img
                         src="${imgSrc}"
                         alt="${session.topic} (ছবি ${toBanglaDigits(i + 1)})"
+                        width="600"
+                        height="450"
                         loading="lazy"
                         decoding="async"
                         class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
@@ -749,14 +762,21 @@
     const percentLabel = document.getElementById('wheelPercentLabel');
     const circumference = 2 * Math.PI * 44;
 
+    let wheelTicking = false;
     window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
-      const percent = Math.round(progress * 100);
-      spokesEl.style.transform = `rotate(${progress * 720}deg)`;
-      progressCircle.style.strokeDashoffset = String(circumference - progress * circumference);
-      percentLabel.textContent = `${toBanglaDigits(percent)}%`;
+      if (!wheelTicking) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
+          const percent = Math.round(progress * 100);
+          spokesEl.style.transform = `rotate(${progress * 720}deg)`;
+          progressCircle.style.strokeDashoffset = String(circumference - progress * circumference);
+          percentLabel.textContent = `${toBanglaDigits(percent)}%`;
+          wheelTicking = false;
+        });
+        wheelTicking = true;
+      }
     }, { passive: true });
 
     rotaryWheelBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
