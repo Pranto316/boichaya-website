@@ -158,6 +158,8 @@ To maintain smooth 60fps scrolling and eliminate GPU compositing bottlenecks on 
    - Never auto-load heavy Facebook `<iframe>` embeds on page load.
    - Always display tactile click-to-play thumbnail cards with `loading="lazy" decoding="async"`, an overlaid play icon button, and the speaker label **"বক্তা: [Bangla Name]"** directly underneath.
    - When clicked, swap the thumbnail container with the responsive Facebook video iframe (`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}&show_text=false`) inside a container with explicit `aspect-[16/9]` (or `aspect-[9/16]` for reels) and `allowfullscreen="true"`.
-3. **Cross-Page Integration:**
-   - In `pathchokro.html`, display matching session videos inside the book-reading view under an "আসরের আলোচনাসমূহ (ভিডিও)" responsive grid.
+3. **Cross-Page Integration & Responsive Carousel Layout:**
+   - In `pathchokro.html`, display matching session videos inside the book-reading view under an "আসরের আলোচনাসমূহ (ভিডিও)" section.
    - In `index.html`, render the "ভিডিও গ্যালারি" homepage section with filter buttons ("সর্বশেষ" plus buttons for sessions having videos) and same-tab navigation links pointing to `pathchokro.html#pc-[number]`.
+   - On desktop, center the video gallery container (`max-width: 1100px; margin: 0 auto;`) with centered grid alignment (`justify-content: center;`) so 1, 2, or 3 videos sit neatly centered instead of sticking to the left.
+   - On mobile (`@media (max-width: 768px)`), replace vertical stacking with a horizontal swipeable carousel using `scroll-snap-type: x mandatory`, hidden scrollbars, `flex: 0 0 84%; max-width: 340px; scroll-snap-align: center;`, translucent glass sheen on the active snapped card, and mobile arrow buttons with pagination dots (`1 / N`). Avoid heavy `backdrop-filter` during scroll to ensure smooth 60fps performance.

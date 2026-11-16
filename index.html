@@ -460,6 +460,59 @@
         transition-duration: 0.01ms !important;
       }
     }
+
+    /* Video Carousel & Responsive Layout Styles */
+    .video-gallery-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .video-cards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .video-card-item {
+      width: 100%;
+      max-width: 330px;
+      flex: 0 1 330px;
+    }
+    @media (max-width: 768px) {
+      .video-cards-grid {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+        gap: 1rem !important;
+        padding: 0.75rem 1.25rem 1.25rem !important;
+        -webkit-overflow-scrolling: touch !important;
+        justify-content: flex-start !important;
+        scrollbar-width: none !important;
+      }
+      .video-cards-grid::-webkit-scrollbar {
+        display: none !important;
+      }
+      .video-card-item {
+        flex: 0 0 84% !important;
+        max-width: 340px !important;
+        scroll-snap-align: center !important;
+        transform: scale(0.95);
+        opacity: 0.85;
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease, border-color 0.28s ease;
+      }
+      .video-card-item.is-active-snap {
+        transform: scale(1) !important;
+        opacity: 1 !important;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.1)) !important;
+        border-color: rgba(182, 123, 63, 0.5) !important;
+        box-shadow: 0 8px 24px rgba(8, 84, 93, 0.12) !important;
+      }
+      html.dark .video-card-item.is-active-snap {
+        background: linear-gradient(135deg, rgba(22, 40, 45, 0.85), rgba(17, 32, 36, 0.65)) !important;
+        border-color: rgba(224, 163, 84, 0.45) !important;
+      }
+    }
   </style>
 </head>
 <body class="paper-grain antialiased selection:bg-meghna/25 selection:text-petrol">
@@ -1205,9 +1258,34 @@
         <!-- Rendered via JS -->
       </div>
 
-      <!-- Video Cards Grid -->
-      <div id="homeVideosGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 reveal-session">
-        <!-- Rendered via JS -->
+      <!-- Video Cards Grid & Carousel Container -->
+      <div class="video-gallery-container reveal-session">
+        <div id="homeVideosGrid" class="video-cards-grid">
+          <!-- Rendered via JS -->
+        </div>
+
+        <!-- Mobile Carousel Controls -->
+        <div id="homeVideoCarouselControls" class="hidden md:hidden mt-3 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            id="homeVideoPrevBtn"
+            class="w-9 h-9 rounded-full border border-brass/40 bg-cardpaper/90 text-petrol flex items-center justify-center hover:bg-brass hover:text-white transition-colors cursor-pointer shadow-xs text-base font-bold"
+            aria-label="পূর্ববর্তী ভিডিও"
+          >
+            ‹
+          </button>
+          <div id="homeVideoDots" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-brass/35 bg-parchment/85 text-xs font-semibold text-petrol shadow-2xs">
+            <!-- Dots rendered via JS -->
+          </div>
+          <button
+            type="button"
+            id="homeVideoNextBtn"
+            class="w-9 h-9 rounded-full border border-brass/40 bg-cardpaper/90 text-petrol flex items-center justify-center hover:bg-brass hover:text-white transition-colors cursor-pointer shadow-xs text-base font-bold"
+            aria-label="পরবর্তী ভিডিও"
+          >
+            ›
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -2475,8 +2553,74 @@
       `;
     }
 
+    let homeCarouselObserver = null;
+
+    function setupHomeVideoCarousel() {
+      const grid = document.getElementById('homeVideosGrid');
+      const controls = document.getElementById('homeVideoCarouselControls');
+      const dotsContainer = document.getElementById('homeVideoDots');
+      const prevBtn = document.getElementById('homeVideoPrevBtn');
+      const nextBtn = document.getElementById('homeVideoNextBtn');
+      if (!grid || !controls) return;
+
+      const cards = grid.querySelectorAll('.video-card-item');
+      if (cards.length <= 1) {
+        controls.classList.add('hidden');
+        return;
+      }
+      controls.classList.remove('hidden');
+
+      function updateDots(activeIdx) {
+        if (!dotsContainer) return;
+        dotsContainer.innerHTML = `
+          <span>${toBanglaDigits(activeIdx + 1)} / ${toBanglaDigits(cards.length)}</span>
+          <span class="inline-flex gap-1 ml-1.5">
+            ${Array.from(cards)
+              .map((_, i) => `<span class="w-1.5 h-1.5 rounded-full transition-colors ${i === activeIdx ? 'bg-petrol' : 'bg-meghna/30'}"></span>`)
+              .join('')}
+          </span>
+        `;
+      }
+
+      updateDots(0);
+
+      if (prevBtn) {
+        prevBtn.onclick = () => {
+          const cardWidth = cards[0].offsetWidth + 16;
+          grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        };
+      }
+      if (nextBtn) {
+        nextBtn.onclick = () => {
+          const cardWidth = cards[0].offsetWidth + 16;
+          grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        };
+      }
+
+      if (homeCarouselObserver) {
+        homeCarouselObserver.disconnect();
+      }
+
+      homeCarouselObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              cards.forEach((c) => c.classList.remove('is-active-snap'));
+              entry.target.classList.add('is-active-snap');
+              const idx = parseInt(entry.target.dataset.index, 10);
+              if (!isNaN(idx)) updateDots(idx);
+            }
+          });
+        },
+        { root: grid, threshold: 0.6 }
+      );
+
+      cards.forEach((card) => homeCarouselObserver.observe(card));
+    }
+
     function renderHomeVideos() {
       const grid = document.getElementById('homeVideosGrid');
+      const controls = document.getElementById('homeVideoCarouselControls');
       if (!grid || typeof boichayaVideos === 'undefined') return;
 
       const filtered = activeVideoFilter === 'all'
@@ -2489,15 +2633,16 @@
             <p class="font-serif text-lg">এই পাঠচক্রের কোনো ভিডিও পাওয়া যায়নি।</p>
           </div>
         `;
+        if (controls) controls.classList.add('hidden');
         return;
       }
 
       grid.innerHTML = filtered
-        .map((video) => {
+        .map((video, idx) => {
           const isReel = video.orientation === 'reel' || (video.url && video.url.includes('/reel/'));
-          const aspectClass = isReel ? 'aspect-[9/16] max-w-[280px] mx-auto' : 'aspect-[16/9]';
+          const aspectClass = isReel ? 'aspect-[9/16] max-w-[270px] mx-auto' : 'aspect-[16/9]';
           return `
-            <article class="bg-cardpaper border border-meghna/25 rounded-3xl overflow-hidden p-4 sm:p-5 shadow-parchment flex flex-col justify-between hover:border-brass/50 transition-colors">
+            <article data-index="${idx}" class="video-card-item ${idx === 0 ? 'is-active-snap' : ''} bg-cardpaper border border-meghna/25 rounded-3xl overflow-hidden p-4 sm:p-5 shadow-parchment flex flex-col justify-between hover:border-brass/50">
               <div>
                 <!-- Video Player Container (Click to Play) -->
                 <div
@@ -2569,6 +2714,8 @@
           `;
         })
         .join('');
+
+      setupHomeVideoCarousel();
     }
 
     function initScrollReveal() {
