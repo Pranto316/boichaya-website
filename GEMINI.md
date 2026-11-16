@@ -139,3 +139,25 @@ To maintain smooth 60fps scrolling and eliminate GPU compositing bottlenecks on 
    - Ensure all touch and scroll event listeners use `{ passive: true }`.
    - Throttle continuous scroll calculations using `window.requestAnimationFrame`.
    - Ensure any `IntersectionObserver` scroll-reveal instance calls `observer.unobserve(entry.target)` immediately after revealing an element.
+
+---
+
+## 11. Pathchokro Video Discussions & Automated Sync Standards
+1. **Permanent Auto-Sync Rule (`_notes/pathchokro-videos.txt` → `videos-data.js`):**
+   - Whenever `_notes/pathchokro-videos.txt` is updated with Pathchokro numbers, speaker names in English, and Facebook video/reel links, Antigravity must automatically match English speaker names to their official Bangla names in `boichayaMembers` (found in `index.html` and `members.html`, e.g., "Sushmita" -> "সুস্মিতা দাস", "Pranto" -> "প্রান্ত সাহা", "Shuvo" -> "খান মোহাম্মদ শুভ", "Nihal" -> "নাফিস সাদিক নিহাল", "Mohammed Siddik" / "Siddik" -> "আবু বকর সিদ্দিক").
+   - If a speaker is an invited guest not present in `boichayaMembers`, automatically convert their English name into natural, accurate Bangla spelling.
+   - Update `videos-data.js` with the parsed records using:
+     - `id`: `"pc[number]-[serial]"`
+     - `sessionNumber`: `[number]` (integer)
+     - `sessionTitle`: `"^[number]তম পাঠচক্র: [Session Topic]"`
+     - `speaker`: the matched or transliterated Bangla name
+     - `url`: the Facebook video/reel URL
+     - `orientation`: `"reel"` if the URL contains `/reel/`, otherwise `"video"`
+     - `thumbnail`: `"images/pc-[number]/1.jpg"` as default
+2. **Lightweight Click-to-Play Video Players:**
+   - Never auto-load heavy Facebook `<iframe>` embeds on page load.
+   - Always display tactile click-to-play thumbnail cards with `loading="lazy" decoding="async"`, an overlaid play icon button, and the speaker label **"বক্তা: [Bangla Name]"** directly underneath.
+   - When clicked, swap the thumbnail container with the responsive Facebook video iframe (`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}&show_text=false`) inside a container with explicit `aspect-[16/9]` (or `aspect-[9/16]` for reels) and `allowfullscreen="true"`.
+3. **Cross-Page Integration:**
+   - In `pathchokro.html`, display matching session videos inside the book-reading view under an "আসরের আলোচনাসমূহ (ভিডিও)" responsive grid.
+   - In `index.html`, render the "ভিডিও গ্যালারি" homepage section with filter buttons ("সর্বশেষ" plus buttons for sessions having videos) and same-tab navigation links pointing to `pathchokro.html#pc-[number]`.

@@ -1179,12 +1179,46 @@
   </section>
 
   <!-- =====================================================================
-       7. যোগাযোগ ও যুক্ত হোন (Dedicated Contact Section with WhatsApp 01777-988577)
+       7. ভিডিও গ্যালারি (Pathchokro Video Discussions Gallery)
+  ====================================================================== -->
+  <section id="videos" class="py-16 sm:py-24 relative overflow-hidden scroll-mt-16 bg-[#F6F1E7] text-[#2E241E] border-t border-meghna/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12 reveal-session">
+        <div class="text-xs sm:text-sm font-serif font-semibold text-[#B67B3F] mb-1.5" aria-hidden="true">পরিচ্ছেদ ০৫ • ভিডিও গ্যালারি</div>
+        <div class="inline-flex items-center justify-center gap-2 mb-2">
+          <svg class="w-6 h-6 text-[#0E828E]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          <span class="font-serif font-bold text-petrol text-lg sm:text-xl">বইছায়া ভিডিও সংগ্রহ</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-petrol">
+          পাঠচক্রের মুক্ত আলোচনা ও চিন্তার মুহূর্ত
+        </h2>
+        <p class="text-ink/85 text-base sm:text-[17.5px] mt-2.5 leading-relaxed">
+          নিয়মিত পাঠচক্রে অংশ নেওয়া পাঠক ও আলোচকদের গঠনমূলক বক্তব্য, যুক্তি ও সাহিত্য সংলাপের স্থির ও ভিডিও রূপ।
+        </p>
+        <div class="w-24 h-0.5 bg-[#B67B3F] mx-auto mt-4 rounded-full editorial-rule"></div>
+      </div>
+
+      <!-- Filter Buttons Bar -->
+      <div id="videoFilterBar" class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 reveal-session">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Video Cards Grid -->
+      <div id="homeVideosGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 reveal-session">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       8. যোগাযোগ ও যুক্ত হোন (Dedicated Contact Section with WhatsApp 01777-988577)
   ====================================================================== -->
   <section id="contact" class="py-16 sm:py-22 bg-parchment/75 border-t border-meghna/20 relative overflow-hidden scroll-mt-16">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal-session">
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="text-xs sm:text-sm font-serif font-semibold text-brass mb-1.5" aria-hidden="true">পরিচ্ছেদ ০৫ • যোগাযোগ ও আমন্ত্রণ</div>
+        <div class="text-xs sm:text-sm font-serif font-semibold text-brass mb-1.5" aria-hidden="true">পরিচ্ছেদ ০৬ • যোগাযোগ ও আমন্ত্রণ</div>
         <h2 class="font-serif text-3xl sm:text-4xl font-bold text-petrol">
           বইছায়ার সাথে যোগাযোগ করুন
         </h2>
@@ -1622,6 +1656,8 @@
   <!-- =====================================================================
        12. STRUCTURED DATA & INTERACTIVE LITERARY ENGINE
   ====================================================================== -->
+  <!-- Pathchokro Videos Data -->
+  <script src="videos-data.js"></script>
   <script>
     /**
      * সদস্যবৃন্দ ডেটা অ্যারে (৬ নং সদস্য হিসেবে খাদিজা আক্তার যুক্ত)
@@ -2359,6 +2395,157 @@
       if (!immediateVisible) initScrollReveal();
     }
 
+    // =========================================================================
+    // Video Gallery Section Logic
+    // =========================================================================
+    let activeVideoFilter = 'all';
+
+    function initHomeVideoGallery() {
+      renderVideoFilterBar();
+      renderHomeVideos();
+    }
+
+    function renderVideoFilterBar() {
+      const filterBar = document.getElementById('videoFilterBar');
+      if (!filterBar || typeof boichayaVideos === 'undefined') return;
+
+      const sessionsWithVideos = [...new Set(boichayaVideos.map((v) => v.sessionNumber))].sort((a, b) => b - a);
+
+      const buttons = [
+        { id: 'all', label: 'সর্বশেষ' },
+        ...sessionsWithVideos.map((num) => ({
+          id: String(num),
+          label: `${toBanglaDigits(num)}তম পাঠচক্র`
+        }))
+      ];
+
+      filterBar.innerHTML = buttons
+        .map((btn) => {
+          const isActive = activeVideoFilter === btn.id;
+          const activeClasses = isActive
+            ? 'bg-petrol text-white border-petrol shadow-xs'
+            : 'bg-cardpaper border-meghna/30 text-ink/80 hover:border-brass hover:text-brass';
+          return `
+            <button
+              type="button"
+              onclick="setVideoFilter('${btn.id}')"
+              class="px-4 py-1.5 min-h-[38px] rounded-full border text-xs sm:text-sm font-semibold transition-all cursor-pointer ${activeClasses}"
+              aria-pressed="${isActive}"
+            >
+              ${btn.label}
+            </button>
+          `;
+        })
+        .join('');
+    }
+
+    function setVideoFilter(filterId) {
+      activeVideoFilter = filterId;
+      renderVideoFilterBar();
+      renderHomeVideos();
+    }
+
+    function playHomeVideoInline(containerId, encodedUrl, orientation) {
+      const container = document.getElementById('home-video-' + containerId);
+      if (!container) return;
+      const iframeSrc = `https://www.facebook.com/plugins/video.php?href=${encodedUrl}&show_text=false`;
+      container.innerHTML = `
+        <iframe
+          src="${iframeSrc}"
+          class="w-full h-full border-0 rounded-xl"
+          style="border:none;overflow:hidden"
+          scrolling="no"
+          frameborder="0"
+          allowfullscreen="true"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          title="বইছায়া আলোচনা ভিডিও"
+        ></iframe>
+      `;
+    }
+
+    function renderHomeVideos() {
+      const grid = document.getElementById('homeVideosGrid');
+      if (!grid || typeof boichayaVideos === 'undefined') return;
+
+      const filtered = activeVideoFilter === 'all'
+        ? boichayaVideos
+        : boichayaVideos.filter((v) => String(v.sessionNumber) === activeVideoFilter);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-ink/70">
+            <p class="font-serif text-lg">এই পাঠচক্রের কোনো ভিডিও পাওয়া যায়নি।</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered
+        .map((video) => {
+          const aspectClass = video.orientation === 'reel' ? 'aspect-[9/16] max-w-[280px] mx-auto' : 'aspect-[16/9]';
+          return `
+            <article class="bg-cardpaper border border-meghna/25 rounded-3xl overflow-hidden p-4 sm:p-5 shadow-parchment flex flex-col justify-between hover:border-brass/50 transition-colors">
+              <div>
+                <!-- Video Player Container (Click to Play) -->
+                <div
+                  id="home-video-${video.id}"
+                  class="${aspectClass} w-full bg-black/90 rounded-2xl relative overflow-hidden flex items-center justify-center cursor-pointer group select-none shadow-inner"
+                  onclick="playHomeVideoInline('${video.id}', '${encodeURIComponent(video.url)}', '${video.orientation}')"
+                  role="button"
+                  tabindex="0"
+                  aria-label="ভিডিওটি চালান: ${video.sessionTitle} - বক্তা: ${video.speaker}"
+                  onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); playHomeVideoInline('${video.id}', '${encodeURIComponent(video.url)}', '${video.orientation}'); }"
+                >
+                  <img
+                    src="${video.thumbnail}"
+                    alt="${video.sessionTitle} - ${video.speaker}"
+                    width="600"
+                    height="338"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                    onerror="handlePhotoError(this, '${video.speaker}')"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"></div>
+                  <div class="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brass/90 text-white flex items-center justify-center shadow-lg group-hover:bg-meghna group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Video Metadata -->
+                <div class="pt-4 px-1">
+                  <span class="inline-block text-[11px] font-bold text-brass bg-brass/15 px-2.5 py-0.5 rounded-full border border-brass/30 mb-2">
+                    ${toBanglaDigits(video.sessionNumber)}তম পাঠচক্র
+                  </span>
+                  <p class="font-serif font-bold text-petrol text-base sm:text-lg">
+                    বক্তা: <span class="text-ink">${video.speaker}</span>
+                  </p>
+                  <h3 class="font-serif text-sm sm:text-base font-semibold text-ink/85 mt-1 leading-snug line-clamp-2">
+                    ${video.sessionTitle}
+                  </h3>
+                </div>
+              </div>
+
+              <!-- Action Link to pathchokro.html -->
+              <div class="mt-4 pt-3 border-t border-meghna/15 flex items-center justify-between">
+                <span class="text-xs text-ink/65 font-medium">মুক্ত পাঠচক্র আসর</span>
+                <a
+                  href="pathchokro.html#pc-${video.sessionNumber}"
+                  target="_self"
+                  class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-petrol hover:text-brass transition-colors group/link"
+                >
+                  <span>পাঠচক্রটি পড়ুন</span>
+                  <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                </a>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+    }
+
     function initScrollReveal() {
       const elements = document.querySelectorAll('.reveal-session');
       if (!('IntersectionObserver' in window) || prefersReducedMotion) {
@@ -2386,6 +2573,7 @@
         { id: 'members', label: 'সদস্যবৃন্দ' },
         { id: 'ahmed-sofa', label: 'আয়োজনসমূহ' },
         { id: 'storyboard', label: 'পাঠচক্র' },
+        { id: 'videos', label: 'ভিডিও গ্যালারি' },
         { id: 'contact', label: 'যোগাযোগ' }
       ];
       const navLinks = document.querySelectorAll('.nav-link');
@@ -2440,6 +2628,7 @@
           href: `#${s.id}`,
           label: `${s.number}: ${s.topic}`
         })),
+        { href: '#videos', label: 'ভিডিও গ্যালারি' },
         { href: '#contact', label: 'যোগাযোগ' }
       ];
 
@@ -2784,6 +2973,7 @@
       renderAhmedSofaGallery();
       renderFilterBar();
       renderStoryboardTimeline(false);
+      initHomeVideoGallery();
       initScrollReveal();
       initSectionSpy();
       initRotaryScrollWheel();
