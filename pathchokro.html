@@ -690,39 +690,52 @@
           videoSection.classList.remove('hidden');
           videosGrid.innerHTML = matchingVideos
             .map((video) => {
-              const aspectClass = video.orientation === 'reel' ? 'aspect-[9/16] max-w-[280px] mx-auto' : 'aspect-[16/9]';
+              const isReel = video.orientation === 'reel' || (video.url && video.url.includes('/reel/'));
+              const aspectClass = isReel ? 'aspect-[9/16] max-w-[280px] mx-auto' : 'aspect-[16/9]';
               return `
-                <div class="bg-cardpaper border border-meghna/25 rounded-2xl overflow-hidden p-3 shadow-sm hover:border-brass/50 transition-colors">
-                  <div
-                    id="video-player-${video.id}"
-                    class="${aspectClass} w-full bg-black/90 rounded-xl relative overflow-hidden flex items-center justify-center cursor-pointer group select-none"
-                    onclick="playVideoInline('${video.id}', '${encodeURIComponent(video.url)}', '${video.orientation}')"
-                    role="button"
-                    tabindex="0"
-                    aria-label="ভিডিওটি চালান: ${video.sessionTitle} - বক্তা: ${video.speaker}"
-                    onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); playVideoInline('${video.id}', '${encodeURIComponent(video.url)}', '${video.orientation}'); }"
-                  >
-                    <img
-                      src="${video.thumbnail}"
-                      alt="${video.sessionTitle} - ${video.speaker}"
-                      width="600"
-                      height="338"
-                      loading="lazy"
-                      decoding="async"
-                      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                      onerror="handlePhotoError(this, '${video.speaker}')"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"></div>
-                    <div class="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brass/90 text-white flex items-center justify-center shadow-lg group-hover:bg-meghna group-hover:scale-110 transition-transform">
-                      <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
+                <div class="bg-cardpaper border border-meghna/25 rounded-2xl overflow-hidden p-3.5 shadow-sm hover:border-brass/50 transition-colors flex flex-col justify-between">
+                  <div>
+                    <div
+                      id="video-player-${video.id}"
+                      class="${aspectClass} w-full bg-black/90 rounded-xl relative overflow-hidden flex items-center justify-center cursor-pointer group select-none shadow-inner"
+                      onclick="playVideoInline('${video.id}', '${encodeURIComponent(video.url)}', '${video.orientation}')"
+                      role="button"
+                      tabindex="0"
+                      aria-label="ভিডিওটি চালান: ${video.sessionTitle} - বক্তা: ${video.speaker}"
+                      onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); playVideoInline('${video.id}', '${encodeURIComponent(video.url)}', '${video.orientation}'); }"
+                    >
+                      <img
+                        src="${video.thumbnail}"
+                        alt="${video.sessionTitle} - ${video.speaker}"
+                        width="600"
+                        height="338"
+                        loading="lazy"
+                        decoding="async"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                        onerror="handlePhotoError(this, '${video.speaker}')"
+                      />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"></div>
+                      <div class="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brass/90 text-white flex items-center justify-center shadow-lg group-hover:bg-meghna group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
                     </div>
                   </div>
-                  <div class="pt-3 px-1">
+                  <div class="pt-3 px-1 flex flex-wrap items-center justify-between gap-2 border-t border-meghna/15 mt-3">
                     <p class="font-serif font-bold text-petrol text-base sm:text-lg">
                       বক্তা: <span class="text-ink">${video.speaker}</span>
                     </p>
+                    <a
+                      href="${video.url}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-petrol hover:text-brass transition-colors underline decoration-dotted underline-offset-4"
+                      title="ফেসবুকে সরাসরি ভিডিওটি দেখুন"
+                    >
+                      <span>Facebook-এ সরাসরি দেখুন</span>
+                      <span>↗</span>
+                    </a>
                   </div>
                 </div>
               `;
@@ -754,10 +767,22 @@
       }
     }
 
+    function normalizeFbVideoUrl(rawUrl) {
+      if (!rawUrl) return '';
+      const reelMatch = rawUrl.match(/facebook\.com\/reel\/([0-9]+)/);
+      if (reelMatch && reelMatch[1]) {
+        return `https://www.facebook.com/watch/?v=${reelMatch[1]}`;
+      }
+      return rawUrl;
+    }
+
     function playVideoInline(containerId, encodedUrl, orientation) {
       const container = document.getElementById('video-player-' + containerId);
       if (!container) return;
-      const iframeSrc = `https://www.facebook.com/plugins/video.php?href=${encodedUrl}&show_text=false`;
+      const decodedUrl = decodeURIComponent(encodedUrl);
+      const normalizedUrl = normalizeFbVideoUrl(decodedUrl);
+      const finalEncodedUrl = encodeURIComponent(normalizedUrl);
+      const iframeSrc = `https://www.facebook.com/plugins/video.php?href=${finalEncodedUrl}&show_text=false`;
       container.innerHTML = `
         <iframe
           src="${iframeSrc}"

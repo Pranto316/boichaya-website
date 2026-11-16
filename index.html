@@ -2445,10 +2445,22 @@
       renderHomeVideos();
     }
 
+    function normalizeFbVideoUrl(rawUrl) {
+      if (!rawUrl) return '';
+      const reelMatch = rawUrl.match(/facebook\.com\/reel\/([0-9]+)/);
+      if (reelMatch && reelMatch[1]) {
+        return `https://www.facebook.com/watch/?v=${reelMatch[1]}`;
+      }
+      return rawUrl;
+    }
+
     function playHomeVideoInline(containerId, encodedUrl, orientation) {
       const container = document.getElementById('home-video-' + containerId);
       if (!container) return;
-      const iframeSrc = `https://www.facebook.com/plugins/video.php?href=${encodedUrl}&show_text=false`;
+      const decodedUrl = decodeURIComponent(encodedUrl);
+      const normalizedUrl = normalizeFbVideoUrl(decodedUrl);
+      const finalEncodedUrl = encodeURIComponent(normalizedUrl);
+      const iframeSrc = `https://www.facebook.com/plugins/video.php?href=${finalEncodedUrl}&show_text=false`;
       container.innerHTML = `
         <iframe
           src="${iframeSrc}"
@@ -2482,7 +2494,8 @@
 
       grid.innerHTML = filtered
         .map((video) => {
-          const aspectClass = video.orientation === 'reel' ? 'aspect-[9/16] max-w-[280px] mx-auto' : 'aspect-[16/9]';
+          const isReel = video.orientation === 'reel' || (video.url && video.url.includes('/reel/'));
+          const aspectClass = isReel ? 'aspect-[9/16] max-w-[280px] mx-auto' : 'aspect-[16/9]';
           return `
             <article class="bg-cardpaper border border-meghna/25 rounded-3xl overflow-hidden p-4 sm:p-5 shadow-parchment flex flex-col justify-between hover:border-brass/50 transition-colors">
               <div>
@@ -2516,9 +2529,21 @@
 
                 <!-- Video Metadata -->
                 <div class="pt-4 px-1">
-                  <span class="inline-block text-[11px] font-bold text-brass bg-brass/15 px-2.5 py-0.5 rounded-full border border-brass/30 mb-2">
-                    ${toBanglaDigits(video.sessionNumber)}তম পাঠচক্র
-                  </span>
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <span class="inline-block text-[11px] font-bold text-brass bg-brass/15 px-2.5 py-0.5 rounded-full border border-brass/30">
+                      ${toBanglaDigits(video.sessionNumber)}তম পাঠচক্র
+                    </span>
+                    <a
+                      href="${video.url}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1 text-xs text-petrol hover:text-brass transition-colors underline decoration-dotted underline-offset-4"
+                      title="ফেসবুকে সরাসরি ভিডিওটি দেখুন"
+                    >
+                      <span>Facebook-এ সরাসরি দেখুন</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
                   <p class="font-serif font-bold text-petrol text-base sm:text-lg">
                     বক্তা: <span class="text-ink">${video.speaker}</span>
                   </p>
