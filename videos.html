@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ভিডিও গ্যালারি — বইছায়া (Boichaya)</title>
+  <meta name="description" content="বইছায়ার মুক্ত পাঠচক্র আসরের নির্বাচিত বক্তব্য, সাহিত্য সংলাপ ও জ্ঞানগর্ভ আলোচনার ভিডিও সংগ্রহ।" />
+  <link rel="icon" type="image/jpeg" href="images/logo.jpeg" />
+
+  <!-- Google Fonts: Hind Siliguri, Noto Serif Bengali, Tiro Bangla -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;600;700;800&family=Tiro+Bangla:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            meghna: 'var(--accent-teal)',
+            petrol: 'var(--accent-petrol)',
+            paper: 'var(--bg-paper)',
+            parchment: 'var(--bg-parchment)',
+            cardpaper: 'var(--bg-card)',
+            ink: 'var(--text-ink)',
+            brass: 'var(--accent-brass)',
+          },
+          fontFamily: {
+            sans: ['"Hind Siliguri"', 'sans-serif'],
+            serif: ['"Noto Serif Bengali"', 'serif'],
+            literary: ['"Tiro Bangla"', 'serif'],
+          },
+          boxShadow: {
+            parchment: '0 4px 20px -2px rgba(8, 84, 93, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
+            polaroid: '0 10px 25px -5px rgba(8, 84, 93, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.08)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Dark Mode Init Script (Zero FOUC) -->
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('boichaya-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    :root {
+      --accent-teal: #0E828E;
+      --accent-petrol: #08545D;
+      --bg-paper: #FAF6EE;
+      --bg-parchment: #F1E9DC;
+      --bg-card: #FCF9F2;
+      --text-ink: #1E2426;
+      --accent-brass: #C68B3F;
+    }
+
+    html.dark {
+      --accent-teal: #27B2C2;
+      --accent-petrol: #82DCE6;
+      --bg-paper: #0B1517;
+      --bg-parchment: #112024;
+      --bg-card: #16282D;
+      --text-ink: #F2ECE1;
+      --accent-brass: #E0A354;
+    }
+
+    body {
+      background-color: var(--bg-paper);
+      color: var(--text-ink);
+      font-feature-settings: "kern" 1, "liga" 1;
+      letter-spacing: 0 !important;
+    }
+
+    .paper-grain {
+      background-image:
+        radial-gradient(var(--accent-teal) 0.5px, transparent 0.5px),
+        radial-gradient(var(--accent-brass) 0.4px, var(--bg-paper) 0.4px);
+      background-size: 24px 24px;
+      background-position: 0 0, 12px 12px;
+      background-color: var(--bg-paper);
+    }
+
+    .brass-tape {
+      position: absolute;
+      width: 70px;
+      height: 18px;
+      background-color: rgba(198, 139, 63, 0.65);
+      transform: rotate(-3deg);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .video-gallery-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .video-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 340px));
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .video-cards-grid {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+        gap: 1rem !important;
+        padding: 0.75rem 1.25rem 1.25rem !important;
+        -webkit-overflow-scrolling: touch !important;
+        justify-content: flex-start !important;
+        scrollbar-width: none !important;
+      }
+      .video-cards-grid::-webkit-scrollbar {
+        display: none !important;
+      }
+      .video-card-item {
+        flex: 0 0 82% !important;
+        max-width: 320px !important;
+        scroll-snap-align: center !important;
+        transform: scale(0.95);
+        opacity: 0.85;
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease, border-color 0.28s ease;
+      }
+      .video-card-item .video-thumbnail-container {
+        aspect-ratio: 16 / 10 !important;
+        max-height: 210px !important;
+      }
+      .video-card-item .video-thumbnail-container img {
+        object-fit: cover !important;
+      }
+      .video-card-item.is-active-snap {
+        transform: scale(1) !important;
+        opacity: 1 !important;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.1)) !important;
+        border-color: rgba(182, 123, 63, 0.5) !important;
+        box-shadow: 0 8px 24px rgba(8, 84, 93, 0.12) !important;
+      }
+      html.dark .video-card-item.is-active-snap {
+        background: linear-gradient(135deg, rgba(22, 40, 45, 0.85), rgba(17, 32, 36, 0.65)) !important;
+        border-color: rgba(224, 163, 84, 0.45) !important;
+      }
+    }
+  </style>
+</head>
+<body class="paper-grain antialiased selection:bg-meghna/25 selection:text-petrol">
+
+  <!-- =====================================================================
+       1. NAVBAR
+  ====================================================================== -->
+  <header class="sticky top-0 z-30 bg-paper border-b border-meghna/20">
+    <div class="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 sm:h-22">
+        <a href="index.html" class="flex items-center gap-3 sm:gap-3.5 group select-none">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-meghna/40 p-0.5 bg-paper shadow-sm shrink-0">
+            <img src="images/logo.jpeg" alt="বইছায়া লোগো" width="56" height="56" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif text-2xl sm:text-3xl font-bold text-petrol leading-none group-hover:text-brass transition-colors">বইছায়া</span>
+            <span class="text-xs text-meghna font-medium mt-0.5">বই হোক প্রজ্ঞার বাহন</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-6 text-[16.5px] font-medium text-ink/90" aria-label="প্রধান নেভিগেশন">
+          <a href="index.html#home" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">হোম</a>
+          <a href="index.html#about" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">আমাদের গল্প</a>
+          <a href="members.html" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">সদস্যবৃন্দ</a>
+          <a href="pathchokro.html" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">পাঠচক্র</a>
+          <a href="events.html" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">আয়োজনসমূহ</a>
+          <a href="videos.html" class="text-petrol font-semibold py-1.5 border-b-2 border-brass">ভিডিও গ্যালারি</a>
+          <a href="index.html#contact" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">যোগাযোগ</a>
+        </nav>
+
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <!-- Dark Mode Toggle Button -->
+          <button
+            id="themeToggleBtn"
+            type="button"
+            class="inline-flex items-center gap-1.5 px-3 py-2 min-h-[42px] rounded-full border border-meghna/30 bg-parchment/85 hover:border-brass text-petrol hover:text-brass text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+            aria-label="হালকা ও ডার্ক থিম পরিবর্তন করুন"
+          >
+            <svg id="themeIconDark" class="w-4 h-4 text-petrol shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M8 3h8l2 6H6l2-6z" fill="var(--accent-brass)" fill-opacity="0.25"/>
+              <path d="M12 9v8"/><path d="M8 21h8"/><path d="M10 17h4"/>
+            </svg>
+            <svg id="themeIconLight" class="hidden w-4 h-4 text-brass shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M2 8s3-1.5 6-1.5S12 8 12 8v12s-1-1.5-4-1.5S2 20 2 20V8z"/>
+              <path d="M22 8s-3-1.5-6-1.5S12 8 12 8v12s1-1.5 4-1.5 6 1.5 6 1.5V8z"/>
+              <circle cx="12" cy="4" r="2" fill="currentColor"/>
+            </svg>
+            <span id="themeToggleLabel" class="hidden sm:inline">ডার্ক থিম</span>
+          </button>
+
+          <a
+            href="index.html"
+            class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 min-h-[42px] rounded-full border border-brass/75 bg-parchment/85 text-petrol hover:bg-brass hover:text-white text-xs sm:text-sm font-semibold transition-all"
+          >
+            <span>← মূল পাতা</span>
+          </a>
+
+          <button
+            id="mobileMenuBtn"
+            type="button"
+            class="lg:hidden p-2.5 min-w-[42px] min-h-[42px] rounded-xl text-petrol hover:bg-parchment flex items-center justify-center cursor-pointer"
+            aria-label="মেনু খুলুন"
+            aria-expanded="false"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobileMenu" class="hidden lg:hidden pb-4 pt-2 border-t border-meghna/15">
+        <nav class="flex flex-col space-y-1.5 text-base font-medium text-ink">
+          <a href="index.html#home" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">হোম</a>
+          <a href="index.html#about" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">আমাদের গল্প</a>
+          <a href="members.html" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">সদস্যবৃন্দ</a>
+          <a href="pathchokro.html" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">পাঠচক্র</a>
+          <a href="events.html" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">আয়োজনসমূহ</a>
+          <a href="videos.html" class="px-3.5 py-2.5 rounded-xl bg-parchment text-petrol font-bold">ভিডিও গ্যালারি</a>
+          <a href="index.html#contact" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">যোগাযোগ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       2. PAGE HEADER / HERO
+  ====================================================================== -->
+  <section class="py-12 sm:py-16 bg-parchment/65 border-b border-meghna/20 relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brass/15 border border-brass/40 text-petrol text-xs sm:text-sm font-semibold mb-3">
+        <svg class="w-4 h-4 text-brass" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <span>বইছায়া ভিডিও সংগ্রহশালা</span>
+      </div>
+      <h1 class="font-serif text-3xl sm:text-5xl font-bold text-petrol tracking-tight leading-tight mb-4">
+        ভিডিও গ্যালারি
+      </h1>
+      <p class="max-w-2xl mx-auto text-base sm:text-lg text-ink/80 leading-relaxed font-sans">
+        বইছায়ার মুক্ত পাঠচক্র আসরের নির্বাচিত বক্তব্য, সাহিত্য সংলাপ ও জ্ঞানগর্ভ আলোচনার ভিডিও সংগ্রহ।
+      </p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       3. VIDEO GALLERY CONTENT
+  ====================================================================== -->
+  <main class="py-12 sm:py-18">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Dynamic Filter Pills -->
+      <div class="flex items-center justify-center mb-8 sm:mb-12">
+        <div id="videoFilterBar" class="flex flex-wrap items-center justify-center gap-2 p-1.5 bg-cardpaper border border-meghna/25 rounded-2xl shadow-xs">
+          <!-- Filter buttons rendered dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Video Cards Grid / Mobile Horizontal Swipe Carousel -->
+      <div class="video-gallery-container w-full">
+        <div id="videosGrid" class="video-cards-grid">
+          <!-- Video Cards rendered dynamically via JS -->
+        </div>
+
+        <!-- Mobile Carousel Swipe Controls -->
+        <div id="videoCarouselControls" class="hidden md:hidden mt-4 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            id="videoPrevBtn"
+            class="w-9 h-9 rounded-full border border-brass/40 bg-cardpaper/90 text-petrol flex items-center justify-center hover:bg-brass hover:text-white transition-colors cursor-pointer shadow-xs text-base font-bold"
+            aria-label="পূর্ববর্তী ভিডিও"
+          >
+            ‹
+          </button>
+          <div id="videoDots" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-brass/35 bg-parchment/85 text-xs font-semibold text-petrol shadow-2xs">
+            <!-- Dots rendered via JS -->
+          </div>
+          <button
+            type="button"
+            id="videoNextBtn"
+            class="w-9 h-9 rounded-full border border-brass/40 bg-cardpaper/90 text-petrol flex items-center justify-center hover:bg-brass hover:text-white transition-colors cursor-pointer shadow-xs text-base font-bold"
+            aria-label="পরবর্তী ভিডিও"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+
+      <!-- Action Navigation Buttons -->
+      <div class="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="index.html"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 min-h-[48px] rounded-full bg-petrol hover:bg-meghna text-white font-semibold text-base shadow-md transition-all"
+        >
+          <span>← মূল পাতায় ফিরে যান</span>
+        </a>
+        <a
+          href="pathchokro.html"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 min-h-[48px] rounded-full bg-brass hover:brightness-95 text-white font-semibold text-base shadow-md transition-all"
+        >
+          <span>পাঠচক্র সংগ্রহ দেখুন →</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- =====================================================================
+       4. FULLSCREEN VIDEO THEATER LIGHTBOX MODAL
+  ====================================================================== -->
+  <div
+    id="videoTheaterModal"
+    class="fixed inset-0 z-50 bg-[#080F11]/96 hidden flex flex-col items-center justify-center p-3 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-label="ভিডিও থিয়েটার প্লেয়ার"
+  >
+    <!-- Top Bar with Counter & Close Button -->
+    <div class="w-full max-w-4xl flex items-center justify-between gap-3 mb-2 px-1 text-[#FAF6EE]">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-brass animate-pulse"></span>
+        <span class="font-serif text-sm sm:text-base font-bold text-brass">বইছায়া ভিডিও থিয়েটার</span>
+        <span id="theaterCounter" class="text-xs sm:text-sm font-semibold bg-white/10 px-2.5 py-0.5 rounded-full border border-white/15"></span>
+      </div>
+      <button
+        id="closeVideoTheaterBtn"
+        type="button"
+        class="w-10 h-10 rounded-full bg-white/10 hover:bg-brass hover:text-white text-[#FAF6EE] flex items-center justify-center transition-colors cursor-pointer border border-white/20"
+        aria-label="ভিডিও বন্ধ করুন (Escape)"
+        title="বন্ধ করুন (Escape)"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Centered Responsive Video Player Frame -->
+    <div class="w-full max-w-4xl flex flex-col items-center justify-center">
+      <div
+        id="theaterPlayerWrapper"
+        class="w-full bg-black rounded-2xl overflow-hidden shadow-2xl border border-brass/40 flex items-center justify-center relative transition-all"
+        style="max-width: 900px; max-height: 75vh;"
+      >
+        <div id="theaterIframeContainer" class="w-full h-full flex items-center justify-center">
+          <!-- Dynamic Iframe Inserted Here -->
+        </div>
+      </div>
+
+      <!-- Theater Bottom Bar: Metadata & Action Controls -->
+      <div class="w-full max-w-4xl mt-3.5 px-2 text-[#FAF6EE]">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-white/15">
+          <div class="text-center sm:text-left min-w-0">
+            <div class="flex items-center gap-2 justify-center sm:justify-start flex-wrap">
+              <p id="theaterSpeaker" class="font-serif text-base sm:text-lg font-bold text-brass"></p>
+              <span id="theaterRoleBadge" class="text-xs px-2.5 py-0.5 rounded-full bg-brass/20 text-brass border border-brass/35 font-medium"></span>
+            </div>
+            <h4 id="theaterTitle" class="font-sans text-xs sm:text-sm text-[#FAF6EE]/80 mt-1 truncate max-w-xl"></h4>
+          </div>
+
+          <!-- Direct Facebook Fullscreen Link -->
+          <a
+            id="theaterDirectFbLink"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-1.5 px-4 py-2 min-h-[44px] rounded-full bg-brass hover:brightness-105 text-white font-semibold text-xs sm:text-sm shadow-md transition-all shrink-0 cursor-pointer"
+            title="ফেসবুকে পূর্ণস্ক্রিনে দেখুন"
+          >
+            <span>পূর্ণস্ক্রিন / Facebook-এ দেখুন</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <!-- Navigation Buttons: Previous / Next -->
+        <div class="flex items-center justify-between gap-3 pt-3">
+          <button
+            id="theaterPrevBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 min-h-[44px] rounded-full border border-white/25 bg-white/10 hover:bg-brass hover:border-brass text-white font-semibold text-xs sm:text-sm transition-colors disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+          >
+            <span>← পূর্ববর্তী</span>
+          </button>
+
+          <span class="text-xs text-white/60 hidden sm:inline">কীবোর্ড নেভিগেশন: Escape (বন্ধ), ← / → (পরিবর্তন)</span>
+
+          <button
+            id="theaterNextBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 min-h-[44px] rounded-full border border-white/25 bg-white/10 hover:bg-brass hover:border-brass text-white font-semibold text-xs sm:text-sm transition-colors disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+          >
+            <span>পরবর্তী →</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       5. FOOTER
+  ====================================================================== -->
+  <footer class="bg-parchment border-t border-meghna/20 py-10 text-ink/85">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <p class="font-serif font-bold text-petrol text-base">বইছায়া (Boichaya) — বই হোক প্রজ্ঞার বাহন</p>
+      <p class="text-ink/75">© ২০২২–২০২৬ বইছায়া, চাঁদপুর। সর্বস্বত্ব সংরক্ষিত।</p>
+    </div>
+  </footer>
+
+  <!-- Enlarged Rotary Scroll Wheel -->
+  <button
+    id="rotaryScrollWheel"
+    type="button"
+    class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-[74px] h-[74px] sm:w-[84px] sm:h-[84px] rounded-full bg-cardpaper border-2 border-meghna/45 flex items-center justify-center cursor-pointer group touch-none"
+    aria-label="উপরে ফিরে যান"
+    title="উপরে ফিরে যান"
+  >
+    <svg id="rotaryWheelSpokes" class="w-full h-full p-1 transition-transform duration-75 ease-out" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <circle cx="50" cy="50" r="44" stroke="var(--accent-teal)" stroke-opacity="0.3" stroke-width="2.5" stroke-dasharray="4 4"/>
+      <circle
+        id="rotaryProgressCircle"
+        cx="50"
+        cy="50"
+        r="44"
+        stroke="var(--accent-brass)"
+        stroke-width="3.8"
+        stroke-linecap="round"
+        stroke-dasharray="276.46"
+        stroke-dashoffset="276.46"
+        transform="rotate(-90 50 50)"
+      />
+      <g stroke="var(--accent-petrol)" stroke-opacity="0.55" stroke-width="1.8" stroke-linecap="round">
+        <line x1="50" y1="6" x2="50" y2="15"/>
+        <line x1="50" y1="85" x2="50" y2="94"/>
+        <line x1="6" y1="50" x2="15" y2="50"/>
+        <line x1="85" y1="50" x2="94" y2="50"/>
+      </g>
+    </svg>
+    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+      <span id="wheelPercentLabel" class="font-serif text-xs sm:text-sm font-bold text-petrol group-hover:hidden">০%</span>
+      <svg class="hidden group-hover:block w-5 h-5 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/>
+      </svg>
+    </div>
+  </button>
+
+  <!-- =====================================================================
+       6. JAVASCRIPT ENGINE & DATA
+  ====================================================================== -->
+  <!-- Load Videos Data -->
+  <script src="videos-data.js"></script>
+  <script>
+    /**
+     * Boichaya Members Data (Single source of truth for speaker designations)
+     */
+    const boichayaMembers = [
+      {
+        name: 'আবু বকর ছিদ্দিক',
+        roleBadge: 'প্রতিষ্ঠাতা ও সভাপতি',
+        joined: '২০২২ ইং',
+        photo: 'images/members/abu-bakar-siddik.jpg',
+        facebook: 'https://www.facebook.com/siddikkhan.siddik',
+        bio: 'বইছায়ার স্বপ্নদ্রষ্টা, প্রতিষ্ঠাতা ও সভাপতি। ১১ অক্টোবর ২০২২ সালে চাঁদপুরের তরুণদের মাঝে গভীর পাঠাভ্যাস, মুক্তবুদ্ধির চর্চা এবং সাহিত্য সংলাপ গড়ে তোলার লক্ষ্যে বইছায়া প্রতিষ্ঠা করেন এবং নিয়মিত পাঠচক্র ও সেমিনার পরিচালনা করে আসছেন।'
+      },
+      {
+        name: 'চৈতিশীল তৃণা',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/chaity-shil-trina.jpg',
+        bio: 'বইছায়ার নিয়মিত পাঠচক্র ও সাহিত্য আড্ডার অন্যতম সক্রিয় সদস্য। সমকালীন কথাসাহিত্য পাঠ, গঠনমূলক আলোচনা এবং পাঠচক্রের সাংস্কৃতিক আয়োজনে নিয়মিত অংশগ্রহণ করেন।'
+      },
+      {
+        name: 'বিশ্বজিৎ দেবনাথ',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/bishwajit-debnath.jpg',
+        bio: 'বইছায়ার নিয়মিত পাঠচক্র, বুক রিভিউ ও বই বিনিময় কর্মসূচির সক্রিয় অংশগ্রহণকারী। ইতিহাস, সমাজচিন্তা ও সমকালীন সাহিত্য আলোচনায় নিয়মিত মতামত তুলে ধরেন।'
+      },
+      {
+        name: 'নাফিস সাদিক নিহাল',
+        roleBadge: 'সদস্য',
+        joined: '২০২৬',
+        photo: 'images/members/nafis-sadique-nihal.jpg',
+        bio: 'ইস্ট ওয়েস্ট ইউনিভার্সিটি থেকে কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিংয়ে (CSE) স্নাতক। পেশায় একজন ইভেন্ট ম্যানেজার, ইভেন্ট মার্কেটিং কনসালট্যান্ট এবং ইভেন্ট প্ল্যানার।'
+      },
+      {
+        name: 'খান মোহাম্মদ শুভ',
+        roleBadge: 'সদস্য',
+        joined: '২০২৬',
+        photo: 'images/members/khan-mohammad-shuvo.jpg',
+        bio: 'চাঁদপুর সদরের বাসিন্দা। বই পড়া, মুক্তচিন্তা এবং বইছায়ার পাঠচক্রের নিয়মিত আলোচক।'
+      },
+      {
+        name: 'সুস্মিতা দাস',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/sushmita-das.jpg',
+        bio: 'আবৃত্তিশিল্পী ও অনুষ্ঠান উপস্থাপক। আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে আয়োজিত ‘বাঙালি সত্তা ও আহমদ ছফা’ সেমিনারে প্রাঞ্জল সঞ্চালনা ও কবিতা আবৃত্তির মাধ্যমে বিশেষ ভূমিকা রাখেন।'
+      },
+      {
+        name: 'রবিউল আলম',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/rabiul-alam.jpg',
+        bio: 'বইছায়ার পাঠচক্র ও মুক্তবুদ্ধি চর্চার নিয়মিত সদস্য। সাপ্তাহিক বই আড্ডা, বই বিনিময় কার্যক্রম এবং পাঠক সমাজ সম্প্রসারণে সক্রিয়ভাবে যুক্ত আছেন।'
+      },
+      {
+        name: 'খাদিজা আক্তার',
+        roleBadge: 'অনিয়মিত সদস্য • নিয়মিত বক্তা',
+        joined: '২০২৪ ইং',
+        photo: 'images/members/khadija-akter.jpg',
+        bio: 'বইছায়ার অনিয়মিত সদস্য ও নিয়মিত বক্তা। বর্তমানে নার্সিং নিয়ে পড়াশোনা করছেন। আহমদ ছফার ৮৩তম জন্মবার্ষিকী উপলক্ষে আয়োজিত বিশেষ সেমিনার ও আলোচনা অনুষ্ঠানে অংশগ্রহণ করেছেন এবং পাঠচক্রের মুক্ত আলোচনায় নিয়মিত বক্তব্য রাখেন।'
+      },
+      {
+        name: 'মরিয়ম মাহি',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/mahi.jpg',
+        bio: 'বইছায়ার নিয়মিত পাঠক ও আলোচক। সাপ্তাহিক পাঠচক্র, বুক রিভিউ এবং তরুণদের মাঝে পাঠাভ্যাস ছড়িয়ে দেওয়ার কার্যক্রমে সক্রিয়ভাবে অংশগ্রহণ করেন।'
+      },
+      {
+        name: 'প্রান্ত সাহা',
+        roleBadge: 'সক্রিয় সদস্য',
+        joined: '২০২৩ ইং',
+        photo: 'images/members/pranto-saha.jpg',
+        bio: 'পাঠচক্র আলোচক, লেখক ও বই পর্যালোচক। যোগাযোগ দক্ষতা, আত্মোন্নয়ন ও মননশীল সাহিত্য আলোচনায় নিয়মিত অংশগ্রহণ করেন এবং বইছায়ার সৃজনশীল আয়োজনে সক্রিয় ভূমিকা রাখেন।'
+      }
+    ];
+
+    function toBanglaDigits(num) {
+      const bnDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+      return String(num).replace(/\d/g, (d) => bnDigits[Number(d)]);
+    }
+
+    function getSpeakerRole(speakerName) {
+      if (!speakerName) return 'সদস্য';
+      const cleanName = speakerName.trim();
+      const match = boichayaMembers.find(
+        (m) => m.name === cleanName || cleanName.includes(m.name) || m.name.includes(cleanName)
+      );
+      return match && match.roleBadge ? match.roleBadge : 'সদস্য';
+    }
+
+    function normalizeFbVideoUrl(rawUrl) {
+      if (!rawUrl) return '';
+      const reelMatch = rawUrl.match(/facebook\.com\/reel\/([0-9]+)/);
+      if (reelMatch && reelMatch[1]) {
+        return `https://www.facebook.com/watch/?v=${reelMatch[1]}`;
+      }
+      return rawUrl;
+    }
+
+    function handlePhotoError(imgEl, labelText) {
+      const parent = imgEl.parentElement;
+      if (!parent || parent.dataset.fallbackApplied) return;
+      parent.dataset.fallbackApplied = 'true';
+      imgEl.style.display = 'none';
+      const placeholder = document.createElement('div');
+      placeholder.className = 'w-full h-full min-h-[160px] bg-gradient-to-br from-parchment via-paper to-meghna/15 flex flex-col items-center justify-center p-3 text-center';
+      placeholder.innerHTML = `
+        <svg class="w-8 h-8 text-brass/70 mb-1" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <span class="font-serif font-bold text-petrol text-sm">${labelText}</span>
+      `;
+      parent.appendChild(placeholder);
+    }
+
+    // =========================================================================
+    // VIDEO GALLERY STATE & RENDERING
+    // =========================================================================
+    let activeVideoFilter = 'all';
+    let currentFilteredVideos = [];
+    let currentTheaterVideoIndex = 0;
+    let videoCarouselObserver = null;
+
+    function initVideoGallery() {
+      renderVideoFilterBar();
+      renderVideos();
+    }
+
+    function renderVideoFilterBar() {
+      const filterBar = document.getElementById('videoFilterBar');
+      if (!filterBar || typeof boichayaVideos === 'undefined') return;
+
+      const sessionsWithVideos = Array.from(
+        new Set(boichayaVideos.map((v) => Number(v.sessionNumber)))
+      ).sort((a, b) => b - a);
+
+      let buttonsHtml = `
+        <button
+          type="button"
+          onclick="setVideoFilter('all')"
+          class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+            activeVideoFilter === 'all'
+              ? 'bg-petrol text-white shadow-xs'
+              : 'text-ink/80 hover:bg-parchment hover:text-petrol'
+          }"
+        >
+          সকল ভিডিও (${toBanglaDigits(boichayaVideos.length)})
+        </button>
+      `;
+
+      sessionsWithVideos.forEach((sNum) => {
+        const count = boichayaVideos.filter((v) => Number(v.sessionNumber) === sNum).length;
+        const isActive = activeVideoFilter === String(sNum);
+        buttonsHtml += `
+          <button
+            type="button"
+            onclick="setVideoFilter('${sNum}')"
+            class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              isActive
+                ? 'bg-petrol text-white shadow-xs'
+                : 'text-ink/80 hover:bg-parchment hover:text-petrol'
+            }"
+          >
+            ${toBanglaDigits(sNum)}তম পাঠচক্র (${toBanglaDigits(count)})
+          </button>
+        `;
+      });
+
+      filterBar.innerHTML = buttonsHtml;
+    }
+
+    function setVideoFilter(filterId) {
+      activeVideoFilter = filterId;
+      renderVideoFilterBar();
+      renderVideos();
+    }
+
+    function renderVideos() {
+      const grid = document.getElementById('videosGrid');
+      const controls = document.getElementById('videoCarouselControls');
+      if (!grid || typeof boichayaVideos === 'undefined') return;
+
+      const filtered = activeVideoFilter === 'all'
+        ? boichayaVideos
+        : boichayaVideos.filter((v) => String(v.sessionNumber) === activeVideoFilter);
+
+      currentFilteredVideos = filtered;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-ink/75">
+            <p class="font-serif text-lg">এই পাঠচক্রের কোনো ভিডিও পাওয়া যায়নি।</p>
+          </div>
+        `;
+        if (controls) controls.classList.add('hidden');
+        return;
+      }
+
+      grid.innerHTML = filtered
+        .map((video, idx) => {
+          const speakerRole = getSpeakerRole(video.speaker);
+          return `
+            <article data-index="${idx}" class="video-card-item ${idx === 0 ? 'is-active-snap' : ''} bg-cardpaper border border-meghna/25 rounded-3xl overflow-hidden p-4 sm:p-5 shadow-parchment flex flex-col justify-between hover:border-brass/50">
+              <div>
+                <!-- Video Thumbnail Container (Opens Fullscreen Theater Modal) -->
+                <div
+                  class="video-thumbnail-container aspect-[16/10] w-full bg-black/90 rounded-2xl relative overflow-hidden flex items-center justify-center cursor-pointer group select-none shadow-inner"
+                  onclick="openVideoTheater(${idx})"
+                  role="button"
+                  tabindex="0"
+                  aria-label="ভিডিওটি দেখুন: ${video.sessionTitle} - বক্তা: ${video.speaker}"
+                  onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openVideoTheater(${idx}); }"
+                >
+                  <img
+                    src="${video.thumbnail}"
+                    alt="${video.sessionTitle} - ${video.speaker}"
+                    width="600"
+                    height="375"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                    onerror="handlePhotoError(this, '${video.speaker}')"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none"></div>
+                  <div class="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brass/90 text-white flex items-center justify-center shadow-lg group-hover:bg-meghna group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Video Metadata -->
+                <div class="pt-4 px-1">
+                  <!-- Session Tag & Direct Facebook Link -->
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <a
+                      href="pathchokro.html#pc-${video.sessionNumber}"
+                      target="_self"
+                      class="inline-flex items-center gap-1 text-[11px] font-bold text-petrol hover:text-brass bg-meghna/10 px-2.5 py-0.5 rounded-full border border-meghna/20 transition-colors"
+                      title="${toBanglaDigits(video.sessionNumber)}তম পাঠচক্রটি পড়ুন"
+                    >
+                      <span>${toBanglaDigits(video.sessionNumber)}তম পাঠচক্র</span>
+                      <span>→</span>
+                    </a>
+                    <a
+                      href="${video.url}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1 text-xs text-petrol hover:text-brass transition-colors underline decoration-dotted underline-offset-4"
+                      title="ফেসবুকে সরাসরি ভিডিওটি দেখুন"
+                    >
+                      <span>Facebook-এ সরাসরি দেখুন</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+
+                  <!-- Speaker Name & Designation / Role -->
+                  <div class="flex items-baseline justify-between gap-2 flex-wrap">
+                    <p class="font-serif font-bold text-petrol text-base sm:text-lg">
+                      বক্তা: <span class="text-ink">${video.speaker}</span>
+                    </p>
+                    <span class="text-xs text-brass font-medium bg-brass/10 px-2 py-0.5 rounded-full border border-brass/25">
+                      ${speakerRole}
+                    </span>
+                  </div>
+
+                  <!-- Session Title -->
+                  <h3 class="font-serif text-sm sm:text-base font-semibold text-ink/85 mt-2 leading-snug line-clamp-2">
+                    ${video.sessionTitle}
+                  </h3>
+                </div>
+              </div>
+
+              <!-- Action Link to Full Blog Post on pathchokro.html -->
+              <div class="mt-4 pt-3 border-t border-meghna/15 flex items-center justify-between">
+                <span class="text-xs text-ink/65 font-medium">মুক্ত পাঠচক্র আসর</span>
+                <a
+                  href="pathchokro.html#pc-${video.sessionNumber}"
+                  target="_self"
+                  class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-petrol hover:text-brass transition-colors group/link"
+                >
+                  <span>পাঠচক্রটি পড়ুন</span>
+                  <span class="group-hover/link:translate-x-1 transition-transform">→</span>
+                </a>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+
+      setupVideoCarouselControls();
+    }
+
+    function setupVideoCarouselControls() {
+      const grid = document.getElementById('videosGrid');
+      const controls = document.getElementById('videoCarouselControls');
+      const dotsContainer = document.getElementById('videoDots');
+      const prevBtn = document.getElementById('videoPrevBtn');
+      const nextBtn = document.getElementById('videoNextBtn');
+      if (!grid || !controls) return;
+
+      const cards = grid.querySelectorAll('.video-card-item');
+      if (cards.length <= 1) {
+        controls.classList.add('hidden');
+        return;
+      }
+      controls.classList.remove('hidden');
+
+      function updateDots(activeIdx) {
+        if (!dotsContainer) return;
+        dotsContainer.innerHTML = `
+          <span>${toBanglaDigits(activeIdx + 1)} / ${toBanglaDigits(cards.length)}</span>
+          <span class="inline-flex gap-1 ml-1.5">
+            ${Array.from(cards)
+              .map((_, i) => `<span class="w-1.5 h-1.5 rounded-full transition-colors ${i === activeIdx ? 'bg-petrol' : 'bg-meghna/30'}"></span>`)
+              .join('')}
+          </span>
+        `;
+      }
+
+      updateDots(0);
+
+      if (prevBtn) {
+        prevBtn.onclick = () => {
+          const cardWidth = cards[0].offsetWidth + 16;
+          grid.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        };
+      }
+      if (nextBtn) {
+        nextBtn.onclick = () => {
+          const cardWidth = cards[0].offsetWidth + 16;
+          grid.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        };
+      }
+
+      if (videoCarouselObserver) {
+        videoCarouselObserver.disconnect();
+      }
+
+      videoCarouselObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              cards.forEach((c) => c.classList.remove('is-active-snap'));
+              entry.target.classList.add('is-active-snap');
+              const idx = parseInt(entry.target.dataset.index, 10);
+              if (!isNaN(idx)) updateDots(idx);
+            }
+          });
+        },
+        { root: grid, threshold: 0.6 }
+      );
+
+      cards.forEach((card) => videoCarouselObserver.observe(card));
+    }
+
+    // =========================================================================
+    // FULLSCREEN VIDEO THEATER LIGHTBOX MODAL
+    // =========================================================================
+    function openVideoTheater(index) {
+      if (!currentFilteredVideos || index < 0 || index >= currentFilteredVideos.length) return;
+      currentTheaterVideoIndex = index;
+      renderTheaterVideo();
+      const modal = document.getElementById('videoTheaterModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeVideoTheater() {
+      const modal = document.getElementById('videoTheaterModal');
+      if (!modal || modal.classList.contains('hidden')) return;
+      modal.classList.add('hidden');
+      const iframeContainer = document.getElementById('theaterIframeContainer');
+      if (iframeContainer) iframeContainer.innerHTML = '';
+    }
+
+    function navigateTheaterVideo(direction) {
+      const newIndex = currentTheaterVideoIndex + direction;
+      if (newIndex >= 0 && newIndex < currentFilteredVideos.length) {
+        currentTheaterVideoIndex = newIndex;
+        renderTheaterVideo();
+      }
+    }
+
+    function renderTheaterVideo() {
+      const video = currentFilteredVideos[currentTheaterVideoIndex];
+      if (!video) return;
+
+      const isReel = video.orientation === 'reel' || (video.url && video.url.includes('/reel/'));
+      const normalizedUrl = normalizeFbVideoUrl(video.url);
+      const finalEncodedUrl = encodeURIComponent(normalizedUrl);
+      const iframeSrc = `https://www.facebook.com/plugins/video.php?href=${finalEncodedUrl}&show_text=false&width=560`;
+
+      const playerWrapper = document.getElementById('theaterPlayerWrapper');
+      const iframeContainer = document.getElementById('theaterIframeContainer');
+      const counterEl = document.getElementById('theaterCounter');
+      const speakerEl = document.getElementById('theaterSpeaker');
+      const roleBadgeEl = document.getElementById('theaterRoleBadge');
+      const titleEl = document.getElementById('theaterTitle');
+      const directLinkEl = document.getElementById('theaterDirectFbLink');
+      const prevBtn = document.getElementById('theaterPrevBtn');
+      const nextBtn = document.getElementById('theaterNextBtn');
+
+      if (playerWrapper) {
+        if (isReel) {
+          playerWrapper.style.maxWidth = '420px';
+          playerWrapper.style.maxHeight = '72vh';
+          playerWrapper.style.aspectRatio = '9 / 16';
+        } else {
+          playerWrapper.style.maxWidth = '900px';
+          playerWrapper.style.maxHeight = '75vh';
+          playerWrapper.style.aspectRatio = '16 / 9';
+        }
+      }
+
+      if (iframeContainer) {
+        iframeContainer.innerHTML = `
+          <iframe
+            src="${iframeSrc}"
+            class="w-full h-full border-0 rounded-2xl"
+            style="border:none;overflow:hidden"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen"
+            title="${video.sessionTitle} - ${video.speaker}"
+          ></iframe>
+        `;
+      }
+
+      if (counterEl) {
+        counterEl.textContent = `${toBanglaDigits(currentTheaterVideoIndex + 1)} / ${toBanglaDigits(currentFilteredVideos.length)}`;
+      }
+      if (speakerEl) {
+        speakerEl.textContent = `বক্তা: ${video.speaker}`;
+      }
+      if (roleBadgeEl) {
+        roleBadgeEl.textContent = getSpeakerRole(video.speaker);
+      }
+      if (titleEl) {
+        titleEl.textContent = video.sessionTitle;
+      }
+      if (directLinkEl) {
+        directLinkEl.href = video.url;
+      }
+      if (prevBtn) {
+        prevBtn.disabled = currentTheaterVideoIndex === 0;
+      }
+      if (nextBtn) {
+        nextBtn.disabled = currentTheaterVideoIndex === currentFilteredVideos.length - 1;
+      }
+    }
+
+    // Video Theater Modal Listeners
+    const closeVideoTheaterBtn = document.getElementById('closeVideoTheaterBtn');
+    if (closeVideoTheaterBtn) closeVideoTheaterBtn.addEventListener('click', closeVideoTheater);
+
+    const theaterPrevBtn = document.getElementById('theaterPrevBtn');
+    if (theaterPrevBtn) theaterPrevBtn.addEventListener('click', () => navigateTheaterVideo(-1));
+
+    const theaterNextBtn = document.getElementById('theaterNextBtn');
+    if (theaterNextBtn) theaterNextBtn.addEventListener('click', () => navigateTheaterVideo(1));
+
+    const videoTheaterModal = document.getElementById('videoTheaterModal');
+    if (videoTheaterModal) {
+      videoTheaterModal.addEventListener('click', (e) => {
+        if (e.target === videoTheaterModal) {
+          closeVideoTheater();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('videoTheaterModal');
+      if (modal && !modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeVideoTheater();
+        if (e.key === 'ArrowLeft') navigateTheaterVideo(-1);
+        if (e.key === 'ArrowRight') navigateTheaterVideo(1);
+      }
+    });
+
+    // =========================================================================
+    // THEME SWITCHER & GLOBAL CONTROLS
+    // =========================================================================
+    function syncThemeUI() {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.getElementById('themeIconDark').classList.toggle('hidden', isDark);
+      document.getElementById('themeIconLight').classList.toggle('hidden', !isDark);
+      const label = document.getElementById('themeToggleLabel');
+      if (label) label.textContent = isDark ? 'হালকা থিম' : 'ডার্ক থিম';
+    }
+
+    document.getElementById('themeToggleBtn').addEventListener('click', () => {
+      const willBeDark = !document.documentElement.classList.contains('dark');
+      document.documentElement.classList.toggle('dark', willBeDark);
+      try { localStorage.setItem('boichaya-theme', willBeDark ? 'dark' : 'light'); } catch (e) {}
+      syncThemeUI();
+    });
+
+    // Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      const expanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Rotary Scroll Wheel
+    const rotaryWheelBtn = document.getElementById('rotaryScrollWheel');
+    const spokesEl = document.getElementById('rotaryWheelSpokes');
+    const progressCircle = document.getElementById('rotaryProgressCircle');
+    const percentLabel = document.getElementById('wheelPercentLabel');
+    const circumference = 2 * Math.PI * 44;
+
+    let ticking = false;
+    function updateScrollProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
+      const percent = Math.round(progress * 100);
+      spokesEl.style.transform = `rotate(${progress * 720}deg)`;
+      progressCircle.style.strokeDashoffset = String(circumference - progress * circumference);
+      percentLabel.textContent = `${toBanglaDigits(percent)}%`;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollProgress);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    rotaryWheelBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Initialize on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+      syncThemeUI();
+      initVideoGallery();
+    });
+  </script>
+</body>
+</html>

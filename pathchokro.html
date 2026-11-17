@@ -311,6 +311,7 @@
           <a href="members.html" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">সদস্যবৃন্দ</a>
           <a href="pathchokro.html" class="text-petrol font-semibold py-1.5 border-b-2 border-brass">পাঠচক্র</a>
           <a href="events.html" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">আয়োজনসমূহ</a>
+          <a href="videos.html" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">ভিডিও গ্যালারি</a>
           <a href="index.html#contact" class="hover:text-meghna transition-colors py-1.5 border-b-2 border-transparent">যোগাযোগ</a>
         </nav>
 
@@ -364,6 +365,7 @@
           <a href="members.html" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">সদস্যবৃন্দ</a>
           <a href="pathchokro.html" class="px-3.5 py-2.5 rounded-xl bg-parchment text-petrol font-bold">পাঠচক্র</a>
           <a href="events.html" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">আয়োজনসমূহ</a>
+          <a href="videos.html" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">ভিডিও গ্যালারি</a>
           <a href="index.html#contact" class="px-3.5 py-2.5 rounded-xl hover:bg-parchment">যোগাযোগ</a>
         </nav>
       </div>
@@ -435,6 +437,16 @@
           <div class="flex items-center gap-2 flex-wrap">
             <span id="modalBadge" class="inline-block text-xs font-bold text-brass bg-brass/15 px-3 py-1 rounded-full border border-brass/30"></span>
             <span id="modalVenue" class="inline-flex items-center gap-1 text-xs text-ink/75 font-medium"></span>
+            <button
+              id="modalVideoJumpBtn"
+              type="button"
+              class="hidden inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brass/15 hover:bg-brass hover:text-white text-brass text-xs font-semibold border border-brass/35 transition-colors cursor-pointer"
+              title="সরাসরি আসরের ভিডিও আলোচনায় যান"
+            >
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <span>ভিডিও আলোচনা (<span id="modalVideoCountBadge">০</span>টি)</span>
+              <span>↓</span>
+            </button>
           </div>
           <h3 id="modalSessionTitle" class="font-serif text-xl sm:text-2xl font-bold text-petrol truncate mt-1"></h3>
         </div>
@@ -453,7 +465,7 @@
       </div>
 
       <!-- Modal Body (Scrollable Article) -->
-      <div class="px-5 sm:px-8 py-6 sm:py-8 overflow-y-auto grow space-y-6">
+      <div id="modalBodyScrollable" class="px-5 sm:px-8 py-6 sm:py-8 overflow-y-auto grow space-y-6">
         <!-- Date / Time Bar -->
         <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-meghna/15 text-xs sm:text-sm text-ink/80">
           <span id="modalDateTime" class="font-medium inline-flex items-center gap-1.5"></span>
@@ -470,11 +482,26 @@
           <!-- Populated via JS -->
         </div>
 
-        <!-- Video Discussions Section -->
-        <div id="modalVideoSection" class="hidden space-y-4 pt-2 border-t border-meghna/15">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-brass inline-block shrink-0"></span>
-            <h4 class="font-serif font-bold text-petrol text-lg sm:text-xl">আসরের আলোচনাসমূহ (ভিডিও)</h4>
+        <!-- Full Article Content -->
+        <div id="modalArticleText" class="font-sans leading-relaxed text-ink/90 pt-2">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- Video Discussions Section (Directly Below Essay & Photos) -->
+        <div id="modalVideoSection" class="hidden space-y-4 pt-6 border-t border-meghna/20">
+          <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-brass inline-block shrink-0"></span>
+              <h4 class="font-serif font-bold text-petrol text-lg sm:text-xl">আসরের আলোচনাসমূহ (ভিডিও)</h4>
+            </div>
+            <a
+              href="videos.html"
+              target="_self"
+              class="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-petrol hover:text-brass transition-colors"
+            >
+              <span>সব ভিডিও গ্যালারিতে দেখুন</span>
+              <span>→</span>
+            </a>
           </div>
           <div class="video-gallery-container w-full">
             <div id="modalVideosGrid" class="video-cards-grid">
@@ -503,11 +530,6 @@
               </button>
             </div>
           </div>
-        </div>
-
-        <!-- Full Article Content -->
-        <div id="modalArticleText" class="font-sans leading-relaxed text-ink/90 pt-2">
-          <!-- Populated via JS -->
         </div>
       </div>
 
@@ -854,6 +876,9 @@
       const videoSection = document.getElementById('modalVideoSection');
       const videosGrid = document.getElementById('modalVideosGrid');
       const controls = document.getElementById('modalVideoCarouselControls');
+      const jumpBtn = document.getElementById('modalVideoJumpBtn');
+      const jumpCount = document.getElementById('modalVideoCountBadge');
+
       if (videoSection && videosGrid) {
         const sessionNumMatch = session.number.match(/\d+/);
         const sessionNum = sessionNumMatch ? parseInt(sessionNumMatch[0], 10) : null;
@@ -864,6 +889,13 @@
         if (matchingVideos.length > 0) {
           currentSessionVideos = matchingVideos;
           videoSection.classList.remove('hidden');
+          if (jumpBtn) {
+            jumpBtn.classList.remove('hidden');
+            if (jumpCount) jumpCount.textContent = toBanglaDigits(matchingVideos.length);
+            jumpBtn.onclick = () => {
+              videoSection.scrollIntoView({ behavior: 'smooth' });
+            };
+          }
           videosGrid.innerHTML = matchingVideos
             .map((video, idx) => {
               return `
@@ -920,6 +952,7 @@
         } else {
           currentSessionVideos = [];
           videoSection.classList.add('hidden');
+          if (jumpBtn) jumpBtn.classList.add('hidden');
           videosGrid.innerHTML = '';
           if (controls) controls.classList.add('hidden');
         }
@@ -1118,6 +1151,8 @@
       modal.classList.add('hidden');
       document.body.style.overflow = '';
       activeSessionIndex = -1;
+      const jumpBtn = document.getElementById('modalVideoJumpBtn');
+      if (jumpBtn) jumpBtn.classList.add('hidden');
       // Stop any playing iframes in modal
       const videosGrid = document.getElementById('modalVideosGrid');
       if (videosGrid) videosGrid.innerHTML = '';

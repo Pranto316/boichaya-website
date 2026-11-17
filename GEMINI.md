@@ -5,10 +5,12 @@
 - **Tech Stack:** Pure static HTML5, Tailwind CSS (via CDN), and Vanilla JavaScript (no Node.js, React, or build step).
 - **Deployment:** Static hosting on Netlify (`index.html` as the root entry point).
 - **Current Files:**
-  - `index.html` — Main landing page (Navbar, Hero, About, Members Swipe Carousel, Major Events Showcase with 3-photo collage linking to `events.html`, Unified Pathchokro Showcase, Contact section, Lightbox & Modals).
+  - `index.html` — Main landing page (Navbar, Hero, About, Members Swipe Carousel, Major Events Showcase with 3-photo collage linking to `events.html`, Unified Pathchokro Showcase, Video Gallery preview section linking to `videos.html`, Contact section, Lightbox & Modals).
   - `members.html` — Standalone full members directory page.
-  - `pathchokro.html` — Standalone Pathchokro collection archive page (tactile hardcover book-cover cards, interactive book-reading modal with hash routing `#pc-[number]`, and session photo albums).
+  - `pathchokro.html` — Standalone Pathchokro collection archive page (tactile hardcover book-cover cards, interactive book-reading modal with hash routing `#pc-[number]`, quick jump pill to videos, session photo albums, and session video discussions linking to `videos.html`).
   - `events.html` — Standalone Major Events archive page (special seminars, full literary descriptions, speaker highlights, 15-photo gallery grid, and mobile-friendly full-screen lightbox viewer).
+  - `videos.html` — Standalone Video Gallery page ("ভিডিও গ্যালারি") displaying all Pathchokro speeches and discussions with dynamic session filtering, speaker designations pulled from `boichayaMembers`, same-tab links to `pathchokro.html#pc-[number]`, and fullscreen video theater lightbox.
+  - `videos-data.js` — Single source of truth for Pathchokro video entries (`boichayaVideos`).
   - `images/` — Local static assets (`logo.jpg`, `ahmed-safa/`, `members/`, `pc-8/` through `pc-18/`).
 
 ---
@@ -160,17 +162,22 @@ To maintain smooth 60fps scrolling and eliminate GPU compositing bottlenecks on 
    - On tap/click, open the Fullscreen Theater Lightbox Modal (`#videoTheaterModal`) rather than playing inside small cards. The modal features a large centered player (`aspect-[16/9]` max-h-[75vh] for videos, `aspect-[9/16]` max-h-[72vh] for reels) with `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(normalizedUrl)}&show_text=false&width=560`, `allowfullscreen="true"`, and `allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen"`.
    - The Theater Modal includes Previous/Next navigation buttons (`← পূর্ববর্তী` / `পরবর্তী →`), a direct link button (`পূর্ণস্ক্রিন / Facebook-এ দেখুন ↗`), a video counter (`১ / ৪`), top-right close (`✕`), and full keyboard navigation (`Escape`, `ArrowLeft`, `ArrowRight`).
 3. **Cross-Page Integration & Responsive Carousel Layout:**
-   - In `pathchokro.html`, display matching session videos inside the book-reading view under an "আসরের আলোচনাসমূহ (ভিডিও)" section.
-   - In `index.html`, render the "ভিডিও গ্যালারি" homepage section with filter buttons ("সর্বশেষ" plus buttons for sessions having videos) and same-tab navigation links pointing to `pathchokro.html#pc-[number]`.
+   - In `pathchokro.html`, display matching session videos inside the book-reading view under an "আসরের আলোচনাসমূহ (ভিডিও)" section directly below the blog essay and photos, with a quick jump pill ("ভিডিও আলোচনা (Nটি) ↓") at the top of the modal and a same-tab link to `videos.html`.
+   - In `index.html`, render the "ভিডিও গ্যালারি" homepage section with filter buttons and a clear action button ("সব ভিডিও দেখুন →") pointing to `videos.html` in the same tab.
    - On desktop, center the video gallery container (`max-width: 1100px; margin: 0 auto;`) with centered grid alignment (`justify-content: center;`) so 1, 2, or 3 videos sit neatly centered instead of sticking to the left.
    - On mobile (`@media (max-width: 768px)`), replace vertical stacking with a horizontal swipeable carousel using `scroll-snap-type: x mandatory`, hidden scrollbars, `flex: 0 0 82%; max-width: 320px; scroll-snap-align: center;`, compact `16/10` preview thumbnails, translucent glass sheen on the active snapped card, and mobile arrow buttons with pagination dots (`1 / N`). Avoid heavy `backdrop-filter` during scroll to ensure smooth 60fps performance.
+4. **Dedicated Video Gallery Page (`videos.html`):**
+   - Serves as the comprehensive video archive of Boichaya with a single semantic `<h1>` ("ভিডিও গ্যালারি").
+   - Loads `videos-data.js` and automatically pulls speaker designations/roles from `boichayaMembers` (defaulting to `"সদস্য"` if not listed).
+   - Dynamically renders filter buttons for all recorded sessions (`সকল ভিডিও`, `১৭তম পাঠচক্র`, `১৬তম পাঠচক্র`, etc.).
+   - Each card provides a clickable tag back to that session's blog post and photos on `pathchokro.html#pc-[number]` in the same tab (`target="_self"`).
 
 ---
 
 ## 12. Architecture, Semantic SEO & Identity Standards
 1. **Strict Semantic Heading Hierarchy (`<h1>` through `<h4>`):**
    - Every HTML page must maintain a strict, logical semantic heading hierarchy.
-   - **Strict Single `<h1>` Per Page:** Each page must contain exactly **ONE `<h1>`** tag representing the primary page topic (e.g., the main hero title on `index.html`, "সদস্যবৃন্দ" on `members.html`, "পাঠচক্র সংগ্রহ" on `pathchokro.html`, and "আয়োজনসমূহ" on `events.html`).
+   - **Strict Single `<h1>` Per Page:** Each page must contain exactly **ONE `<h1>`** tag representing the primary page topic (e.g., the main hero title on `index.html`, "সদস্যবৃন্দ" on `members.html`, "পাঠচক্র সংগ্রহ" on `pathchokro.html`, "আয়োজনসমূহ" on `events.html`, and "ভিডিও গ্যালারি" on `videos.html`).
    - **No Heading Tags for Navbar Brand Logos:** Convert navbar brand logos and text strictly to `<a>` or `<span>` tags—never `<h1>` or `<h2>`.
    - **Logical `<h2>` Section Headings:** Use `<h2>` strictly for top-level thematic sections (e.g., About Boichaya, Members, Pathchokro, Video Gallery, Contact).
    - **Logical `<h3>` Card/Sub-section Headings:** Use `<h3>` strictly for individual cards, event titles, hardcover book-cover titles, member names, and major modal article titles—never skip levels (e.g., do not jump from `<h1>` directly to `<h3>` or `<h4>`).
