@@ -494,12 +494,19 @@
         display: none !important;
       }
       .video-card-item {
-        flex: 0 0 84% !important;
-        max-width: 340px !important;
+        flex: 0 0 82% !important;
+        max-width: 320px !important;
         scroll-snap-align: center !important;
         transform: scale(0.95);
         opacity: 0.85;
         transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease, border-color 0.28s ease;
+      }
+      .video-card-item .video-thumbnail-container {
+        aspect-ratio: 16 / 10 !important;
+        max-height: 210px !important;
+      }
+      .video-card-item .video-thumbnail-container img {
+        object-fit: cover !important;
       }
       .video-card-item.is-active-snap {
         transform: scale(1) !important;
@@ -1732,6 +1739,94 @@
   </div>
 
   <!-- =====================================================================
+       11.1. FULLSCREEN VIDEO THEATER LIGHTBOX MODAL
+  ====================================================================== -->
+  <div
+    id="videoTheaterModal"
+    class="fixed inset-0 z-50 bg-[#080F11]/96 hidden flex flex-col items-center justify-center p-3 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-label="ভিডিও থিয়েটার প্লেয়ার"
+  >
+    <!-- Top Bar with Counter & Close Button -->
+    <div class="w-full max-w-4xl flex items-center justify-between gap-3 mb-2 px-1 text-[#FAF6EE]">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-brass animate-pulse"></span>
+        <span class="font-serif text-sm sm:text-base font-bold text-brass">বইছায়া ভিডিও থিয়েটার</span>
+        <span id="theaterCounter" class="text-xs sm:text-sm font-semibold bg-white/10 px-2.5 py-0.5 rounded-full border border-white/15"></span>
+      </div>
+      <button
+        id="closeVideoTheaterBtn"
+        type="button"
+        class="w-10 h-10 rounded-full bg-white/10 hover:bg-brass hover:text-white text-[#FAF6EE] flex items-center justify-center transition-colors cursor-pointer border border-white/20"
+        aria-label="ভিডিও বন্ধ করুন (Escape)"
+        title="বন্ধ করুন (Escape)"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Centered Responsive Video Player Frame -->
+    <div class="w-full max-w-4xl flex flex-col items-center justify-center">
+      <div
+        id="theaterPlayerWrapper"
+        class="w-full bg-black rounded-2xl overflow-hidden shadow-2xl border border-brass/40 flex items-center justify-center relative transition-all"
+        style="max-width: 900px; max-height: 75vh;"
+      >
+        <div id="theaterIframeContainer" class="w-full h-full flex items-center justify-center">
+          <!-- Dynamic Iframe Inserted Here -->
+        </div>
+      </div>
+
+      <!-- Theater Bottom Bar: Metadata & Action Controls -->
+      <div class="w-full max-w-4xl mt-3.5 px-2 text-[#FAF6EE]">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-white/15">
+          <div class="text-center sm:text-left min-w-0">
+            <p id="theaterSpeaker" class="font-serif text-base sm:text-lg font-bold text-brass"></p>
+            <h4 id="theaterTitle" class="font-sans text-xs sm:text-sm text-[#FAF6EE]/80 mt-0.5 truncate max-w-xl"></h4>
+          </div>
+
+          <!-- Direct Facebook Fullscreen Link -->
+          <a
+            id="theaterDirectFbLink"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-1.5 px-4 py-2 min-h-[44px] rounded-full bg-brass hover:brightness-105 text-white font-semibold text-xs sm:text-sm shadow-md transition-all shrink-0 cursor-pointer"
+            title="ফেসবুকে পূর্ণস্ক্রিনে দেখুন"
+          >
+            <span>পূর্ণস্ক্রিন / Facebook-এ দেখুন</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <!-- Navigation Buttons: Previous / Next -->
+        <div class="flex items-center justify-between gap-3 pt-3">
+          <button
+            id="theaterPrevBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 min-h-[44px] rounded-full border border-white/25 bg-white/10 hover:bg-brass hover:border-brass text-white font-semibold text-xs sm:text-sm transition-colors disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+          >
+            <span>← পূর্ববর্তী</span>
+          </button>
+
+          <span class="text-xs text-white/60 hidden sm:inline">কীবোর্ড নেভিগেশন: Escape (বন্ধ), ← / → (পরিবর্তন)</span>
+
+          <button
+            id="theaterNextBtn"
+            type="button"
+            class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 min-h-[44px] rounded-full border border-white/25 bg-white/10 hover:bg-brass hover:border-brass text-white font-semibold text-xs sm:text-sm transition-colors disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+          >
+            <span>পরবর্তী →</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
        12. STRUCTURED DATA & INTERACTIVE LITERARY ENGINE
   ====================================================================== -->
   <!-- Pathchokro Videos Data -->
@@ -2531,25 +2626,96 @@
       return rawUrl;
     }
 
-    function playHomeVideoInline(containerId, encodedUrl, orientation) {
-      const container = document.getElementById('home-video-' + containerId);
-      if (!container) return;
-      const decodedUrl = decodeURIComponent(encodedUrl);
-      const normalizedUrl = normalizeFbVideoUrl(decodedUrl);
+    let currentHomeVideos = [];
+    let currentHomeTheaterIndex = 0;
+
+    function openHomeVideoTheater(index) {
+      if (!currentHomeVideos || index < 0 || index >= currentHomeVideos.length) return;
+      currentHomeTheaterIndex = index;
+      renderHomeTheaterVideo();
+      const modal = document.getElementById('videoTheaterModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeHomeVideoTheater() {
+      const modal = document.getElementById('videoTheaterModal');
+      if (!modal || modal.classList.contains('hidden')) return;
+      modal.classList.add('hidden');
+      const iframeContainer = document.getElementById('theaterIframeContainer');
+      if (iframeContainer) iframeContainer.innerHTML = '';
+    }
+
+    function navigateHomeTheaterVideo(direction) {
+      const newIndex = currentHomeTheaterIndex + direction;
+      if (newIndex >= 0 && newIndex < currentHomeVideos.length) {
+        currentHomeTheaterIndex = newIndex;
+        renderHomeTheaterVideo();
+      }
+    }
+
+    function renderHomeTheaterVideo() {
+      const video = currentHomeVideos[currentHomeTheaterIndex];
+      if (!video) return;
+
+      const isReel = video.orientation === 'reel' || (video.url && video.url.includes('/reel/'));
+      const normalizedUrl = normalizeFbVideoUrl(video.url);
       const finalEncodedUrl = encodeURIComponent(normalizedUrl);
-      const iframeSrc = `https://www.facebook.com/plugins/video.php?href=${finalEncodedUrl}&show_text=false`;
-      container.innerHTML = `
-        <iframe
-          src="${iframeSrc}"
-          class="w-full h-full border-0 rounded-xl"
-          style="border:none;overflow:hidden"
-          scrolling="no"
-          frameborder="0"
-          allowfullscreen="true"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          title="বইছায়া আলোচনা ভিডিও"
-        ></iframe>
-      `;
+      const iframeSrc = `https://www.facebook.com/plugins/video.php?href=${finalEncodedUrl}&show_text=false&width=560`;
+
+      const playerWrapper = document.getElementById('theaterPlayerWrapper');
+      const iframeContainer = document.getElementById('theaterIframeContainer');
+      const counterEl = document.getElementById('theaterCounter');
+      const speakerEl = document.getElementById('theaterSpeaker');
+      const titleEl = document.getElementById('theaterTitle');
+      const directLinkEl = document.getElementById('theaterDirectFbLink');
+      const prevBtn = document.getElementById('theaterPrevBtn');
+      const nextBtn = document.getElementById('theaterNextBtn');
+
+      if (playerWrapper) {
+        if (isReel) {
+          playerWrapper.style.maxWidth = '420px';
+          playerWrapper.style.maxHeight = '72vh';
+          playerWrapper.style.aspectRatio = '9 / 16';
+        } else {
+          playerWrapper.style.maxWidth = '900px';
+          playerWrapper.style.maxHeight = '75vh';
+          playerWrapper.style.aspectRatio = '16 / 9';
+        }
+      }
+
+      if (iframeContainer) {
+        iframeContainer.innerHTML = `
+          <iframe
+            src="${iframeSrc}"
+            class="w-full h-full border-0 rounded-2xl"
+            style="border:none;overflow:hidden"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen"
+            title="${video.sessionTitle} - ${video.speaker}"
+          ></iframe>
+        `;
+      }
+
+      if (counterEl) {
+        counterEl.textContent = `${toBanglaDigits(currentHomeTheaterIndex + 1)} / ${toBanglaDigits(currentHomeVideos.length)}`;
+      }
+      if (speakerEl) {
+        speakerEl.textContent = `বক্তা: ${video.speaker}`;
+      }
+      if (titleEl) {
+        titleEl.textContent = video.sessionTitle;
+      }
+      if (directLinkEl) {
+        directLinkEl.href = video.url;
+      }
+      if (prevBtn) {
+        prevBtn.disabled = currentHomeTheaterIndex === 0;
+      }
+      if (nextBtn) {
+        nextBtn.disabled = currentHomeTheaterIndex === currentHomeVideos.length - 1;
+      }
     }
 
     let homeCarouselObserver = null;
@@ -2626,6 +2792,8 @@
         ? boichayaVideos
         : boichayaVideos.filter((v) => String(v.sessionNumber) === activeVideoFilter);
 
+      currentHomeVideos = filtered;
+
       if (filtered.length === 0) {
         grid.innerHTML = `
           <div class="col-span-full py-12 text-center text-ink/70">
@@ -2638,26 +2806,23 @@
 
       grid.innerHTML = filtered
         .map((video, idx) => {
-          const isReel = video.orientation === 'reel' || (video.url && video.url.includes('/reel/'));
-          const aspectClass = isReel ? 'aspect-[9/16] max-w-[270px] mx-auto' : 'aspect-[16/9]';
           return `
             <article data-index="${idx}" class="video-card-item ${idx === 0 ? 'is-active-snap' : ''} bg-cardpaper border border-meghna/25 rounded-3xl overflow-hidden p-4 sm:p-5 shadow-parchment flex flex-col justify-between hover:border-brass/50">
               <div>
-                <!-- Video Player Container (Click to Play) -->
+                <!-- Video Thumbnail Preview (Click to Open Fullscreen Theater) -->
                 <div
-                  id="home-video-${video.id}"
-                  class="${aspectClass} w-full bg-black/90 rounded-2xl relative overflow-hidden flex items-center justify-center cursor-pointer group select-none shadow-inner"
-                  onclick="playHomeVideoInline('${video.id}', '${encodeURIComponent(video.url)}', '${video.orientation}')"
+                  class="video-thumbnail-container aspect-[16/10] w-full bg-black/90 rounded-2xl relative overflow-hidden flex items-center justify-center cursor-pointer group select-none shadow-inner"
+                  onclick="openHomeVideoTheater(${idx})"
                   role="button"
                   tabindex="0"
-                  aria-label="ভিডিওটি চালান: ${video.sessionTitle} - বক্তা: ${video.speaker}"
-                  onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); playHomeVideoInline('${video.id}', '${encodeURIComponent(video.url)}', '${video.orientation}'); }"
+                  aria-label="ভিডিওটি দেখুন: ${video.sessionTitle} - বক্তা: ${video.speaker}"
+                  onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openHomeVideoTheater(${idx}); }"
                 >
                   <img
                     src="${video.thumbnail}"
                     alt="${video.sessionTitle} - ${video.speaker}"
                     width="600"
-                    height="338"
+                    height="375"
                     loading="lazy"
                     decoding="async"
                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 opacity-90 group-hover:opacity-100"
@@ -3068,8 +3233,28 @@
     }
 
     function closeReadingModalFn() {
+      closeHomeVideoTheater();
       readingModal.classList.add('hidden');
       document.body.style.overflow = '';
+    }
+
+    // Video Theater Modal Listeners
+    const closeVideoTheaterBtn = document.getElementById('closeVideoTheaterBtn');
+    if (closeVideoTheaterBtn) closeVideoTheaterBtn.addEventListener('click', closeHomeVideoTheater);
+
+    const theaterPrevBtn = document.getElementById('theaterPrevBtn');
+    if (theaterPrevBtn) theaterPrevBtn.addEventListener('click', () => navigateHomeTheaterVideo(-1));
+
+    const theaterNextBtn = document.getElementById('theaterNextBtn');
+    if (theaterNextBtn) theaterNextBtn.addEventListener('click', () => navigateHomeTheaterVideo(1));
+
+    const videoTheaterModal = document.getElementById('videoTheaterModal');
+    if (videoTheaterModal) {
+      videoTheaterModal.addEventListener('click', (e) => {
+        if (e.target === videoTheaterModal) {
+          closeHomeVideoTheater();
+        }
+      });
     }
 
     document.getElementById('fontIncreaseBtn').addEventListener('click', () => {
@@ -3096,6 +3281,13 @@
     modalNextSessionBtn.addEventListener('click', () => { if (activeSessionIndex < pathchokroSessions.length - 1) openReadingModal(activeSessionIndex + 1); });
 
     document.addEventListener('keydown', (e) => {
+      const theaterModal = document.getElementById('videoTheaterModal');
+      if (theaterModal && !theaterModal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeHomeVideoTheater();
+        if (e.key === 'ArrowLeft') navigateHomeTheaterVideo(-1);
+        if (e.key === 'ArrowRight') navigateHomeTheaterVideo(1);
+        return;
+      }
       if (!lightboxEl.classList.contains('hidden')) {
         if (e.key === 'Escape') closeLightbox();
         if (e.key === 'ArrowLeft') prevLightboxPhoto();
