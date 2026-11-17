@@ -144,7 +144,7 @@ To maintain smooth 60fps scrolling and eliminate GPU compositing bottlenecks on 
 
 ## 11. Pathchokro Video Discussions & Automated Sync Standards
 1. **Permanent Auto-Sync Rule (`_notes/pathchokro-videos.txt` → `videos-data.js`):**
-   - Whenever `_notes/pathchokro-videos.txt` is updated with Pathchokro numbers, speaker names in English, and Facebook video/reel links, Antigravity must automatically match English speaker names to their official Bangla names in `boichayaMembers` (found in `index.html` and `members.html`, e.g., "Sushmita" -> "সুস্মিতা দাস", "Pranto" -> "প্রান্ত সাহা", "Shuvo" -> "খান মোহাম্মদ শুভ", "Nihal" -> "নাফিস সাদিক নিহাল", "Mohammed Siddik" / "Siddik" -> "আবু বকর সিদ্দিক").
+   - Whenever `_notes/pathchokro-videos.txt` is updated with Pathchokro numbers, speaker names in English, and Facebook video/reel links, Antigravity must automatically match English speaker names to their official Bangla names in `boichayaMembers` (found in `index.html` and `members.html`, e.g., "Sushmita" -> "সুস্মিতা দাস", "Pranto" -> "প্রান্ত সাহা", "Shuvo" -> "খান মোহাম্মদ শুভ", "Nihal" -> "নাফিস সাদিক নিহাল", "Mohammed Siddik" / "Siddik" -> "আবু বকর ছিদ্দিক").
    - If a speaker is an invited guest not present in `boichayaMembers`, automatically convert their English name into natural, accurate Bangla spelling.
    - Update `videos-data.js` with the parsed records using:
      - `id`: `"pc[number]-[serial]"`
@@ -163,3 +163,20 @@ To maintain smooth 60fps scrolling and eliminate GPU compositing bottlenecks on 
    - In `index.html`, render the "ভিডিও গ্যালারি" homepage section with filter buttons ("সর্বশেষ" plus buttons for sessions having videos) and same-tab navigation links pointing to `pathchokro.html#pc-[number]`.
    - On desktop, center the video gallery container (`max-width: 1100px; margin: 0 auto;`) with centered grid alignment (`justify-content: center;`) so 1, 2, or 3 videos sit neatly centered instead of sticking to the left.
    - On mobile (`@media (max-width: 768px)`), replace vertical stacking with a horizontal swipeable carousel using `scroll-snap-type: x mandatory`, hidden scrollbars, `flex: 0 0 84%; max-width: 340px; scroll-snap-align: center;`, translucent glass sheen on the active snapped card, and mobile arrow buttons with pagination dots (`1 / N`). Avoid heavy `backdrop-filter` during scroll to ensure smooth 60fps performance.
+
+---
+
+## 12. Architecture, Semantic SEO & Identity Standards
+1. **Strict Semantic Heading Hierarchy (`<h1>` through `<h4>`):**
+   - Every HTML page must maintain a strict, logical semantic heading hierarchy.
+   - **Strict Single `<h1>` Per Page:** Each page must contain exactly **ONE `<h1>`** tag representing the primary page topic (e.g., the main hero title on `index.html`, "সদস্যবৃন্দ" on `members.html`, "পাঠচক্র সংগ্রহ" on `pathchokro.html`, and "আয়োজনসমূহ" on `events.html`).
+   - **No Heading Tags for Navbar Brand Logos:** Convert navbar brand logos and text strictly to `<a>` or `<span>` tags—never `<h1>` or `<h2>`.
+   - **Logical `<h2>` Section Headings:** Use `<h2>` strictly for top-level thematic sections (e.g., About Boichaya, Members, Pathchokro, Video Gallery, Contact).
+   - **Logical `<h3>` Card/Sub-section Headings:** Use `<h3>` strictly for individual cards, event titles, hardcover book-cover titles, member names, and major modal article titles—never skip levels (e.g., do not jump from `<h1>` directly to `<h3>` or `<h4>`).
+   - **Logical `<h4>` Sub-details:** Use `<h4>` only for minor sub-headings inside an `<h3>` container (or use `<p>`/`<span>` for badges, tags, and dates).
+2. **Founder's Official Name Spelling:**
+   - Always spell the founder's name as **"আবু বকর ছিদ্দিক"** (with 'ছ') across all HTML pages, scripts, notes, and metadata.
+3. **Official Founding Date:**
+   - Always list Boichaya's founding date strictly as **"১১ অক্টোবর ২০২২"** (or "১১ অক্টোবর, ২০২২") across all pages, footers, meta tags, and bios.
+4. **Member Cards Layout (No Joining Date):**
+   - Omit the member joining date (`joined` / "যোগদান:") from member cards on both `index.html` and `members.html` to keep cards clean and focused on portrait, name, designation (`roleBadge`), and bio.
